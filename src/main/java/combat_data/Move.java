@@ -1,5 +1,6 @@
 package combat_data;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -7,16 +8,17 @@ import java.util.List;
 public class Move {
     private MoveTypes type;
     private DamageTypes damageType;
-    
+
     private List<States> unavailableOn = Collections.emptyList();
 
     private List<PositionTags> positionDuringMove = Collections.emptyList();
     private List<PositionTags> weaponMovement = Collections.emptyList();
-    
+
     private List<States> removedStates = Collections.emptyList();
     private List<States> addedStates = Collections.emptyList();
 
-    public Move() { }
+    public Move() {
+    }
 
     public Move(MoveTypes type) {
         this.type = type;
@@ -25,6 +27,24 @@ public class Move {
     public Move withDamage(DamageTypes damage) {
         this.damageType = damage;
         return this;
+    }
+
+    public Effect resolveAgainst(Move other) {
+        ArrayList<PositionTags> commonWeaponMovements = new ArrayList<>(this.getWeaponMovement());
+        commonWeaponMovements.retainAll(other.getWeaponMovement());
+
+        if (other.getWeaponMovement().size() == commonWeaponMovements.size()
+                || this.getWeaponMovement().size() == commonWeaponMovements.size()
+                || commonWeaponMovements.size() >= 2)
+            return Effect.PARRY;
+
+        ArrayList<PositionTags> weaponVsBody = new ArrayList<>(this.getWeaponMovement());
+        weaponVsBody.retainAll(other.getPositionDuringMove());
+
+        if (weaponVsBody.size() > 1) return Effect.CRIT;
+        if (weaponVsBody.size() == 1) return Effect.HIT;
+
+        return Effect.MISS;
     }
 
     public Move withUnavailableOn(States... unavailableOn) {
