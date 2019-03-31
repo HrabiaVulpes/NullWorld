@@ -1,0 +1,3922 @@
+[
+  {
+    "name": "DAGGER",
+    "length": 1,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "SHOT",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "CLOSE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "BACK"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
+      },
+      {
+        "type": "THRUST",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "TURNED",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.25,
+      "SLASH": 0.5,
+      "PIERCE": 1.0
+    }
+  },
+  {
+    "name": "SWORD",
+    "length": 2,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "THRUST",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "TURNED",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "BACK"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.5,
+      "SLASH": 0.5,
+      "PIERCE": 0.5
+    }
+  },
+  {
+    "name": "GREAT_SWORD",
+    "length": 3,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "THRUST",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "TURNED",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "BACK"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 1.0,
+      "SLASH": 0.5,
+      "PIERCE": 0.25
+    }
+  },
+  {
+    "name": "ULRTA_GREAT_SWORD",
+    "length": 4,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH",
+          "LOW",
+          "BACK"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE",
+          "BACK"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE",
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE"
+        ],
+        "addedStates": [
+          "WEAPON_EXTENDED",
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 1.25,
+      "SLASH": 0.25,
+      "PIERCE": 0.25
+    }
+  },
+  {
+    "name": "CURVED_SWORD",
+    "length": 2,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.5,
+      "SLASH": 1.0,
+      "PIERCE": 0.25
+    }
+  },
+  {
+    "name": "KATANA",
+    "length": 2,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "THRUST",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "TURNED",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "BACK"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.25,
+      "SLASH": 0.75,
+      "PIERCE": 0.75
+    }
+  },
+  {
+    "name": "CURVED_GREAT_SWORD",
+    "length": 3,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE",
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE"
+        ],
+        "addedStates": [
+          "WEAPON_EXTENDED",
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.75,
+      "SLASH": 0.75,
+      "PIERCE": 0.25
+    }
+  },
+  {
+    "name": "PIERCING_SWORD",
+    "length": 3,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "WEAPON_EXTENDED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED",
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "THRUST",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "TURNED",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "BACK"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.25,
+      "SLASH": 0.25,
+      "PIERCE": 1.25
+    }
+  },
+  {
+    "name": "AXE",
+    "length": 2,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.85,
+      "SLASH": 0.85,
+      "PIERCE": 0.1
+    }
+  },
+  {
+    "name": "GREAT_AXE",
+    "length": 3,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE"
+        ],
+        "addedStates": [
+          "WEAPON_EXTENDED",
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 1.0,
+      "SLASH": 1.0,
+      "PIERCE": 0.1
+    }
+  },
+  {
+    "name": "HAMMER",
+    "length": 2,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 1.0,
+      "SLASH": 0.25,
+      "PIERCE": 0.25
+    }
+  },
+  {
+    "name": "GREAT_HAMMER",
+    "length": 3,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_LOW",
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE"
+        ],
+        "addedStates": [
+          "WEAPON_EXTENDED",
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 1.25,
+      "SLASH": 0.1,
+      "PIERCE": 0.1
+    }
+  },
+  {
+    "name": "FIST",
+    "length": 1,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "THRUST",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "TURNED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "BACK"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.5,
+      "SLASH": 0.0,
+      "PIERCE": 0.0
+    }
+  },
+  {
+    "name": "SPEAR",
+    "length": 4,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "THRUST",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "TURNED",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "BACK"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.5,
+      "SLASH": 0.5,
+      "PIERCE": 1.0
+    }
+  },
+  {
+    "name": "HALBERD",
+    "length": 4,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_LOW"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "THRUST",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "TURNED",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "BACK"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH",
+          "WEAPON_SIDE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_HIGH"
+        ]
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.75,
+      "SLASH": 0.75,
+      "PIERCE": 0.75
+    }
+  },
+  {
+    "name": "SCYTHE",
+    "length": 4,
+    "options": [
+      {
+        "type": "OVERHEAD",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "CROUCHED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "HIGH",
+          "SIDE"
+        ],
+        "removedStates": [
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "SLASH",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_HIGH",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE"
+        ],
+        "removedStates": [],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "THRUST",
+        "damageType": "SLASH",
+        "unavailableOn": [
+          "TURNED",
+          "KNOCKED",
+          "FAR"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "SIDE",
+          "BACK"
+        ],
+        "removedStates": [
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "UNDERSTRIKE",
+        "damageType": "PIERCE",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "ABOVE",
+          "TURNED",
+          "WEAPON_EXTENDED",
+          "WEAPON_HIGH"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD",
+          "LOW",
+          "SIDE"
+        ],
+        "removedStates": [
+          "WEAPON_LOW",
+          "CROUCHED"
+        ],
+        "addedStates": [
+          "WEAPON_SIDE"
+        ]
+      },
+      {
+        "type": "KICK",
+        "damageType": "BLUNT",
+        "unavailableOn": [
+          "KNOCKED",
+          "FAR",
+          "WEAPON_LOW",
+          "WEAPON_EXTENDED"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [
+          "STANDARD"
+        ],
+        "removedStates": [
+          "ABOVE",
+          "TURNED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "JUMP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "HIGH"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CROUCHED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "ABOVE"
+        ]
+      },
+      {
+        "type": "DODGE",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "SIDE"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      },
+      {
+        "type": "DUCK",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE",
+          "CROUCHED"
+        ],
+        "positionDuringMove": [
+          "LOW"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CROUCHED"
+        ]
+      },
+      {
+        "type": "CLOSE_IN",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "FAR",
+          "TURNED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "CLOSE"
+        ]
+      },
+      {
+        "type": "BACK_AWAY",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "KNOCKED",
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "BACK"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "CLOSE",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": [
+          "FAR"
+        ]
+      },
+      {
+        "type": "GET_UP",
+        "damageType": "NONE",
+        "unavailableOn": [
+          "ABOVE"
+        ],
+        "positionDuringMove": [
+          "STANDARD"
+        ],
+        "weaponMovement": [],
+        "removedStates": [
+          "TURNED",
+          "KNOCKED",
+          "WEAPON_HIGH",
+          "WEAPON_LOW",
+          "WEAPON_SIDE",
+          "WEAPON_EXTENDED"
+        ],
+        "addedStates": []
+      }
+    ],
+    "efficiencies": {
+      "BLUNT": 0.25,
+      "SLASH": 1.25,
+      "PIERCE": 0.5
+    }
+  }
+]
