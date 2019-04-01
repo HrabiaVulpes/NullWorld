@@ -6,9 +6,6 @@ public enum States {
     CROUCHED,
     KNOCKED,
 
-    CLOSE,
-    FAR,
-
     WEAPON_SIDE,
     WEAPON_EXTENDED,
     WEAPON_LOW,
