@@ -31,9 +31,9 @@ public class Tournament {
         if (duel.winner() != null) {
             duel.winner().victoriesCount++;
             System.out.println(duel.winner().name + " won!\n\n");
-            duel.winner().healUp();
-            duel.looser().healUp();
         } else System.out.println("It's a draw!\n\n");
+        player1.healUp();
+        player2.healUp();
     }
 
     public void runTournament(int rounds, int roundLenght) {

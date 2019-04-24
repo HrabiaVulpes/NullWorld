@@ -18,7 +18,7 @@ public class Combatant {
 
     public Combatant(String name, Weapon weapon) {
         this.name = name;
-        this.hitPoints = 10;
+        this.hitPoints = 100;
         this.weapon = weapon;
         this.statesList = new ArrayList<>();
         this.combatantMind = new NeuralNetwork(17, 16, 16, 16, 15); // 65L <- start output
@@ -76,7 +76,7 @@ public class Combatant {
     }
 
     public void learn(Effect myEffect, Effect enemyEffect, Integer distance) {
-        if (wantedMove.getType() != move.getType()){
+        if (wantedMove.getType() != move.getType()) {
             combatantMind.expectValues(Map.of(wantedMove.getType().getId() + outputStart, 0.0));
         }
 
@@ -117,8 +117,12 @@ public class Combatant {
         return ((Combatant) obj).name.equals(this.name);
     }
 
-    public Combatant healUp(){
-        this.hitPoints = 10;
+    public Combatant healUp() {
+        this.hitPoints = 100;
         return this;
+    }
+
+    public Double getDamageDealt() {
+        return 10.0 * this.weapon.getEfficiencies().get(this.move.getDamageType());
     }
 }

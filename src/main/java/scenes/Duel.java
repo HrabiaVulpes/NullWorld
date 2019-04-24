@@ -43,11 +43,11 @@ public class Duel {
         System.out.println(player1.name + ": " + player1.move.getType().name() + "=" + p1Effect +
                 "\t" + player2.name + ": " + player2.move.getType().name() + "=" + p2Effect);
 
-        if (p1Effect == Effect.HIT) player2.hitPoints -= 1;
-        if (p1Effect == Effect.CRIT) player2.hitPoints -= 2;
+        if (p1Effect == Effect.HIT) player2.hitPoints -= (int) Math.round(player1.getDamageDealt());
+        if (p1Effect == Effect.CRIT) player2.hitPoints -= (int) Math.round(2*player1.getDamageDealt());
 
-        if (p2Effect == Effect.HIT) player1.hitPoints -= 1;
-        if (p2Effect == Effect.CRIT) player1.hitPoints -= 2;
+        if (p2Effect == Effect.HIT) player1.hitPoints -= (int) Math.round(player2.getDamageDealt());;
+        if (p2Effect == Effect.CRIT) player1.hitPoints -= (int) Math.round(2*player2.getDamageDealt());
 
 
         player1.learn(p1Effect, p2Effect, distance);
