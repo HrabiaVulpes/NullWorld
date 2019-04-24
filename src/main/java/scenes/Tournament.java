@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Tournament {
     private List<Weapon> availableWeapons = null;
@@ -19,6 +20,11 @@ public class Tournament {
         names.forEach(
                 name -> combatants.add(newContender(name))
         );
+    }
+
+    public Tournament(List<Combatant> combatants){
+        this.combatants = combatants;
+        availableWeapons = combatants.stream().map(Combatant::getWeapon).distinct().collect(Collectors.toList());
     }
 
     public void runRound(int roundLenght) {
