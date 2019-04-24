@@ -65,8 +65,35 @@ public class Combatant {
         return ideas.get(best);
     }
 
+    private MoveTypes getIdeaWithWeights() {
+        combatantMind.calculateFullPass();
+        Map<Double, MoveTypes> ideas = new HashMap<>();
+
+        MoveTypes.getAll()
+                .forEach(
+                        type -> ideas.put(
+                                combatantMind.getNodeById(outputStart + type.getId()).value,
+                                type
+                        )
+                );
+
+        List<Double> weights = new ArrayList<>(ideas.keySet());
+        weights.sort(Comparator.naturalOrder());
+        Double total = weights.stream().mapToDouble(i->i).sum();
+        Double rando = Math.random()*total;
+        MoveTypes best = MoveTypes.CLOSE_IN;
+
+        for (int i = 0; i < weights.size()-1; i++){
+            if (weights.get(i) < rando && rando < weights.get(i+1))
+                best = ideas.get(weights.get(i+1));
+        }
+
+
+        return best;
+    }
+
     public void pickMove() {
-        MoveTypes choosen = getIdea();
+        MoveTypes choosen = getIdeaWithWeights();
         move = weapon.getOptionByType(choosen);
         wantedMove = weapon.getOptionByType(choosen);
 
