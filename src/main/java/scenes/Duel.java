@@ -16,7 +16,15 @@ public class Duel {
         this.player2 = player2;
     }
 
+    public Combatant winner(){
+        if (player1.hitPoints > player2.hitPoints) return player1;
+        if (player2.hitPoints > player1.hitPoints) return player2;
+        return null;
+    }
+
     public void processTurn() {
+        if (player1.hitPoints == 0 || player2.hitPoints == 0) return;
+
         player1.setStates(player2.statesList, Math.abs(distance));
         player2.setStates(player1.statesList, Math.abs(distance));
 
@@ -28,6 +36,13 @@ public class Duel {
 
         System.out.println(player1.name + ": " + player1.move.getType().name() + "=" + p1Effect +
                 "\t" + player2.name + ": " + player2.move.getType().name() + "=" + p2Effect);
+
+        if (p1Effect == Effect.HIT) player2.hitPoints -= 1;
+        if (p1Effect == Effect.CRIT) player2.hitPoints -= 2;
+
+        if (p2Effect == Effect.HIT) player1.hitPoints -= 1;
+        if (p2Effect == Effect.CRIT) player1.hitPoints -= 2;
+
 
         player1.learn(p1Effect, p2Effect, distance);
         player2.learn(p2Effect, p1Effect, distance);

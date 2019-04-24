@@ -17,7 +17,7 @@ public class Combatant {
 
     public Combatant(String name, Weapon weapon) {
         this.name = name;
-        this.hitPoints = 30;
+        this.hitPoints = 10;
         this.weapon = weapon;
         this.statesList = new ArrayList<>();
         this.combatantMind = new NeuralNetwork(17, 16, 16, 16, 15); // 65L <- start output
@@ -88,15 +88,15 @@ public class Combatant {
         if (distance > weapon.getLength() && move.getType() == MoveTypes.CLOSE_IN) return 1.0;
         if (distance > weapon.getLength() && move.getType() != MoveTypes.CLOSE_IN) return 0.0;
 
-        if (myEffect == Effect.HIT && enemyEffect == Effect.HIT) return 1.0;
-        if (myEffect == Effect.HIT && enemyEffect == Effect.CRIT) return 0.0;
-        if (myEffect == Effect.HIT && enemyEffect == Effect.PARRY) return 1.0;
-        if (myEffect == Effect.HIT && enemyEffect == Effect.MISS) return 1.0;
-
         if (myEffect == Effect.CRIT && enemyEffect == Effect.HIT) return 1.0;
         if (myEffect == Effect.CRIT && enemyEffect == Effect.CRIT) return 1.0;
         if (myEffect == Effect.CRIT && enemyEffect == Effect.PARRY) return 1.0;
         if (myEffect == Effect.CRIT && enemyEffect == Effect.MISS) return 1.0;
+
+        if (myEffect == Effect.HIT && enemyEffect == Effect.CRIT) return 0.0;
+        if (myEffect == Effect.HIT && enemyEffect == Effect.HIT) return 1.0;
+        if (myEffect == Effect.HIT && enemyEffect == Effect.PARRY) return 1.0;
+        if (myEffect == Effect.HIT && enemyEffect == Effect.MISS) return 1.0;
 
         if (myEffect == Effect.PARRY && enemyEffect == Effect.HIT) return 0.0;
         if (myEffect == Effect.PARRY && enemyEffect == Effect.CRIT) return 0.0;
@@ -106,7 +106,7 @@ public class Combatant {
         if (myEffect == Effect.MISS && enemyEffect == Effect.HIT) return 0.0;
         if (myEffect == Effect.MISS && enemyEffect == Effect.CRIT) return 0.0;
         if (myEffect == Effect.MISS && enemyEffect == Effect.PARRY) return 0.0;
-        if (myEffect == Effect.MISS && enemyEffect == Effect.MISS) return 0.0;
+        if (myEffect == Effect.MISS && enemyEffect == Effect.MISS) return 1.0;
 
         return 0.0;
     }

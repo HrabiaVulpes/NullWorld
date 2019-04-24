@@ -10,24 +10,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static List<Weapon> shivs = null;
+    private static List<Weapon> availableWeapons = null;
 
     public static void main(String[] args) {
         jsonLoading();
 
         Duel duel = new Duel(
-                new Combatant("Red", shivs.get(1)),
-                new Combatant("Blue", shivs.get(1))
+                new Combatant("Red", availableWeapons.get(1)),
+                new Combatant("Blue", availableWeapons.get(1))
         );
 
         for (int i = 0; i < 1000; i++) {
             duel.processTurn();
         }
+
+        System.out.println("winner is " + duel.winner().name);
     }
 
     private static void jsonLoading() {
         List<Weapon> weaponList = new ArrayList<>();
-
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.writeValue(new File("target/dagger.json"), weaponList);
@@ -36,17 +37,15 @@ public class Main {
         }
 
         String filePath = Main.class.getClassLoader().getResource("weapons.json").getFile();
-
-//        System.out.println(filePath);
         try {
-            shivs = objectMapper.readValue(new File(filePath), new TypeReference<List<Weapon>>() {
+            availableWeapons = objectMapper.readValue(new File(filePath), new TypeReference<List<Weapon>>() {
             });
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        assert shivs != null;
-        shivs.forEach(weapon -> System.out.println(weapon.getName()));
+        assert availableWeapons != null;
+        availableWeapons.forEach(weapon -> System.out.println(weapon.getName()));
     }
 
 }
