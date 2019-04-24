@@ -1,8 +1,7 @@
 package combat_data;
 
 import java.util.*;
-
-import static combat_data.MoveTypes.GET_UP;
+import java.util.stream.Collectors;
 
 public class Weapon {
     private String name = "";
@@ -55,10 +54,12 @@ public class Weapon {
     }
 
     public Move getOptionByType(MoveTypes type) {
-        return options.stream()
+        List<Move> wanted = options.stream()
                 .filter(move -> move.getType() == type)
-                .findFirst()
-                .orElse(getOptionByType(GET_UP));
+                .collect(Collectors.toList());
+
+        if (!wanted.isEmpty()) return wanted.get(0);
+        return getOptionByType(MoveTypes.CLOSE_IN);
     }
 
     public Map<DamageTypes, Double> getEfficiencies() {

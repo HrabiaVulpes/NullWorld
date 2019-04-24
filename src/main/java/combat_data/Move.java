@@ -30,14 +30,12 @@ public class Move {
     }
 
     public Effect resolveAgainst(Move other, Integer weaponLength, Integer distanceToEnemy) {
-        if (weaponLength < distanceToEnemy) return  Effect.MISS;
+        if (weaponLength < distanceToEnemy || damageType == DamageTypes.NONE) return  Effect.MISS;
 
         ArrayList<PositionTags> commonWeaponMovements = new ArrayList<>(this.getWeaponMovement());
         commonWeaponMovements.retainAll(other.getWeaponMovement());
 
-        if (other.getWeaponMovement().size() == commonWeaponMovements.size()
-                || this.getWeaponMovement().size() == commonWeaponMovements.size()
-                || commonWeaponMovements.size() >= 2)
+        if (commonWeaponMovements.size() >= 2)
             return Effect.PARRY;
 
         ArrayList<PositionTags> weaponVsBody = new ArrayList<>(this.getWeaponMovement());

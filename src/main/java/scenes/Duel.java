@@ -26,6 +26,9 @@ public class Duel {
         Effect p1Effect = player1.move.resolveAgainst(player2.move, player2.weapon.getLength(), distance);
         Effect p2Effect = player2.move.resolveAgainst(player1.move, player1.weapon.getLength(), distance);
 
+        System.out.println(player1.name + ": " + player1.move.getType().name() + "=" + p1Effect +
+                "\t" + player2.name + ": " + player2.move.getType().name() + "=" + p2Effect);
+
         player1.learn(p1Effect, p2Effect, distance);
         player2.learn(p2Effect, p1Effect, distance);
 

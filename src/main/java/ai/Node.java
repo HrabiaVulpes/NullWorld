@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Node {
-    private static final Double learningRate = 0.05;
+    private static final Double learningRate = 0.1;
     public final Long ID;
     public Double value;
     Integer layer;
