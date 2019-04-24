@@ -3,6 +3,7 @@ package scenes;
 import agent.Combatant;
 import combat_data.Effect;
 import combat_data.MoveTypes;
+import combat_data.States;
 
 public class Duel {
     private Combatant player1;
@@ -69,9 +70,11 @@ public class Duel {
             distance--;
 
         player1.statesList.removeAll(player1.move.getRemovedStates());
+        player1.statesList.remove(States.ABOVE);
         player1.statesList.addAll(player1.move.getAddedStates());
 
         player2.statesList.removeAll(player2.move.getRemovedStates());
+        player2.statesList.remove(States.ABOVE);
         player2.statesList.addAll(player2.move.getAddedStates());
     }
 

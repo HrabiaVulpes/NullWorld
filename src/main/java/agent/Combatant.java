@@ -103,11 +103,12 @@ public class Combatant {
         ArrayList<States> currentStates = new ArrayList<>(this.statesList);
         currentStates.retainAll(move.getUnavailableOn());
 
-        if (!currentStates.isEmpty()) move = weapon.getOptionByType(MoveTypes.CLOSE_IN);
+        if (!currentStates.isEmpty())
+            move = weapon.getOptionByType(MoveTypes.CLOSE_IN);
     }
 
     public void learn(Effect myEffect, Effect enemyEffect, Integer distance) {
-        if (wantedMove.getType() != move.getType()) {
+        if (!wantedMove.getType().name().equals(move.getType().name())) {
             combatantMind.expectValues(Map.of(wantedMove.getType().getId() + outputStart, 0.0));
         }
 
