@@ -22,6 +22,12 @@ public class Duel {
         return null;
     }
 
+    public Combatant looser(){
+        if (player1.hitPoints > player2.hitPoints) return player2;
+        if (player2.hitPoints > player1.hitPoints) return player1;
+        return null;
+    }
+
     public void processTurn() {
         if (player1.hitPoints == 0 || player2.hitPoints == 0) return;
 
@@ -56,5 +62,19 @@ public class Duel {
             distance--;
         if (player2.move.getType() == MoveTypes.CLOSE_IN && p1Effect != Effect.HIT && p2Effect != Effect.CRIT && distance > 0)
             distance--;
+    }
+
+    public Combatant finghtForRounds(int rounds){
+        for (int i = 0; i < rounds; i++){
+            processTurn();
+        }
+        return winner();
+    }
+
+    @Override
+    public String toString() {
+        return "In this grand fight we have " + player1.name + " against " + player2.name + "!\n"
+                + player1.name + " wields it's trusty " + player1.weapon.getName() + ".\n"
+                + player2.name + " wields it's trusty " + player2.weapon.getName() + ".\n";
     }
 }

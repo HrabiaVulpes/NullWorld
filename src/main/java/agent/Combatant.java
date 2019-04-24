@@ -14,6 +14,7 @@ public class Combatant {
     public List<States> statesList;
     public Move wantedMove = null;
     public Move move = null;
+    public Integer victoriesCount = 0;
 
     public Combatant(String name, Weapon weapon) {
         this.name = name;
@@ -109,5 +110,15 @@ public class Combatant {
         if (myEffect == Effect.MISS && enemyEffect == Effect.MISS) return 1.0;
 
         return 0.0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return ((Combatant) obj).name.equals(this.name);
+    }
+
+    public Combatant healUp(){
+        this.hitPoints = 10;
+        return this;
     }
 }
