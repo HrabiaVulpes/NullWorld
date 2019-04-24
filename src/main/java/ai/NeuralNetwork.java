@@ -89,4 +89,28 @@ public class NeuralNetwork {
     public void updateWeights() {
         nodes.forEach(Node::updateWeights);
     }
+
+    public static Long getLastNodeId() {
+        return lastNodeId;
+    }
+
+    public static void setLastNodeId(Long lastNodeId) {
+        NeuralNetwork.lastNodeId = lastNodeId;
+    }
+
+    public List<Node> getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(List<Node> nodes) {
+        this.nodes = nodes;
+    }
+
+    public Integer getAmountOfLayers() {
+        return amountOfLayers;
+    }
+
+    public void setAmountOfLayers(Integer amountOfLayers) {
+        this.amountOfLayers = amountOfLayers;
+    }
 }

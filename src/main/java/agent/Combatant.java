@@ -123,7 +123,83 @@ public class Combatant {
         return this;
     }
 
-    public Double getDamageDealt() {
+    public Double damageDealt() {
         return 10.0 * this.weapon.getEfficiencies().get(this.move.getDamageType());
+    }
+
+    public Long getOutputStart() {
+        return outputStart;
+    }
+
+    public NeuralNetwork getCombatantMind() {
+        return combatantMind;
+    }
+
+    public void setCombatantMind(NeuralNetwork combatantMind) {
+        this.combatantMind = combatantMind;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getHitPoints() {
+        return hitPoints;
+    }
+
+    public void setHitPoints(Integer hitPoints) {
+        this.hitPoints = hitPoints;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public List<States> getStatesList() {
+        return statesList;
+    }
+
+    public void setStatesList(List<States> statesList) {
+        this.statesList = statesList;
+    }
+
+    public Move getWantedMove() {
+        return wantedMove;
+    }
+
+    public void setWantedMove(Move wantedMove) {
+        this.wantedMove = wantedMove;
+    }
+
+    public Move getMove() {
+        return move;
+    }
+
+    public void setMove(Move move) {
+        this.move = move;
+    }
+
+    public Integer getVictoriesCount() {
+        return victoriesCount;
+    }
+
+    public void setVictoriesCount(Integer victoriesCount) {
+        this.victoriesCount = victoriesCount;
+    }
+
+    public Integer getLossesCount() {
+        return lossesCount;
+    }
+
+    public void setLossesCount(Integer lossesCount) {
+        this.lossesCount = lossesCount;
     }
 }

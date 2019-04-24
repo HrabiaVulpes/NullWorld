@@ -1,8 +1,11 @@
 package scenes;
 
 import agent.Combatant;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.Weapon;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -51,6 +54,12 @@ public class Tournament {
         );
     }
 
+    public void eternalTournament(int rounds, int roundLenght) {
+        runTournament(rounds, roundLenght);
+        resetWins();
+        jsonWriting();
+    }
+
     private Weapon randomWeapon() {
         long choosen = (Math.round(Math.random() * availableWeapons.size())) % availableWeapons.size();
         return availableWeapons.get((int) choosen);
@@ -63,5 +72,19 @@ public class Tournament {
 
     private Combatant newContender(String name) {
         return new Combatant(name, randomWeapon());
+    }
+
+    private void jsonWriting() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.writeValue(new File("target/combatants.json"), combatants);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void resetWins(){
+        combatants.forEach(combatant -> combatant.victoriesCount = 0);
+        combatants.forEach(combatant -> combatant.lossesCount = 0);
     }
 }

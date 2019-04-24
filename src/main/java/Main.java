@@ -28,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
         loadWeapons();
         Tournament tournament = new Tournament(availableWeapons.subList(1,2), names);
-        tournament.runTournament(1000, 50);
+        tournament.eternalTournament(10, 50);
     }
 
     private static void loadWeapons(){
@@ -43,16 +43,6 @@ public class Main {
 
         assert availableWeapons != null;
         availableWeapons.forEach(weapon -> System.out.println(weapon.getName()));
-    }
-
-    private static void jsonLoading() {
-        List<Weapon> weaponList = new ArrayList<>();
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            objectMapper.writeValue(new File("target/dagger.json"), weaponList);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }

@@ -69,4 +69,56 @@ public class Node {
                 key -> weights.put(key, weights.get(key) - (weightChange.get(key) * learningRate))
         );
     }
+
+    public static Double getLearningRate() {
+        return learningRate;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
+
+    public Integer getLayer() {
+        return layer;
+    }
+
+    public void setLayer(Integer layer) {
+        this.layer = layer;
+    }
+
+    public Double getTarget() {
+        return target;
+    }
+
+    public void setTarget(Double target) {
+        this.target = target;
+    }
+
+    public Map<Long, Double> getWeights() {
+        return weights;
+    }
+
+    public void setWeights(Map<Long, Double> weights) {
+        this.weights = weights;
+    }
+
+    public Map<Long, Double> getWeightChange() {
+        return weightChange;
+    }
+
+    public void setWeightChange(Map<Long, Double> weightChange) {
+        this.weightChange = weightChange;
+    }
+
+    public Double getPersonalWeight() {
+        return personalWeight;
+    }
+
+    public void setPersonalWeight(Double personalWeight) {
+        this.personalWeight = personalWeight;
+    }
 }
