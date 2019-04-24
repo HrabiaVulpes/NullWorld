@@ -15,6 +15,7 @@ public class Combatant {
     public Move wantedMove = null;
     public Move move = null;
     public Integer victoriesCount = 0;
+    public Integer lossesCount = 0;
 
     public Combatant(String name, Weapon weapon) {
         this.name = name;

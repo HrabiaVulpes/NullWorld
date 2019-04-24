@@ -27,9 +27,10 @@ public class Tournament {
 
         Duel duel = new Duel(player1, player2);
         System.out.println(duel);
-        duel.finghtForRounds(roundLenght);
+        duel.fightForRounds(roundLenght);
         if (duel.winner() != null) {
             duel.winner().victoriesCount++;
+            duel.looser().lossesCount++;
             System.out.println(duel.winner().name + " won!\n\n");
         } else System.out.println("It's a draw!\n\n");
         player1.healUp();
@@ -44,7 +45,9 @@ public class Tournament {
         System.out.println("Time for a scoreboard!");
         combatants.sort(Comparator.comparing(player -> player.victoriesCount));
         combatants.forEach(
-                player -> System.out.println(player.name + "\t" + player.victoriesCount + "\t(" + player.weapon.getName() + ")")
+                player -> System.out.println(player.name + "\t"
+                        + player.victoriesCount + "-" + player.lossesCount + "\t" +
+                        "(" + player.weapon.getName() + ")")
         );
     }
 

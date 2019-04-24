@@ -29,10 +29,10 @@ public class Duel {
     }
 
     public void processTurn() {
-        if (player1.hitPoints == 0 || player2.hitPoints == 0) return;
+        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return;
 
-        player1.setStates(player2.statesList, Math.abs(distance));
-        player2.setStates(player1.statesList, Math.abs(distance));
+        player1.setStates(player2.statesList, distance);
+        player2.setStates(player1.statesList, distance);
 
         player1.pickMove();
         player2.pickMove();
@@ -62,9 +62,15 @@ public class Duel {
             distance--;
         if (player2.move.getType() == MoveTypes.CLOSE_IN && p1Effect != Effect.HIT && p2Effect != Effect.CRIT && distance > 0)
             distance--;
+
+        player1.statesList.removeAll(player1.move.getRemovedStates());
+        player1.statesList.addAll(player1.move.getAddedStates());
+
+        player2.statesList.removeAll(player2.move.getRemovedStates());
+        player2.statesList.addAll(player2.move.getAddedStates());
     }
 
-    public Combatant finghtForRounds(int rounds){
+    public Combatant fightForRounds(int rounds){
         for (int i = 0; i < rounds; i++){
             processTurn();
         }

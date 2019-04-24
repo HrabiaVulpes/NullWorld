@@ -28,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
         loadWeapons();
         Tournament tournament = new Tournament(availableWeapons, names);
-        tournament.runTournament(100, 50);
+        tournament.runTournament(1000, 50);
     }
 
     private static void loadWeapons(){
