@@ -155,6 +155,7 @@ public class Combatant {
 
     public Combatant healUp() {
         this.hitPoints = 100;
+        this.statesList = new ArrayList<>();
         return this;
     }
 
