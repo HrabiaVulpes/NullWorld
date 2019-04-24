@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Node {
     private static final Double learningRate = 0.1;
-    public final Long ID;
+    public Long ID;
     public Double value;
     Integer layer;
     Double target;
@@ -14,6 +14,9 @@ public class Node {
     private Map<Long, Double> weights;
     private Map<Long, Double> weightChange;
     private Double personalWeight;
+
+    public Node() {
+    }
 
     public Node(Long nodeId, Integer layer, List<Long> previousLayer) {
         this.layer = layer;
@@ -76,6 +79,10 @@ public class Node {
 
     public Long getID() {
         return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
     public void setValue(Double value) {

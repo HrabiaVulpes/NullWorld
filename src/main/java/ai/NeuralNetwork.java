@@ -8,6 +8,8 @@ public class NeuralNetwork {
     List<Node> nodes;
     private Integer amountOfLayers = 0;
 
+    public NeuralNetwork(){}
+
     public NeuralNetwork(Integer... layers) {
         nodes = new ArrayList<>();
         for (Integer layer : layers) {

@@ -6,11 +6,6 @@ import java.util.List;
 
 public class Main {
     private static List<String> names = Arrays.asList(
-            "REED",
-            "BLUE",
-            "GREEN",
-            "CYAN",
-            "PINK",
             "PURPLE",
             "VIOLET",
             "BLACK",

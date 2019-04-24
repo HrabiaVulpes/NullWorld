@@ -6,7 +6,7 @@ import combat_data.*;
 import java.util.*;
 
 public class Combatant {
-    private final Long outputStart;
+    private final Long outputStart = 3*16+17L;
     public NeuralNetwork combatantMind;
     public String name;
     public Integer hitPoints;
@@ -17,13 +17,14 @@ public class Combatant {
     public Integer victoriesCount = 0;
     public Integer lossesCount = 0;
 
+    public Combatant(){}
+
     public Combatant(String name, Weapon weapon) {
         this.name = name;
         this.hitPoints = 100;
         this.weapon = weapon;
         this.statesList = new ArrayList<>();
         this.combatantMind = new NeuralNetwork(17, 16, 16, 16, 15); // 65L <- start output
-        this.outputStart = 3 * 16 + 17L;
     }
 
     public void setStates(List<States> enemyStates, Integer enemyDistance) {
@@ -83,9 +84,10 @@ public class Combatant {
         Double rando = Math.random()*total;
         MoveTypes best = MoveTypes.CLOSE_IN;
 
-        for (int i = 0; i < weights.size()-1; i++){
-            if (weights.get(i) < rando && rando < weights.get(i+1))
-                best = ideas.get(weights.get(i+1));
+        for (int i = 0; i < weights.size(); i++){
+            if (rando < weights.get(i))
+                best = ideas.get(weights.get(i));
+            rando -= weights.get(i);
         }
         return best;
     }
