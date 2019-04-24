@@ -1,13 +1,10 @@
-import agent.Combatant;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.Weapon;
-import scenes.Duel;
 import scenes.Tournament;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,11 +24,11 @@ public class Main {
 
     public static void main(String[] args) {
         loadWeapons();
-        Tournament tournament = new Tournament(availableWeapons.subList(1,2), names);
-        tournament.eternalTournament(10, 50);
+        Tournament tournament = new Tournament(availableWeapons.subList(1, 2), names);
+        tournament.eternalTournament(1000, 100);
     }
 
-    private static void loadWeapons(){
+    private static void loadWeapons() {
         ObjectMapper objectMapper = new ObjectMapper();
         String filePath = Main.class.getClassLoader().getResource("weapons.json").getFile();
         try {

@@ -55,9 +55,11 @@ public class Tournament {
     }
 
     public void eternalTournament(int rounds, int roundLenght) {
-        runTournament(rounds, roundLenght);
-        resetWins();
-        jsonWriting();
+        while (true) {
+            runTournament(rounds, roundLenght);
+            resetWins();
+            jsonWriting();
+        }
     }
 
     private Weapon randomWeapon() {
