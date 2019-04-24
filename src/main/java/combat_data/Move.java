@@ -29,7 +29,9 @@ public class Move {
         return this;
     }
 
-    public Effect resolveAgainst(Move other) {
+    public Effect resolveAgainst(Move other, Integer weaponLength, Integer distanceToEnemy) {
+        if (weaponLength < distanceToEnemy) return  Effect.MISS;
+
         ArrayList<PositionTags> commonWeaponMovements = new ArrayList<>(this.getWeaponMovement());
         commonWeaponMovements.retainAll(other.getWeaponMovement());
 

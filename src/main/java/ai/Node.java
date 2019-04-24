@@ -33,6 +33,7 @@ public class Node {
         );
 
         value = 1 / (1 + Math.pow(Math.E, -value));
+        target = value;
     }
 
     public Double getValue() {

@@ -5,14 +5,12 @@ import combat_data.Weapon;
 
 import java.io.File;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Main {
-    static Double[][] learnings = {
+    private static Double[][] learnings = {
             {0.0, 0.0, 0.0},
             {0.0, 1.0, 1.0},
             {1.0, 0.0, 1.0},
@@ -24,10 +22,10 @@ public class Main {
         return learnings[learning];
     }
 
-    private static Boolean sufficienSuccessRatio(NeuralNetwork xorNetwork){
+    private static Boolean sufficienSuccessRatio(NeuralNetwork xorNetwork) {
         int successes = 0;
 
-        for (Double[] learn : learnings){
+        for (Double[] learn : learnings) {
             Map<Long, Double> input = Map.of(0L, learn[0], 1L, learn[1]);
             Double output = learn[2];
 
@@ -37,13 +35,13 @@ public class Main {
             if (reality.equals(output)) successes++;
 
         }
-        return successes == 3;
+        return successes == 4;
     }
 
     public static void main(String[] args) {
         NeuralNetwork xorNetwork = new NeuralNetwork(2, 2, 1);
-        Integer learningPasses = 0;
-        while(!sufficienSuccessRatio(xorNetwork)){
+        int learningPasses = 0;
+        while (!sufficienSuccessRatio(xorNetwork)) {
             Double[] learn = pickRandomLearning();
             Map<Long, Double> input = Map.of(0L, learn[0], 1L, learn[1]);
             Map<Long, Double> output = Map.of(4L, learn[2]);

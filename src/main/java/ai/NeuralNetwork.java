@@ -70,8 +70,9 @@ public class NeuralNetwork {
                             .map(n -> n.getErrorByNodeId(node.ID))
                             .mapToDouble(i -> i)
                             .sum()
-            ));
-        }else if (layerNumber == amountOfLayers-1){
+                    )
+            );
+        } else if (layerNumber == amountOfLayers - 1) {
             Map<Long, Double> previousLayer = new HashMap<>();
             getNodesByLayer(layerNumber - 1).forEach(node -> previousLayer.put(node.ID, node.value));
             getNodesByLayer(layerNumber).forEach(node -> node.recalculateWeights(previousLayer));
@@ -80,12 +81,12 @@ public class NeuralNetwork {
     }
 
     public void recalculateFullPass() {
-        for (int i = amountOfLayers-1; i >= 0; i--) {
+        for (int i = amountOfLayers - 1; i >= 0; i--) {
             recalculateLayerError(i);
         }
     }
 
-    public void updateWeights(){
+    public void updateWeights() {
         nodes.forEach(Node::updateWeights);
     }
 }
