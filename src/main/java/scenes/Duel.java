@@ -58,6 +58,11 @@ public class Duel {
         if (player2.move.getType() == MoveTypes.BACK_AWAY && p1Effect != Effect.HIT && p2Effect != Effect.CRIT && distance < maxDistance)
             distance++;
 
+        if (player1.move.getType() == MoveTypes.KICK && distance < maxDistance)
+            distance++;
+        if (player2.move.getType() == MoveTypes.KICK && distance < maxDistance)
+            distance++;
+
         if (player1.move.getType() == MoveTypes.CLOSE_IN && p2Effect != Effect.HIT && p2Effect != Effect.CRIT && distance > 0)
             distance--;
         if (player2.move.getType() == MoveTypes.CLOSE_IN && p1Effect != Effect.HIT && p2Effect != Effect.CRIT && distance > 0)
