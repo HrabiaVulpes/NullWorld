@@ -86,8 +86,10 @@ public class Combatant {
         MoveTypes best = MoveTypes.CLOSE_IN;
 
         for (int i = 0; i < weights.size(); i++) {
-            if (rando < weights.get(i))
+            if (rando < weights.get(i)) {
                 best = ideas.get(weights.get(i));
+                break;
+            }
             rando -= weights.get(i);
         }
         return best;
