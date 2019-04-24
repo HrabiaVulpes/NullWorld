@@ -118,9 +118,12 @@ public class Combatant {
     }
 
     private Double gradeMove(Effect myEffect, Effect enemyEffect, Integer distance) {
-        if (distance > weapon.getLength() && move.getType() == MoveTypes.CLOSE_IN) return 1.0;
-        if (distance > weapon.getLength() && move.getType() != MoveTypes.CLOSE_IN) return 0.0;
-        if (distance < weapon.getLength() && move.getType() == MoveTypes.CLOSE_IN) return 0.4;
+        if (move.getType() == MoveTypes.CLOSE_IN) {
+            if (distance > weapon.getLength())
+                return 1.0;
+            if (distance < weapon.getLength())
+                return 0.0;
+        }
 
         if (myEffect == Effect.CRIT && enemyEffect == Effect.HIT) return 0.5;
         if (myEffect == Effect.CRIT && enemyEffect == Effect.CRIT) return 1.0;
