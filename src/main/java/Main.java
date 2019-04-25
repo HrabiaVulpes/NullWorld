@@ -1,16 +1,19 @@
 import agent.Combatant;
-import combat_data.ObjectsLists;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import combat_data.*;
 import scenes.Tournament;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static combat_data.MoveTypes.*;
 
 public class Main {
     private static Map<String, String> names = new HashMap<>();
 
-    public static void main(String[] args) {
+    private static void runTOurnament() {
         names.put("DAGGER", "Thief");
         names.put("SWORD", "Ashen");
         names.put("GREAT_SWORD", "Knight");
@@ -35,6 +38,10 @@ public class Main {
                 .collect(Collectors.toList());
         Tournament tournament = new Tournament(ObjectsLists.getData().combatantsList);
         tournament.runTournament(100, 50);
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }

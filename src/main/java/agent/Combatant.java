@@ -6,7 +6,7 @@ import combat_data.*;
 import java.util.*;
 
 public class Combatant {
-    private final Long outputStart = 19L + 18 + 17 + 16;
+    private final Long outputStart = 21L + 20 + 20 + 20;
     public NeuralNetwork combatantMind;
     public String name;
     public Integer hitPoints;
@@ -25,7 +25,7 @@ public class Combatant {
         this.hitPoints = 100;
         this.weapon = weapon;
         this.statesList = new ArrayList<>();
-        this.combatantMind = new NeuralNetwork(19, 18, 17, 16, 15);
+        this.combatantMind = new NeuralNetwork(21, 20, 20, 20, 16);
     }
 
     public void setStates(List<States> enemyStates, Integer enemyDistance, Integer enemyWeaponLength) {
@@ -38,17 +38,19 @@ public class Combatant {
         input.put(5L, statesList.contains(States.WEAPON_EXTENDED) ? 1.0 : 0.0);
         input.put(6L, statesList.contains(States.WEAPON_LOW) ? 1.0 : 0.0);
         input.put(7L, statesList.contains(States.WEAPON_HIGH) ? 1.0 : 0.0);
-        input.put(8L, enemyDistance * 1.0);
-        input.put(9L, enemyStates.contains(States.ABOVE) ? 1.0 : 0.0);
-        input.put(10L, enemyStates.contains(States.TURNED) ? 1.0 : 0.0);
-        input.put(11L, enemyStates.contains(States.CROUCHED) ? 1.0 : 0.0);
-        input.put(12L, enemyStates.contains(States.KNOCKED) ? 1.0 : 0.0);
-        input.put(13L, enemyStates.contains(States.WEAPON_SIDE) ? 1.0 : 0.0);
-        input.put(14L, enemyStates.contains(States.WEAPON_EXTENDED) ? 1.0 : 0.0);
-        input.put(15L, enemyStates.contains(States.WEAPON_LOW) ? 1.0 : 0.0);
-        input.put(16L, enemyStates.contains(States.WEAPON_HIGH) ? 1.0 : 0.0);
-        input.put(17L, weapon.getLength() * 1.0);
-        input.put(18L, enemyWeaponLength * 1.0);
+        input.put(8L, statesList.contains(States.STAGGERED) ? 1.0 : 0.0);
+        input.put(9L, enemyDistance * 1.0);
+        input.put(10L, enemyStates.contains(States.ABOVE) ? 1.0 : 0.0);
+        input.put(11L, enemyStates.contains(States.TURNED) ? 1.0 : 0.0);
+        input.put(12L, enemyStates.contains(States.CROUCHED) ? 1.0 : 0.0);
+        input.put(13L, enemyStates.contains(States.KNOCKED) ? 1.0 : 0.0);
+        input.put(14L, enemyStates.contains(States.WEAPON_SIDE) ? 1.0 : 0.0);
+        input.put(15L, enemyStates.contains(States.WEAPON_EXTENDED) ? 1.0 : 0.0);
+        input.put(16L, enemyStates.contains(States.WEAPON_LOW) ? 1.0 : 0.0);
+        input.put(17L, enemyStates.contains(States.WEAPON_HIGH) ? 1.0 : 0.0);
+        input.put(18L, enemyStates.contains(States.STAGGERED) ? 1.0 : 0.0);
+        input.put(19L, weapon.getLength() * 1.0);
+        input.put(20L, enemyWeaponLength * 1.0);
 
         combatantMind.setValues(input);
     }

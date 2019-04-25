@@ -67,6 +67,11 @@ public class Move {
         return this;
     }
 
+    public Move withRemovedStates(List<States> removedStates) {
+        this.removedStates = removedStates;
+        return this;
+    }
+
     public Move withAddedStates(States... addedStates) {
         this.addedStates = Arrays.asList(addedStates);
         return this;

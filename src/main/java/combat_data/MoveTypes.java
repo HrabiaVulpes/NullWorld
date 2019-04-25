@@ -22,7 +22,9 @@ public enum MoveTypes {
 
     SPECIAL1(12L),
     SPECIAL2(13L),
-    SPECIAL3(14L);
+    SPECIAL3(14L),
+
+    WAIT(15L);
 
     Long id;
 
@@ -50,7 +52,8 @@ public enum MoveTypes {
                 GET_UP,
                 SPECIAL1,
                 SPECIAL2,
-                SPECIAL3
+                SPECIAL3,
+                WAIT
         );
     }
 }
