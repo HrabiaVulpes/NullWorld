@@ -12,7 +12,7 @@ public class ObjectsLists {
     static ObjectsLists data = null;
 
     public List<Weapon> weaponList;
-    private List<Combatant> combatantsList;
+    public List<Combatant> combatantsList;
 
     public static ObjectsLists getData(){
         if (data == null){

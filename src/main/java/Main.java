@@ -33,8 +33,8 @@ public class Main {
                 .weaponList.stream()
                 .map(weapon -> new Combatant(names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList());
-        Tournament tournament = new Tournament(combatants);
-        tournament.eternalTournament(1000, 100);
+        Tournament tournament = new Tournament(ObjectsLists.getData().combatantsList);
+        tournament.runTournament(100, 50);
     }
 
 }
