@@ -30,19 +30,23 @@ public class Move {
     }
 
     public Effect resolveAgainst(Move other, Integer weaponLength, Integer distanceToEnemy) {
-        if (weaponLength < distanceToEnemy || damageType == DamageTypes.NONE) return  Effect.MISS;
+        if (damageType == DamageTypes.NONE) return Effect.MISS;
+        if (type != MoveTypes.KICK && weaponLength < distanceToEnemy) return Effect.MISS;
+        if (type == MoveTypes.KICK && distanceToEnemy > 1) return Effect.MISS;
 
         ArrayList<PositionTags> commonWeaponMovements = new ArrayList<>(this.getWeaponMovement());
         commonWeaponMovements.retainAll(other.getWeaponMovement());
+        commonWeaponMovements.remove(PositionTags.STANDARD);
 
-        if (commonWeaponMovements.size() >= 2)
-            return Effect.PARRY;
+        if (commonWeaponMovements.size() >= 1) return Effect.PARRY;
 
         ArrayList<PositionTags> weaponVsBody = new ArrayList<>(this.getWeaponMovement());
         weaponVsBody.retainAll(other.getPositionDuringMove());
+        ArrayList<PositionTags> weaponVsBodyNoStandard = new ArrayList<>(weaponVsBody);
+        weaponVsBodyNoStandard.remove(PositionTags.STANDARD);
 
-        if (weaponVsBody.size() > 1) return Effect.CRIT;
-        if (weaponVsBody.size() == 1) return Effect.HIT;
+        if (!weaponVsBodyNoStandard.isEmpty()) return Effect.CRIT;
+        if (!weaponVsBody.isEmpty()) return Effect.HIT;
 
         return Effect.MISS;
     }

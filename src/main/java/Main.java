@@ -1,11 +1,15 @@
 import agent.Combatant;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import combat_data.*;
+import combat_data.ObjectsLists;
+import combat_data.States;
 import scenes.Tournament;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static combat_data.MoveTypes.*;
@@ -13,7 +17,7 @@ import static combat_data.MoveTypes.*;
 public class Main {
     private static Map<String, String> names = new HashMap<>();
 
-    private static void runTOurnament() {
+    private static void runTournament() {
         names.put("DAGGER", "Thief");
         names.put("SWORD", "Ashen");
         names.put("GREAT_SWORD", "Knight");
@@ -41,7 +45,18 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        ObjectsLists.getData().weaponList.forEach(
+                weapon -> weapon.getOptions().stream()
+                .filter(move -> !Arrays.asList(JUMP, DODGE, DUCK, CLOSE_IN, BACK_AWAY, GET_UP).contains(move.getType()))
+                .forEach(move -> move.getUnavailableOn().add(States.STAGGERED))
+        );
 
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.writeValue(new File("target/weapons.json"), ObjectsLists.getData().weaponList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -12,7 +12,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -37,7 +38,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -57,7 +59,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -77,7 +80,8 @@
         "unavailableOn": [
           "KNOCKED",
           "TURNED",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -97,7 +101,8 @@
         "unavailableOn": [
           "KNOCKED",
           "TURNED",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -119,7 +124,8 @@
           "TURNED",
           "WEAPON_EXTENDED",
           "WEAPON_HIGH",
-          "WEAPON_SIDE"
+          "WEAPON_SIDE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -275,7 +281,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -314,7 +322,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -339,7 +348,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -359,7 +369,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -379,7 +390,8 @@
         "unavailableOn": [
           "KNOCKED",
           "TURNED",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -402,7 +414,8 @@
           "TURNED",
           "WEAPON_EXTENDED",
           "WEAPON_HIGH",
-          "WEAPON_SIDE"
+          "WEAPON_SIDE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -558,7 +571,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -597,7 +612,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -623,7 +639,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -643,7 +660,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -663,7 +681,8 @@
         "unavailableOn": [
           "KNOCKED",
           "TURNED",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -686,7 +705,8 @@
           "TURNED",
           "WEAPON_EXTENDED",
           "WEAPON_HIGH",
-          "WEAPON_SIDE"
+          "WEAPON_SIDE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -843,7 +863,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -882,7 +904,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -909,7 +932,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -930,7 +954,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1087,7 +1112,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -1126,7 +1153,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1151,7 +1179,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1171,7 +1200,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1194,7 +1224,8 @@
           "TURNED",
           "WEAPON_EXTENDED",
           "WEAPON_HIGH",
-          "WEAPON_SIDE"
+          "WEAPON_SIDE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1351,7 +1382,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -1390,7 +1423,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1415,7 +1449,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1435,7 +1470,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1455,7 +1491,8 @@
         "unavailableOn": [
           "KNOCKED",
           "TURNED",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1478,7 +1515,8 @@
           "TURNED",
           "WEAPON_EXTENDED",
           "WEAPON_HIGH",
-          "WEAPON_SIDE"
+          "WEAPON_SIDE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1635,7 +1673,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -1674,7 +1714,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1699,7 +1740,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1719,7 +1761,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1876,7 +1919,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -1915,7 +1960,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1941,7 +1987,8 @@
           "WEAPON_LOW",
           "WEAPON_HIGH",
           "WEAPON_EXTENDED",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1961,7 +2008,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -1981,7 +2029,8 @@
         "unavailableOn": [
           "KNOCKED",
           "TURNED",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2135,7 +2184,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -2174,7 +2225,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2199,7 +2251,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2219,7 +2272,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2242,7 +2296,8 @@
           "TURNED",
           "WEAPON_EXTENDED",
           "WEAPON_HIGH",
-          "WEAPON_SIDE"
+          "WEAPON_SIDE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2399,7 +2454,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -2438,7 +2495,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2463,7 +2521,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2483,7 +2542,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2640,7 +2700,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -2679,7 +2741,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2704,7 +2767,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2724,7 +2788,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2747,7 +2812,8 @@
           "TURNED",
           "WEAPON_EXTENDED",
           "WEAPON_HIGH",
-          "WEAPON_SIDE"
+          "WEAPON_SIDE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2904,7 +2970,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -2943,7 +3011,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2968,7 +3037,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -2988,7 +3058,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3145,7 +3216,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -3181,7 +3254,8 @@
         "unavailableOn": [
           "TURNED",
           "CROUCHED",
-          "KNOCKED"
+          "KNOCKED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3204,7 +3278,8 @@
         "unavailableOn": [
           "TURNED",
           "KNOCKED",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3224,7 +3299,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3243,7 +3319,8 @@
         "damageType": "BLUNT",
         "unavailableOn": [
           "KNOCKED",
-          "TURNED"
+          "TURNED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3263,7 +3340,8 @@
         "unavailableOn": [
           "KNOCKED",
           "ABOVE",
-          "TURNED"
+          "TURNED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3420,7 +3498,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -3459,7 +3539,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3484,7 +3565,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3504,7 +3586,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3524,7 +3607,8 @@
         "unavailableOn": [
           "KNOCKED",
           "TURNED",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3547,7 +3631,8 @@
           "TURNED",
           "WEAPON_EXTENDED",
           "WEAPON_HIGH",
-          "WEAPON_SIDE"
+          "WEAPON_SIDE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3704,7 +3789,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -3743,7 +3830,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_SIDE",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3768,7 +3856,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3788,7 +3877,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3808,7 +3898,8 @@
         "unavailableOn": [
           "KNOCKED",
           "TURNED",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3831,7 +3922,8 @@
           "TURNED",
           "WEAPON_EXTENDED",
           "WEAPON_HIGH",
-          "WEAPON_SIDE"
+          "WEAPON_SIDE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -3988,7 +4080,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
@@ -4026,7 +4120,8 @@
           "CROUCHED",
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -4052,7 +4147,8 @@
           "KNOCKED",
           "WEAPON_LOW",
           "WEAPON_HIGH",
-          "ABOVE"
+          "ABOVE",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -4071,7 +4167,8 @@
         "damageType": "SLASH",
         "unavailableOn": [
           "TURNED",
-          "KNOCKED"
+          "KNOCKED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -4096,7 +4193,8 @@
           "ABOVE",
           "TURNED",
           "WEAPON_EXTENDED",
-          "WEAPON_HIGH"
+          "WEAPON_HIGH",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -4120,7 +4218,8 @@
         "unavailableOn": [
           "KNOCKED",
           "WEAPON_LOW",
-          "WEAPON_EXTENDED"
+          "WEAPON_EXTENDED",
+          "STAGGERED"
         ],
         "positionDuringMove": [
           "STANDARD"
@@ -4274,7 +4373,9 @@
       {
         "type": "WAIT",
         "damageType": "NONE",
-        "unavailableOn": [],
+        "unavailableOn": [
+          "STAGGERED"
+        ],
         "positionDuringMove": [
           "STANDARD"
         ],
