@@ -129,19 +129,19 @@ public class Combatant {
                 return 0.0;
         }
 
-        if (myEffect == Effect.CRIT && enemyEffect == Effect.HIT) return 0.5;
+        if (myEffect == Effect.CRIT && enemyEffect == Effect.HIT) return 0.65;
         if (myEffect == Effect.CRIT && enemyEffect == Effect.CRIT) return 1.0;
         if (myEffect == Effect.CRIT && enemyEffect == Effect.PARRY) return 1.0;
         if (myEffect == Effect.CRIT && enemyEffect == Effect.MISS) return 1.0;
 
-        if (myEffect == Effect.HIT && enemyEffect == Effect.CRIT) return 0.0;
-        if (myEffect == Effect.HIT && enemyEffect == Effect.HIT) return 0.5;
+        if (myEffect == Effect.HIT && enemyEffect == Effect.CRIT) return 0.15;
+        if (myEffect == Effect.HIT && enemyEffect == Effect.HIT) return 0.55;
         if (myEffect == Effect.HIT && enemyEffect == Effect.PARRY) return 1.0;
         if (myEffect == Effect.HIT && enemyEffect == Effect.MISS) return 1.0;
 
         if (myEffect == Effect.PARRY && enemyEffect == Effect.HIT) return 0.0;
         if (myEffect == Effect.PARRY && enemyEffect == Effect.CRIT) return 0.0;
-        if (myEffect == Effect.PARRY && enemyEffect == Effect.PARRY) return 0.5;
+        if (myEffect == Effect.PARRY && enemyEffect == Effect.PARRY) return 0.75;
         if (myEffect == Effect.PARRY && enemyEffect == Effect.MISS) return 1.0;
 
         if (myEffect == Effect.MISS && enemyEffect == Effect.HIT) return 0.0;
