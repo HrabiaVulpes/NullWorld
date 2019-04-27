@@ -57,14 +57,14 @@ public class Duel {
     }
 
     private void resolveDistanceStage() {
-        if (player1.move.getType() == MoveTypes.BACK_AWAY && p2Effect != Effect.HIT && p2Effect != Effect.CRIT && distance < maxDistance)
+        if (player1.move.getType() == MoveTypes.BACK_AWAY && distance < maxDistance)
             distance++;
-        if (player2.move.getType() == MoveTypes.BACK_AWAY && p1Effect != Effect.HIT && p2Effect != Effect.CRIT && distance < maxDistance)
+        if (player2.move.getType() == MoveTypes.BACK_AWAY && distance < maxDistance)
             distance++;
 
-        if (player1.move.getType() == MoveTypes.CLOSE_IN && p2Effect != Effect.HIT && p2Effect != Effect.CRIT && distance > 0)
+        if (player1.move.getType() == MoveTypes.CLOSE_IN && distance > 0)
             distance--;
-        if (player2.move.getType() == MoveTypes.CLOSE_IN && p1Effect != Effect.HIT && p2Effect != Effect.CRIT && distance > 0)
+        if (player2.move.getType() == MoveTypes.CLOSE_IN && distance > 0)
             distance--;
     }
 

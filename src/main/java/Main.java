@@ -40,7 +40,7 @@ public class Main {
                 .weaponList.stream()
                 .map(weapon -> new Combatant(names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList());
-        Tournament tournament = new Tournament(ObjectsLists.getData().combatantsList);
+        Tournament tournament = new Tournament(combatants);
         tournament.runTournament(100, 50);
     }
 
@@ -60,7 +60,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
+        runTournament();
     }
 
 }
