@@ -41,7 +41,7 @@ public class Main {
                 .map(weapon -> new Combatant(names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList());
         Tournament tournament = new Tournament(combatants);
-        tournament.runTournament(100, 50);
+        tournament.eternalTournament(100, 50);
     }
 
     public static void change(){
