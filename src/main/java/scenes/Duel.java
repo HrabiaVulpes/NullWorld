@@ -5,9 +5,11 @@ import combat_data.Effect;
 import combat_data.MoveTypes;
 import combat_data.States;
 
+import java.util.stream.Collectors;
+
 public class Duel {
-    Effect p1Effect;
-    Effect p2Effect;
+    private Effect p1Effect;
+    private Effect p2Effect;
     private Combatant player1;
     private Combatant player2;
     private Integer distance = 2;
@@ -84,6 +86,25 @@ public class Duel {
         //add basic states
         player1.statesList.addAll(player1.move.getAddedStates());
         player2.statesList.addAll(player2.move.getAddedStates());
+
+        //if one of players used CLOSE_IN and parried, add weapon states of the other
+        if (player1.move.getType() == MoveTypes.CLOSE_IN && p1Effect == Effect.PARRY)
+            player1.statesList.addAll(player2.move.getAddedStates()
+                    .stream()
+                    .filter(state -> state.name().contains("WEAPON"))
+                    .collect(Collectors.toList())
+            );
+
+        if (player2.move.getType() == MoveTypes.CLOSE_IN && p2Effect == Effect.PARRY)
+            player2.statesList.addAll(player1.move.getAddedStates()
+                    .stream()
+                    .filter(state -> state.name().contains("WEAPON"))
+                    .collect(Collectors.toList())
+            );
+
+        //if one of players got crit, he is staggered
+        if (p1Effect == Effect.CRIT) player2.statesList.add(States.STAGGERED);
+        if (p2Effect == Effect.CRIT) player1.statesList.add(States.STAGGERED);
     }
 
     private void processTurn() {

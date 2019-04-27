@@ -108,7 +108,7 @@ public class Combatant {
         currentStates.retainAll(move.getUnavailableOn());
 
         if (!currentStates.isEmpty())
-            move = weapon.getOptionByType(MoveTypes.CLOSE_IN);
+            move = weapon.getOptionByType(MoveTypes.WAIT);
     }
 
     public void learn(Effect myEffect, Effect enemyEffect, Integer distance) {

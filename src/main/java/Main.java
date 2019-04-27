@@ -44,11 +44,11 @@ public class Main {
         tournament.runTournament(100, 50);
     }
 
-    public static void main(String[] args) {
+    public static void change(){
         ObjectsLists.getData().weaponList.forEach(
                 weapon -> weapon.getOptions().stream()
-                .filter(move -> !Arrays.asList(JUMP, DODGE, DUCK, CLOSE_IN, BACK_AWAY, GET_UP).contains(move.getType()))
-                .forEach(move -> move.getUnavailableOn().add(States.STAGGERED))
+                        .filter(move -> !Arrays.asList(JUMP, DODGE, DUCK, CLOSE_IN, BACK_AWAY, GET_UP).contains(move.getType()))
+                        .forEach(move -> move.getUnavailableOn().add(States.STAGGERED))
         );
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -57,6 +57,10 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }
