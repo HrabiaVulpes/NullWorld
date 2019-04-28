@@ -7,15 +7,15 @@ import combat_data.States;
 
 import java.util.stream.Collectors;
 
-public class Duel {
+public class Training {
     private Effect p1Effect;
     private Effect p2Effect;
-    private Combatant player1;
-    private Combatant player2;
+    protected Combatant player1;
+    protected Combatant player2;
     private Integer distance = 2;
     private Integer maxDistance = 5;
 
-    public Duel(Combatant player1, Combatant player2) {
+    public Training(Combatant player1, Combatant player2) {
         this.player1 = player1;
         this.player2 = player2;
     }
@@ -32,7 +32,7 @@ public class Duel {
         return null;
     }
 
-    private void pickMovesStage() {
+    protected void pickMovesStage() {
         if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return;
 
         player1.setStates(player2.statesList, distance, player1.weapon.getLength());
@@ -42,7 +42,7 @@ public class Duel {
         player2.pickMove();
     }
 
-    private void resolveMovesStage() {
+    protected void resolveMovesStage() {
         p1Effect = player1.move.resolveAgainst(player2.move, player2.weapon.getLength(), distance);
         p2Effect = player2.move.resolveAgainst(player1.move, player1.weapon.getLength(), distance);
 
@@ -56,7 +56,7 @@ public class Duel {
         if (p2Effect == Effect.CRIT) player1.hitPoints -= (int) Math.round(2 * player2.damageDealt());
     }
 
-    private void resolveDistanceStage() {
+    protected void resolveDistanceStage() {
         if (player1.move.getType() == MoveTypes.BACK_AWAY && distance < maxDistance)
             distance++;
         if (player2.move.getType() == MoveTypes.BACK_AWAY && distance < maxDistance)
@@ -68,7 +68,7 @@ public class Duel {
             distance--;
     }
 
-    private void resolveStatesStage() {
+    protected void resolveStatesStage() {
         //basic states from move
         player1.statesList.removeAll(player1.move.getRemovedStates());
         player2.statesList.removeAll(player2.move.getRemovedStates());
@@ -107,7 +107,7 @@ public class Duel {
         if (p2Effect == Effect.CRIT) player1.statesList.add(States.STAGGERED);
     }
 
-    private void processTurn() {
+    protected void processTurn() {
         pickMovesStage();
         resolveMovesStage();
 

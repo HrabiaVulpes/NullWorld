@@ -28,6 +28,15 @@ public class Combatant {
         this.combatantMind = new NeuralNetwork(21, 20, 20, 20, 16);
     }
 
+    public Combatant(String name, Weapon weapon, Double learningRate) {
+        this.name = name;
+        this.hitPoints = 100;
+        this.weapon = weapon;
+        this.statesList = new ArrayList<>();
+        this.combatantMind = new NeuralNetwork(21, 20, 20, 20, 16);
+        this.combatantMind.getNodes().forEach(node -> node.setLearningRate(learningRate));
+    }
+
     public void setStates(List<States> enemyStates, Integer enemyDistance, Integer enemyWeaponLength) {
         Map<Long, Double> input = new HashMap<>();
         input.put(0L, statesList.contains(States.ABOVE) ? 1.0 : 0.0);

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Node {
-    private static final Double learningRate = 0.1;
+    private Double learningRate = 0.1;
     public Long ID;
     public Double value;
     Integer layer;
@@ -73,7 +73,7 @@ public class Node {
         );
     }
 
-    public static Double getLearningRate() {
+    public Double getLearningRate() {
         return learningRate;
     }
 
@@ -127,5 +127,9 @@ public class Node {
 
     public void setPersonalWeight(Double personalWeight) {
         this.personalWeight = personalWeight;
+    }
+
+    public void setLearningRate(Double learningRate) {
+        this.learningRate = learningRate;
     }
 }
