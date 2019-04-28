@@ -2,6 +2,8 @@ import agent.Combatant;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.ObjectsLists;
 import combat_data.States;
+import scenes.FairTournament;
+import scenes.Fight;
 import scenes.Tournament;
 import scenes.Versus;
 
@@ -53,20 +55,22 @@ public class Main {
     }
 
     private static void swordTournament() {
-        names.put("CURVED_SWORD", "Ali Baba");
         names.put("KATANA", "Samurai");
         names.put("FIST", "Yang");
         names.put("HALBERD", "Hou Yi");
+        names.put("CURVED_SWORD", "Ali Baba");
         names.put("SCYTHE", "Ruby Rose");
 
-        List<Combatant> swordsmen_red = ObjectsLists.getData().combatantsList;
+        List<Combatant> swordsmen_red = names.values().stream()
+                .map(name -> new Combatant("Red " + name, ObjectsLists.getData().weaponList.get(1)))
+                .collect(Collectors.toList());
 
         List<Combatant> swordsmen_blue = names.values().stream()
                 .map(name -> new Combatant("Blue " + name, ObjectsLists.getData().weaponList.get(1)))
                 .collect(Collectors.toList());
 
-        Tournament tournament = new Tournament(swordsmen_red);
-        tournament.eternalTournament(100, 50);
+        FairTournament tournament = new FairTournament(swordsmen_red);
+        tournament.eternalTournament(10, 100);
     }
 
     public static void change() {

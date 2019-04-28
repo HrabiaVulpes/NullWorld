@@ -4,6 +4,7 @@ import ai.NeuralNetwork;
 import combat_data.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Combatant {
     private final Long outputStart = 21L + 25;
@@ -33,7 +34,7 @@ public class Combatant {
         this.hitPoints = 100;
         this.weapon = weapon;
         this.statesList = new ArrayList<>();
-        this.combatantMind = new NeuralNetwork(21, 20, 20, 20, 16);
+        this.combatantMind = new NeuralNetwork(21, 25, 16);
         this.combatantMind.getNodes().forEach(node -> node.setLearningRate(learningRate));
     }
 
@@ -64,22 +65,6 @@ public class Combatant {
         combatantMind.setValues(input);
     }
 
-    private MoveTypes getIdea() {
-        combatantMind.calculateFullPass();
-        Map<Double, MoveTypes> ideas = new HashMap<>();
-
-        MoveTypes.getAll()
-                .forEach(
-                        type -> ideas.put(
-                                combatantMind.getNodeById(outputStart + type.getId()).value,
-                                type
-                        )
-                );
-
-        Double best = Collections.max(ideas.keySet());
-        return ideas.get(best);
-    }
-
     private MoveTypes getIdeaWithWeights() {
         combatantMind.calculateFullPass();
         Map<Double, MoveTypes> ideas = new HashMap<>();
@@ -93,6 +78,11 @@ public class Combatant {
                 );
 
         List<Double> weights = new ArrayList<>(ideas.keySet());
+        Double lowestWeight = Collections.min(weights);
+        weights = weights.stream()
+                .map(w -> w - lowestWeight)
+                .collect(Collectors.toList());
+
         weights.sort(Comparator.naturalOrder());
         Double total = weights.stream().mapToDouble(i -> i).sum();
         Double rando = Math.random() * total;
@@ -100,7 +90,7 @@ public class Combatant {
 
         for (int i = 0; i < weights.size(); i++) {
             if (rando < weights.get(i)) {
-                best = ideas.get(weights.get(i));
+                best = ideas.get(weights.get(i) + lowestWeight);
                 break;
             }
             rando -= weights.get(i);
@@ -120,45 +110,25 @@ public class Combatant {
             move = weapon.getOptionByType(MoveTypes.WAIT);
     }
 
-    public void learn(Effect myEffect, Effect enemyEffect, Integer distance) {
+    public void learn(Effect myEffect, Double enemyDamage, Integer distance) {
         if (!wantedMove.getType().name().equals(move.getType().name())) {
             combatantMind.expectValues(Map.of(wantedMove.getType().getId() + outputStart, 0.0));
         }
 
-        combatantMind.expectValues(Map.of(move.getType().getId() + outputStart, gradeMove(myEffect, enemyEffect, distance)));
+        combatantMind.expectValues(Map.of(move.getType().getId() + outputStart, gradeMove(myEffect, enemyDamage, distance)));
         combatantMind.recalculateFullPass();
         combatantMind.updateWeights();
     }
 
-    private Double gradeMove(Effect myEffect, Effect enemyEffect, Integer distance) {
+    private Double gradeMove(Effect myEffect, Double enemyDamage, Integer distance) {
         if (move.getType() == MoveTypes.CLOSE_IN) {
             if (distance > weapon.getLength())
-                return 1.0;
+                return 10.0;
             if (distance < weapon.getLength())
-                return 0.0;
+                return -10.0;
         }
 
-        if (myEffect == Effect.CRIT && enemyEffect == Effect.HIT) return 0.65;
-        if (myEffect == Effect.CRIT && enemyEffect == Effect.CRIT) return 1.0;
-        if (myEffect == Effect.CRIT && enemyEffect == Effect.PARRY) return 1.0;
-        if (myEffect == Effect.CRIT && enemyEffect == Effect.MISS) return 1.0;
-
-        if (myEffect == Effect.HIT && enemyEffect == Effect.CRIT) return 0.15;
-        if (myEffect == Effect.HIT && enemyEffect == Effect.HIT) return 0.55;
-        if (myEffect == Effect.HIT && enemyEffect == Effect.PARRY) return 1.0;
-        if (myEffect == Effect.HIT && enemyEffect == Effect.MISS) return 1.0;
-
-        if (myEffect == Effect.PARRY && enemyEffect == Effect.HIT) return 0.0;
-        if (myEffect == Effect.PARRY && enemyEffect == Effect.CRIT) return 0.0;
-        if (myEffect == Effect.PARRY && enemyEffect == Effect.PARRY) return 0.75;
-        if (myEffect == Effect.PARRY && enemyEffect == Effect.MISS) return 1.0;
-
-        if (myEffect == Effect.MISS && enemyEffect == Effect.HIT) return 0.0;
-        if (myEffect == Effect.MISS && enemyEffect == Effect.CRIT) return 0.0;
-        if (myEffect == Effect.MISS && enemyEffect == Effect.PARRY) return 0.0;
-        if (myEffect == Effect.MISS && enemyEffect == Effect.MISS) return 0.5;
-
-        return 0.0;
+        return damageDealt(myEffect) - enemyDamage;
     }
 
     @Override
@@ -172,8 +142,18 @@ public class Combatant {
         return this;
     }
 
-    public Double damageDealt() {
-        return 10.0 * this.weapon.getEfficiencies().get(this.move.getDamageType());
+    public Double damageDealt(Effect effect) {
+        switch (effect) {
+            case CRIT:
+                return 20.0 * this.weapon.getEfficiencies().get(this.move.getDamageType());
+            case HIT:
+                return 10.0 * this.weapon.getEfficiencies().get(this.move.getDamageType());
+            case PARRY:
+                return 0.0;
+            case MISS:
+                return 0.0;
+        }
+        return 0.0;
     }
 
     public Long getOutputStart() {

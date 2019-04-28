@@ -8,10 +8,10 @@ import combat_data.States;
 import java.util.stream.Collectors;
 
 public class Training {
-    private Effect p1Effect;
-    private Effect p2Effect;
     protected Combatant player1;
     protected Combatant player2;
+    private Effect p1Effect;
+    private Effect p2Effect;
     private Integer distance = 2;
     private Integer maxDistance = 5;
 
@@ -49,11 +49,8 @@ public class Training {
         System.out.println(player1.name + ": " + player1.move.getType().name() + "=" + p1Effect +
                 "\t" + player2.name + ": " + player2.move.getType().name() + "=" + p2Effect);
 
-        if (p1Effect == Effect.HIT) player2.hitPoints -= (int) Math.round(player1.damageDealt());
-        if (p1Effect == Effect.CRIT) player2.hitPoints -= (int) Math.round(2 * player1.damageDealt());
-
-        if (p2Effect == Effect.HIT) player1.hitPoints -= (int) Math.round(player2.damageDealt());
-        if (p2Effect == Effect.CRIT) player1.hitPoints -= (int) Math.round(2 * player2.damageDealt());
+        player2.hitPoints -= (int) Math.round(player1.damageDealt(p1Effect));
+        player1.hitPoints -= (int) Math.round(player2.damageDealt(p2Effect));
     }
 
     protected void resolveDistanceStage() {
@@ -111,8 +108,8 @@ public class Training {
         pickMovesStage();
         resolveMovesStage();
 
-        player1.learn(p1Effect, p2Effect, distance);
-        player2.learn(p2Effect, p1Effect, distance);
+        player1.learn(p1Effect, player2.damageDealt(p2Effect), distance);
+        player2.learn(p2Effect, player1.damageDealt(p1Effect), distance);
 
         resolveDistanceStage();
         resolveStatesStage();

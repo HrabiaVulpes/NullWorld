@@ -4,13 +4,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class NeuralNetwork {
-    private static Long lastNodeId = 0L;
-    List<Node> nodes;
+    private Long lastNodeId = 0L;
+    private List<Node> nodes;
     private Integer amountOfLayers = 0;
 
     public NeuralNetwork(){}
 
     public NeuralNetwork(Integer... layers) {
+        lastNodeId = 0L;
         nodes = new ArrayList<>();
         for (Integer layer : layers) {
             for (int i = 0; i < layer; i++) {
@@ -92,12 +93,12 @@ public class NeuralNetwork {
         nodes.forEach(Node::updateWeights);
     }
 
-    public static Long getLastNodeId() {
+    public Long getLastNodeId() {
         return lastNodeId;
     }
 
     public static void setLastNodeId(Long lastNodeId) {
-        NeuralNetwork.lastNodeId = lastNodeId;
+        lastNodeId = lastNodeId;
     }
 
     public List<Node> getNodes() {

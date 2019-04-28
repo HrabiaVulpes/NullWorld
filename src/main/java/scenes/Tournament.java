@@ -65,7 +65,7 @@ public class Tournament {
         return combatants.get((int) choosen);
     }
 
-    private void jsonWriting() {
+    protected void jsonWriting() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.writeValue(new File("target/combatants.json"), combatants);
@@ -74,7 +74,7 @@ public class Tournament {
         }
     }
 
-    private void resetWins(){
+    protected void resetWins(){
         combatants.forEach(combatant -> combatant.victoriesCount = 0);
         combatants.forEach(combatant -> combatant.lossesCount = 0);
     }
