@@ -33,8 +33,6 @@ public class Training {
     }
 
     protected void pickMovesStage() {
-        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return;
-
         player1.setStates(player2.statesList, distance, player1.weapon.getLength());
         player2.setStates(player1.statesList, distance, player2.weapon.getLength());
 
@@ -99,12 +97,18 @@ public class Training {
                     .collect(Collectors.toList())
             );
 
-        //if one of players got crit, he is staggered
-        if (p1Effect == Effect.CRIT) player2.statesList.add(States.STAGGERED);
-        if (p2Effect == Effect.CRIT) player1.statesList.add(States.STAGGERED);
+        //if one of players got hit, he is staggered
+        if (p1Effect == Effect.HIT)
+            player2.statesList.add(States.STAGGERED);
+        if (p2Effect == Effect.HIT)
+            player1.statesList.add(States.STAGGERED);
+        if (p1Effect == Effect.CRIT) player2.statesList.add(States.KNOCKED);
+        if (p2Effect == Effect.CRIT) player1.statesList.add(States.KNOCKED);
     }
 
     protected void processTurn() {
+        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return;
+
         pickMovesStage();
         resolveMovesStage();
 

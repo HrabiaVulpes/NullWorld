@@ -72,7 +72,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "SHOT",
@@ -382,7 +384,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "THRUST",
@@ -673,7 +677,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "THRUST",
@@ -967,7 +973,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "JUMP",
@@ -1213,7 +1221,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "UNDERSTRIKE",
@@ -1483,7 +1493,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "THRUST",
@@ -1774,7 +1786,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "JUMP",
@@ -2021,7 +2035,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "THRUST",
@@ -2285,7 +2301,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "UNDERSTRIKE",
@@ -2555,7 +2573,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "JUMP",
@@ -2801,7 +2821,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "UNDERSTRIKE",
@@ -3071,7 +3093,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "JUMP",
@@ -3312,7 +3336,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "THRUST",
@@ -3599,7 +3625,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "THRUST",
@@ -3890,7 +3918,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "THRUST",
@@ -4231,7 +4261,9 @@
           "ABOVE",
           "TURNED"
         ],
-        "addedStates": []
+        "addedStates": [
+          "WEAPON_EXTENDED"
+        ]
       },
       {
         "type": "JUMP",
