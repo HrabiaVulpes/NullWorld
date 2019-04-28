@@ -70,7 +70,7 @@ public class Main {
                 .collect(Collectors.toList());
 
         FairTournament tournament = new FairTournament(swordsmen_red);
-        tournament.eternalTournament(10, 100);
+        tournament.eternalTournament(1, 100);
     }
 
     public static void change() {

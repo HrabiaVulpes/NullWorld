@@ -51,7 +51,7 @@ public class FairTournament extends Tournament {
 
     private void printToFile() {
         try {
-            FileWriter fw = new FileWriter(new File("target/results.json"));
+            FileWriter fw = new FileWriter(new File("target/results.txt"));
             fw.write("Scores:\n");
             for (String name : finalScores.keySet()) {
                 fw.write(name + ";" + finalScores.get(name).stream().map(i -> "" + i).collect(Collectors.joining(";")));
