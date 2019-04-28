@@ -4,7 +4,6 @@ import combat_data.ObjectsLists;
 import combat_data.States;
 import scenes.FairTournament;
 import scenes.Tournament;
-import scenes.Versus;
 
 import java.io.File;
 import java.io.IOException;
