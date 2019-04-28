@@ -6,7 +6,7 @@ import combat_data.*;
 import java.util.*;
 
 public class Combatant {
-    private final Long outputStart = 21L + 20 + 20 + 20;
+    private final Long outputStart = 21L + 25;
     public NeuralNetwork combatantMind;
     public String name;
     public Integer hitPoints;
@@ -25,7 +25,7 @@ public class Combatant {
         this.hitPoints = 100;
         this.weapon = weapon;
         this.statesList = new ArrayList<>();
-        this.combatantMind = new NeuralNetwork(21, 20, 20, 20, 16);
+        this.combatantMind = new NeuralNetwork(21, 25, 16);
     }
 
     public Combatant(String name, Weapon weapon, Double learningRate) {

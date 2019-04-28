@@ -26,8 +26,8 @@ public class Versus extends Tournament {
         System.out.println(training);
         training.fightForRounds(roundLenght);
         if (training.winner() != null) {
-//            training.winner().victoriesCount++;
-//            training.looser().lossesCount++;
+            training.winner().victoriesCount++;
+            training.looser().lossesCount++;
             System.out.println(training.winner().name + " won!\n\n");
         } else System.out.println("It's a draw!\n\n");
         player1.healUp();
