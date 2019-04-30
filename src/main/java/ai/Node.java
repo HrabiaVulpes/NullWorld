@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Node {
-    private Double learningRate = 0.3;
     public Long ID;
     public Double value;
     Integer layer;
     Double target;
-
+    private Double learningRate = 0.05;
     private Map<Long, Double> weights;
     private Map<Long, Double> weightChange;
     private Double personalWeight;
@@ -35,12 +34,26 @@ public class Node {
                 key -> value += previousLayer.get(key) * weights.get(key)
         );
 
-        value = 1 / (1 + Math.pow(Math.E, -value));
+//        value = 1 / (1 + Math.pow(Math.E, -value));
+//        value = (Math.sqrt(value * value + 1) + 1) / 2 + value;
+//        value = value/ (1 + Math.abs(value));
+        value = value/ (Math.sqrt(1 + 0.01 * value * value));
         target = value;
     }
 
+    private Double derivativeOfValue(Double value) {
+//        return value * (1-value);
+//        return value / (2 * Math.sqrt(value * value + 1)) + 1;
+//        return 1 / ( Math.pow(1 + Math.abs(value), 2));
+        return 1 / ( Math.pow( 1/Math.sqrt(1 + 0.01 * value * value), 3));
+    }
+
     public Double getValue() {
-        return (value < 0.0) ? 0.0 : 1.0;
+        return (value < 0.0) ? -1.0 : 1.0;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
     }
 
     public Double getErrorByNodeId(Long id) {
@@ -52,7 +65,7 @@ public class Node {
         weights.keySet().forEach(
                 key -> weightChange.put(
                         key,
-                        sumOfNextLayerErrors * value * (1 - value) * previousLayerValues.get(key)
+                        sumOfNextLayerErrors * derivativeOfValue(value) * previousLayerValues.get(key)
                 )
         );
     }
@@ -61,13 +74,13 @@ public class Node {
         weights.keySet().forEach(
                 key -> weightChange.put(
                         key,
-                        (value - target) * value * (1 - value) * previousLayerValues.get(key)
+                        (value - target) * derivativeOfValue(value) * previousLayerValues.get(key)
                 )
         );
     }
 
     public void updateWeights() {
-        personalWeight = personalWeight - (((value - target) * value * (1 - value)) * learningRate);
+        personalWeight = personalWeight - (((value - target) * derivativeOfValue(value)) * learningRate);
         weights.keySet().forEach(
                 key -> weights.put(key, weights.get(key) - (weightChange.get(key) * learningRate))
         );
@@ -77,16 +90,16 @@ public class Node {
         return learningRate;
     }
 
+    public void setLearningRate(Double learningRate) {
+        this.learningRate = learningRate;
+    }
+
     public Long getID() {
         return ID;
     }
 
     public void setID(Long ID) {
         this.ID = ID;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
     }
 
     public Integer getLayer() {
@@ -127,9 +140,5 @@ public class Node {
 
     public void setPersonalWeight(Double personalWeight) {
         this.personalWeight = personalWeight;
-    }
-
-    public void setLearningRate(Double learningRate) {
-        this.learningRate = learningRate;
     }
 }

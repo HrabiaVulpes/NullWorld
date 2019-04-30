@@ -60,14 +60,16 @@ public class Main {
         names.put("CURVED_SWORD", "Ali Baba");
         names.put("SCYTHE", "Ruby Rose");
 
-        List<Combatant> swordsmen_red = ObjectsLists.getData().combatantsList;
+        List<Combatant> swordsmen_red = names.values().stream()
+                .map(name -> new Combatant("Red " + name, ObjectsLists.getData().weaponList.get(1)))
+                .collect(Collectors.toList());
 
         List<Combatant> swordsmen_blue = names.values().stream()
                 .map(name -> new Combatant("Blue " + name, ObjectsLists.getData().weaponList.get(1)))
                 .collect(Collectors.toList());
 
         FairTournament tournament = new FairTournament(swordsmen_red);
-        tournament.runTournament(1, 100);
+        tournament.eternalTournament(1, 100);
     }
 
     public static void change() {
@@ -86,7 +88,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        runTournament();
+        swordTournament();
     }
 
 }
