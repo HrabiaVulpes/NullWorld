@@ -33,8 +33,8 @@ public class Training {
     }
 
     protected void pickMovesStage() {
-        player1.setStates(player2.statesList, distance, player1.weapon.getLength());
-        player2.setStates(player1.statesList, distance, player2.weapon.getLength());
+        player1.setStates(player2.statesList, distance, player1.weapon);
+        player2.setStates(player1.statesList, distance, player2.weapon);
 
         player1.pickMove();
         player2.pickMove();

@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Combatant {
-    private final Long outputStart = 21L + 25;
+    private final Long outputStart = 27L + 30;
     public NeuralNetwork combatantMind;
     public String name;
     public Integer hitPoints;
@@ -21,24 +21,41 @@ public class Combatant {
     public Combatant() {
     }
 
+    /**
+     *
+     * @param name - name of combatant
+     * @param weapon - weapon he uses
+     */
     public Combatant(String name, Weapon weapon) {
         this.name = name;
         this.hitPoints = 100;
         this.weapon = weapon;
         this.statesList = new ArrayList<>();
-        this.combatantMind = new NeuralNetwork(21, 25, 16);
+        this.combatantMind = new NeuralNetwork(27, 30, 16);
     }
 
+    /**
+     *
+     * @param name - name of combatant
+     * @param weapon - weapon he uses
+     * @param learningRate - how strong he updates weights
+     */
     public Combatant(String name, Weapon weapon, Double learningRate) {
         this.name = name;
         this.hitPoints = 100;
         this.weapon = weapon;
         this.statesList = new ArrayList<>();
-        this.combatantMind = new NeuralNetwork(21, 25, 16);
+        this.combatantMind = new NeuralNetwork(27, 30, 16);
         this.combatantMind.getNodes().forEach(node -> node.setLearningRate(learningRate));
     }
 
-    public void setStates(List<States> enemyStates, Integer enemyDistance, Integer enemyWeaponLength) {
+    /**
+     *
+     * @param enemyStates - states of the enemy
+     * @param enemyDistance - distance to enemy
+     * @param enemyWeapon - weapon of the enemy
+     */
+    public void setStates(List<States> enemyStates, Integer enemyDistance, Weapon enemyWeapon) {
         Map<Long, Double> input = new HashMap<>();
         input.put(0L, statesList.contains(States.ABOVE) ? 1.0 : 0.0);
         input.put(1L, statesList.contains(States.TURNED) ? 1.0 : 0.0);
@@ -49,18 +66,24 @@ public class Combatant {
         input.put(6L, statesList.contains(States.WEAPON_LOW) ? 1.0 : 0.0);
         input.put(7L, statesList.contains(States.WEAPON_HIGH) ? 1.0 : 0.0);
         input.put(8L, statesList.contains(States.STAGGERED) ? 1.0 : 0.0);
-        input.put(9L, enemyDistance * 1.0);
-        input.put(10L, enemyStates.contains(States.ABOVE) ? 1.0 : 0.0);
-        input.put(11L, enemyStates.contains(States.TURNED) ? 1.0 : 0.0);
-        input.put(12L, enemyStates.contains(States.CROUCHED) ? 1.0 : 0.0);
-        input.put(13L, enemyStates.contains(States.KNOCKED) ? 1.0 : 0.0);
-        input.put(14L, enemyStates.contains(States.WEAPON_SIDE) ? 1.0 : 0.0);
-        input.put(15L, enemyStates.contains(States.WEAPON_EXTENDED) ? 1.0 : 0.0);
-        input.put(16L, enemyStates.contains(States.WEAPON_LOW) ? 1.0 : 0.0);
-        input.put(17L, enemyStates.contains(States.WEAPON_HIGH) ? 1.0 : 0.0);
-        input.put(18L, enemyStates.contains(States.STAGGERED) ? 1.0 : 0.0);
-        input.put(19L, weapon.getLength() * 1.0);
-        input.put(20L, enemyWeaponLength * 1.0);
+        input.put(9L, weapon.getLength() * 1.0);
+        input.put(10L, weapon.getEfficiencies().get(DamageTypes.PIERCE) * 1.0);
+        input.put(11L, weapon.getEfficiencies().get(DamageTypes.BLUNT) * 1.0);
+        input.put(12L, weapon.getEfficiencies().get(DamageTypes.SLASH) * 1.0);
+        input.put(13L, enemyDistance * 1.0);
+        input.put(14L, enemyStates.contains(States.ABOVE) ? 1.0 : 0.0);
+        input.put(15L, enemyStates.contains(States.TURNED) ? 1.0 : 0.0);
+        input.put(16L, enemyStates.contains(States.CROUCHED) ? 1.0 : 0.0);
+        input.put(17L, enemyStates.contains(States.KNOCKED) ? 1.0 : 0.0);
+        input.put(18L, enemyStates.contains(States.WEAPON_SIDE) ? 1.0 : 0.0);
+        input.put(19L, enemyStates.contains(States.WEAPON_EXTENDED) ? 1.0 : 0.0);
+        input.put(20L, enemyStates.contains(States.WEAPON_LOW) ? 1.0 : 0.0);
+        input.put(21L, enemyStates.contains(States.WEAPON_HIGH) ? 1.0 : 0.0);
+        input.put(22L, enemyStates.contains(States.STAGGERED) ? 1.0 : 0.0);
+        input.put(23L, enemyWeapon.getLength() * 1.0);
+        input.put(24L, enemyWeapon.getEfficiencies().get(DamageTypes.PIERCE) * 1.0);
+        input.put(25L, enemyWeapon.getEfficiencies().get(DamageTypes.BLUNT) * 1.0);
+        input.put(26L, enemyWeapon.getEfficiencies().get(DamageTypes.SLASH) * 1.0);
 
         combatantMind.setValues(input);
     }
@@ -129,11 +152,6 @@ public class Combatant {
         }
 
         return damageDealt(myEffect) - enemyDamage;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return ((Combatant) obj).name.equals(this.name);
     }
 
     public Combatant healUp() {
@@ -230,5 +248,10 @@ public class Combatant {
 
     public void setLossesCount(Integer lossesCount) {
         this.lossesCount = lossesCount;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return ((Combatant) obj).name.equals(this.name);
     }
 }

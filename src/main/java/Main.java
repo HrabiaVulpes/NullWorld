@@ -36,14 +36,21 @@ public class Main {
         names.put("HALBERD", "Hou Yi");
         names.put("SCYTHE", "Ruby Rose");
 
-
         List<Combatant> combatants = ObjectsLists.getData()
                 .weaponList.stream()
-                .map(weapon -> new Combatant(names.get(weapon.getName()), weapon))
+                .map(weapon -> new Combatant("Red" + names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList());
+        combatants.addAll(ObjectsLists.getData()
+                .weaponList.stream()
+                .map(weapon -> new Combatant("Blue" + names.get(weapon.getName()), weapon))
+                .collect(Collectors.toList()));
+        combatants.addAll(ObjectsLists.getData()
+                .weaponList.stream()
+                .map(weapon -> new Combatant("Green" + names.get(weapon.getName()), weapon))
+                .collect(Collectors.toList()));
 
-        Tournament tournament = new Tournament(combatants);
-        tournament.eternalTournament(100, 50);
+        FairTournament tournament = new FairTournament(combatants);
+        tournament.eternalTournament(1, 50);
     }
 
     private static void swordTournament() {
@@ -79,7 +86,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        swordTournament();
+        runTournament();
     }
 
 }
