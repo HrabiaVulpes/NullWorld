@@ -109,7 +109,7 @@ public class Combatant {
         weights.sort(Comparator.naturalOrder());
         Double total = weights.stream().mapToDouble(i -> i).sum();
         Double rando = Math.random() * total;
-        MoveTypes best = MoveTypes.CLOSE_IN;
+        MoveTypes best = MoveTypes.WAIT;
 
         for (int i = 0; i < weights.size(); i++) {
             if (rando < weights.get(i)) {
@@ -151,7 +151,7 @@ public class Combatant {
                 return -10.0;
         }
 
-        return damageDealt(myEffect) - enemyDamage;
+        return 1.5*damageDealt(myEffect) - enemyDamage -5;
     }
 
     public Combatant healUp() {

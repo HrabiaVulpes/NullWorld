@@ -49,8 +49,8 @@ public class Main {
                 .map(weapon -> new Combatant("Green" + names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList()));
 
-        FairTournament tournament = new FairTournament(combatants);
-        tournament.eternalTournament(1, 50);
+        Tournament tournament = new Tournament(combatants);
+        tournament.eternalTournament(100, 50);
     }
 
     private static void swordTournament() {
