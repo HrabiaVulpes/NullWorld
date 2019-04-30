@@ -40,7 +40,7 @@ public class Node {
     }
 
     public Double getValue() {
-        return (value < 0.5) ? 0.0 : 1.0;
+        return (value < 0.0) ? 0.0 : 1.0;
     }
 
     public Double getErrorByNodeId(Long id) {
