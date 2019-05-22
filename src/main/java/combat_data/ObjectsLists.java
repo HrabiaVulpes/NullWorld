@@ -13,6 +13,7 @@ public class ObjectsLists {
 
     public List<Weapon> weaponList;
     public List<Combatant> combatantsList;
+    public List<Combatant> oldCombatantsList;
 
     public static ObjectsLists getData(){
         if (data == null){
@@ -24,6 +25,7 @@ public class ObjectsLists {
     private ObjectsLists(){
         loadWeapons();
         loadCombatants();
+        loadOldCombatants();
     }
 
     private void loadWeapons(){
@@ -41,6 +43,17 @@ public class ObjectsLists {
         String filePath = ObjectsLists.class.getClassLoader().getResource("combatants.json").getFile();
         try {
             combatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<Combatant>>(){});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        assert weaponList != null;
+    }
+
+    private void loadOldCombatants(){
+        String filePath = ObjectsLists.class.getClassLoader().getResource("combatants_old.json").getFile();
+        try {
+            oldCombatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<Combatant>>(){});
         } catch (IOException e) {
             e.printStackTrace();
         }

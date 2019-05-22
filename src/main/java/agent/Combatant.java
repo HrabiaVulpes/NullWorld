@@ -146,12 +146,24 @@ public class Combatant {
     private Double gradeMove(Effect myEffect, Double enemyDamage, Integer distance) {
         if (move.getType() == MoveTypes.CLOSE_IN) {
             if (distance > weapon.getLength())
-                return 10.0;
+                return 1.0;
             if (distance < weapon.getLength())
-                return -10.0;
+                return 0.0;
         }
 
-        return 1.5*damageDealt(myEffect) - enemyDamage -5;
+        if (myEffect == Effect.HIT || myEffect == Effect.CRIT){
+            if (damageDealt(myEffect) >= enemyDamage) return 1.0;
+            else return 0.5;
+        }
+
+        if (myEffect == Effect.PARRY){
+            if (enemyDamage > 0.0) return 0.0;
+            else return 1.0;
+        }
+
+        if (myEffect == Effect.MISS) return 0.0;
+
+        return 0.0;
     }
 
     public Combatant healUp() {

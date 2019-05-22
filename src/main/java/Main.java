@@ -4,6 +4,7 @@ import combat_data.ObjectsLists;
 import combat_data.States;
 import scenes.FairTournament;
 import scenes.Tournament;
+import scenes.Versus;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,14 +61,16 @@ public class Main {
         names.put("CURVED_SWORD", "Ali Baba");
         names.put("SCYTHE", "Ruby Rose");
 
-        List<Combatant> swordsmen_red = ObjectsLists.getData().combatantsList;
+//        List<Combatant> swordsmen_red = ObjectsLists.getData().combatantsList;
 
-        List<Combatant> swordsmen_blue = names.values().stream()
-                .map(name -> new Combatant("Blue " + name, ObjectsLists.getData().weaponList.get(1)))
+        List<Combatant> swordsmen_red = names.values().stream()
+                .map(name -> new Combatant("Black " + name, ObjectsLists.getData().weaponList.get(1)))
                 .collect(Collectors.toList());
 
-        FairTournament tournament = new FairTournament(swordsmen_red);
-        tournament.runTournament(1, 100);
+        List<Combatant> swordsmen_blue = ObjectsLists.getData().oldCombatantsList;
+
+        Tournament tournament = new Versus(swordsmen_blue, swordsmen_red);
+        tournament.runTournament(100, 100);
     }
 
     public static void change() {
@@ -86,7 +89,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        runTournament();
+        swordTournament();
     }
 
 }
