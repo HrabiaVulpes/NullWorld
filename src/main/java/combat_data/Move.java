@@ -40,7 +40,7 @@ public class Move {
         commonWeaponMovements.retainAll(other.getWeaponMovement());
         commonWeaponMovements.remove(PositionTags.STANDARD);
 
-        if (commonWeaponMovements.size() >= 1) return Effect.PARRY;
+        if (!commonWeaponMovements.isEmpty()) return Effect.PARRY;
 
         ArrayList<PositionTags> weaponVsBody = new ArrayList<>(this.getWeaponMovement());
         weaponVsBody.retainAll(other.getPositionDuringMove());

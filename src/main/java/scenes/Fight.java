@@ -9,6 +9,8 @@ public class Fight extends Training {
 
     @Override
     protected void processTurn() {
+        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return;
+
         pickMovesStage();
         resolveMovesStage();
         resolveDistanceStage();

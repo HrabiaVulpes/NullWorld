@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Node {
-    private Double learningRate = 0.3;
     public Long ID;
     public Double value;
     Integer layer;
     Double target;
-
+    private Double learningRate = 0.3;
     private Map<Long, Double> weights;
     private Map<Long, Double> weightChange;
     private Double personalWeight;
@@ -31,9 +30,7 @@ public class Node {
 
     public void calculateValue(Map<Long, Double> previousLayer) {
         value = personalWeight;
-        weights.keySet().forEach(
-                key -> value += previousLayer.get(key) * weights.get(key)
-        );
+        weights.keySet().forEach(key -> value += previousLayer.get(key) * weights.get(key));
 
         value = 1 / (1 + Math.pow(Math.E, -value));
         target = value;
@@ -41,6 +38,10 @@ public class Node {
 
     public Double getValue() {
         return (value < 0.5) ? 0.0 : 1.0;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
     }
 
     public Double getErrorByNodeId(Long id) {
@@ -68,13 +69,15 @@ public class Node {
 
     public void updateWeights() {
         personalWeight = personalWeight - (((value - target) * value * (1 - value)) * learningRate);
-        weights.keySet().forEach(
-                key -> weights.put(key, weights.get(key) - (weightChange.get(key) * learningRate))
-        );
+        weights.keySet().forEach(key -> weights.put(key, weights.get(key) - (weightChange.get(key) * learningRate)));
     }
 
     public Double getLearningRate() {
         return learningRate;
+    }
+
+    public void setLearningRate(Double learningRate) {
+        this.learningRate = learningRate;
     }
 
     public Long getID() {
@@ -83,10 +86,6 @@ public class Node {
 
     public void setID(Long ID) {
         this.ID = ID;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
     }
 
     public Integer getLayer() {
@@ -127,9 +126,5 @@ public class Node {
 
     public void setPersonalWeight(Double personalWeight) {
         this.personalWeight = personalWeight;
-    }
-
-    public void setLearningRate(Double learningRate) {
-        this.learningRate = learningRate;
     }
 }

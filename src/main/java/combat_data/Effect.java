@@ -4,5 +4,5 @@ public enum Effect {
     HIT,
     CRIT,
     PARRY,
-    MISS;
+    MISS
 }

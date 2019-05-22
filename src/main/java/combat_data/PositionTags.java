@@ -5,5 +5,5 @@ public enum PositionTags {
     STANDARD,
     HIGH,
     SIDE,
-    BACK;
+    BACK
 }

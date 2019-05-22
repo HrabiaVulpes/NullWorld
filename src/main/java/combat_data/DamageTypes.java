@@ -4,5 +4,5 @@ public enum DamageTypes {
     PIERCE,
     SLASH,
     BLUNT,
-    NONE;
+    NONE
 }

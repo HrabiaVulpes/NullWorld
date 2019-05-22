@@ -21,10 +21,10 @@ public class FairTournament extends Tournament {
         );
     }
 
-    public Combatant runRound(Combatant player1, Combatant player2, int roundLenght) {
+    public Combatant runRound(Combatant player1, Combatant player2, int roundLength) {
         Training fight = new Training(player1, player2);
         System.out.println(fight);
-        fight.fightForRounds(roundLenght);
+        fight.fightForRounds(roundLength);
         return fight.winner();
     }
 

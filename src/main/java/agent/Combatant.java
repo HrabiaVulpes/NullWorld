@@ -13,8 +13,8 @@ public class Combatant {
     public Integer hitPoints;
     public Weapon weapon;
     public List<States> statesList;
-    public Move wantedMove = null;
-    public Move move = null;
+    public Move wantedMove;
+    public Move move;
     public Integer victoriesCount = 0;
     public Integer lossesCount = 0;
 
@@ -22,8 +22,7 @@ public class Combatant {
     }
 
     /**
-     *
-     * @param name - name of combatant
+     * @param name   - name of combatant
      * @param weapon - weapon he uses
      */
     public Combatant(String name, Weapon weapon) {
@@ -35,9 +34,8 @@ public class Combatant {
     }
 
     /**
-     *
-     * @param name - name of combatant
-     * @param weapon - weapon he uses
+     * @param name         - name of combatant
+     * @param weapon       - weapon he uses
      * @param learningRate - how strong he updates weights
      */
     public Combatant(String name, Weapon weapon, Double learningRate) {
@@ -50,10 +48,9 @@ public class Combatant {
     }
 
     /**
-     *
-     * @param enemyStates - states of the enemy
+     * @param enemyStates   - states of the enemy
      * @param enemyDistance - distance to enemy
-     * @param enemyWeapon - weapon of the enemy
+     * @param enemyWeapon   - weapon of the enemy
      */
     public void setStates(List<States> enemyStates, Integer enemyDistance, Weapon enemyWeapon) {
         Map<Long, Double> input = new HashMap<>();
@@ -91,42 +88,34 @@ public class Combatant {
     private MoveTypes getIdeaWithWeights() {
         combatantMind.calculateFullPass();
         Map<Double, MoveTypes> ideas = new HashMap<>();
+        final Double[] total = {0.0};
 
         MoveTypes.getAll()
                 .forEach(
-                        type -> ideas.put(
-                                combatantMind.getNodeById(outputStart + type.getId()).value,
-                                type
-                        )
+                        type -> {
+                            ideas.put(
+                                    combatantMind.getNodeById(outputStart + type.getId()).value + total[0],
+                                    type
+                            );
+                            total[0] += combatantMind.getNodeById(outputStart + type.getId()).value;
+                        }
                 );
 
-        List<Double> weights = new ArrayList<>(ideas.keySet());
-        Double lowestWeight = Collections.min(weights);
-        weights = weights.stream()
-                .map(w -> w - lowestWeight)
-                .collect(Collectors.toList());
-
-        weights.sort(Comparator.naturalOrder());
-        Double total = weights.stream().mapToDouble(i -> i).sum();
-        Double rando = Math.random() * total;
+        Double random = Math.random() * total[0];
         MoveTypes best = MoveTypes.WAIT;
-
-        for (int i = 0; i < weights.size(); i++) {
-            if (rando < weights.get(i)) {
-                best = ideas.get(weights.get(i) + lowestWeight);
-                break;
-            }
-            rando -= weights.get(i);
+        for (Double value : ideas.keySet().stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList())) {
+            if (random <= value) best = ideas.get(value);
+            else break;
         }
         return best;
     }
 
     public void pickMove() {
-        MoveTypes choosen = getIdeaWithWeights();
-        move = weapon.getOptionByType(choosen);
-        wantedMove = weapon.getOptionByType(choosen);
+        MoveTypes chosen = getIdeaWithWeights();
+        move = weapon.getOptionByType(chosen);
+        wantedMove = weapon.getOptionByType(chosen);
 
-        ArrayList<States> currentStates = new ArrayList<>(this.statesList);
+        List<States> currentStates = new ArrayList<>(this.statesList);
         currentStates.retainAll(move.getUnavailableOn());
 
         if (!currentStates.isEmpty())
@@ -151,12 +140,12 @@ public class Combatant {
                 return 0.0;
         }
 
-        if (myEffect == Effect.HIT || myEffect == Effect.CRIT){
+        if (myEffect == Effect.HIT || myEffect == Effect.CRIT) {
             if (damageDealt(myEffect) >= enemyDamage) return 1.0;
             else return 0.5;
         }
 
-        if (myEffect == Effect.PARRY){
+        if (myEffect == Effect.PARRY) {
             if (enemyDamage > 0.0) return 0.0;
             else return 1.0;
         }
