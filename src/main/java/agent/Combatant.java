@@ -6,7 +6,7 @@ import combat_data.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Combatant {
+public class Combatant extends Player {
     private final Long outputStart = 27L + 30;
     public NeuralNetwork combatantMind;
     public String name;
@@ -26,10 +26,7 @@ public class Combatant {
      * @param weapon - weapon he uses
      */
     public Combatant(String name, Weapon weapon) {
-        this.name = name;
-        this.hitPoints = 100;
-        this.weapon = weapon;
-        this.statesList = new ArrayList<>();
+        super(name, weapon);
         this.combatantMind = new NeuralNetwork(27, 30, 16);
     }
 
@@ -160,26 +157,6 @@ public class Combatant {
 
         if (myEffect == Effect.MISS) return 0.0;
 
-        return 0.0;
-    }
-
-    public Combatant healUp() {
-        this.hitPoints = 100;
-        this.statesList = new ArrayList<>();
-        return this;
-    }
-
-    public Double damageDealt(Effect effect) {
-        switch (effect) {
-            case CRIT:
-                return 20.0 * this.weapon.getEfficiencies().get(this.move.getDamageType());
-            case HIT:
-                return 10.0 * this.weapon.getEfficiencies().get(this.move.getDamageType());
-            case PARRY:
-                return 0.0;
-            case MISS:
-                return 0.0;
-        }
         return 0.0;
     }
 
