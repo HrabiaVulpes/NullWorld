@@ -5,7 +5,7 @@ import agent.Combatant;
 import java.util.Comparator;
 import java.util.List;
 
-public class Versus extends Tournament {
+public class Versus extends TournamentTrainingAI {
     private List<Combatant> enemy_combatants;
 
     public Versus(List<Combatant> combatants, List<Combatant> enemies){
@@ -22,12 +22,12 @@ public class Versus extends Tournament {
         Combatant player1 = randomCombatant();
         Combatant player2 = randomEnemyCombatant();
 
-        Fight training = new Fight(player1, player2);
+        FightAI training = new FightAI(player1, player2);
         System.out.println(training);
         training.fightForRounds(roundLenght);
         if (training.winner() != null) {
             training.winner().victoriesCount++;
-            training.looser().lossesCount++;
+            training.loser().lossesCount++;
             System.out.println(training.winner().name + " won!\n\n");
         } else System.out.println("It's a draw!\n\n");
         player1.healUp();

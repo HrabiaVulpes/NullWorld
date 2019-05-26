@@ -1,6 +1,7 @@
 package scenes;
 
 import agent.Combatant;
+import agent.Player;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class FairTournament extends Tournament {
+public class FairTournamentTrainingAI extends TournamentTrainingAI {
     Map<String, List<Integer>> finalScores = new HashMap<>();
 
-    public FairTournament(List<Combatant> combatants) {
+    public FairTournamentTrainingAI(List<Combatant> combatants) {
         this.combatants = combatants;
 
         combatants.forEach(
@@ -21,8 +22,8 @@ public class FairTournament extends Tournament {
         );
     }
 
-    public Combatant runRound(Combatant player1, Combatant player2, int roundLength) {
-        Training fight = new Training(player1, player2);
+    public Player runRound(Combatant player1, Combatant player2, int roundLength) {
+        TrainingAI fight = new TrainingAI(player1, player2);
         System.out.println(fight);
         fight.fightForRounds(roundLength);
         return fight.winner();
@@ -68,17 +69,17 @@ public class FairTournament extends Tournament {
             for (Combatant p2 : combatants) {
                 if (!p1.name.equals(p2.name)) {
                     Map<String, Integer> victories = new HashMap<>(Map.of(p1.name, 0, p2.name, 0));
-                    Combatant victor = runRound(p1, p2, roundLenght);
+                    Combatant victor = (Combatant) runRound(p1, p2, roundLenght);
                     if (victor != null) victories.put(victor.name, victories.get(victor.name) + 1);
                     p1.healUp();
                     p2.healUp();
 
-                    victor = runRound(p1, p2, roundLenght);
+                    victor = (Combatant) runRound(p1, p2, roundLenght);
                     if (victor != null) victories.put(victor.name, victories.get(victor.name) + 1);
                     p1.healUp();
                     p2.healUp();
 
-                    victor = runRound(p1, p2, roundLenght);
+                    victor = (Combatant) runRound(p1, p2, roundLenght);
                     if (victor != null) victories.put(victor.name, victories.get(victor.name) + 1);
                     p1.healUp();
                     p2.healUp();

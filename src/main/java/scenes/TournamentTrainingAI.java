@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Tournament {
+public class TournamentTrainingAI {
     protected List<Combatant> combatants = new ArrayList<>();
 
-    public Tournament() {
+    public TournamentTrainingAI() {
     }
 
-    public Tournament(List<Combatant> combatants){
+    public TournamentTrainingAI(List<Combatant> combatants){
         this.combatants = combatants;
     }
 
@@ -26,12 +26,12 @@ public class Tournament {
             player2 = randomCombatant();
         } while (player1.name.equals(player2.name));
 
-        Training training = new Training(player1, player2);
+        TrainingAI training = new TrainingAI(player1, player2);
         System.out.println(training);
         training.fightForRounds(roundLenght);
         if (training.winner() != null) {
             training.winner().victoriesCount++;
-            training.looser().lossesCount++;
+            training.loser().lossesCount++;
             System.out.println(training.winner().name + " won!\n\n");
         } else System.out.println("It's a draw!\n\n");
         player1.healUp();

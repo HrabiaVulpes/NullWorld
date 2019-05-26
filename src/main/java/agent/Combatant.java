@@ -9,14 +9,7 @@ import java.util.stream.Collectors;
 public class Combatant extends Player {
     private final Long outputStart = 27L + 30;
     public NeuralNetwork combatantMind;
-    public String name;
-    public Integer hitPoints;
-    public Weapon weapon;
-    public List<States> statesList;
     public Move wantedMove;
-    public Move move;
-    public Integer victoriesCount = 0;
-    public Integer lossesCount = 0;
 
     public Combatant() {
     }

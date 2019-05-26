@@ -2,7 +2,7 @@ import agent.Combatant;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.ObjectsLists;
 import combat_data.States;
-import scenes.Tournament;
+import scenes.TournamentTrainingAI;
 import scenes.Versus;
 
 import java.io.File;
@@ -49,8 +49,8 @@ public class Main {
                 .map(weapon -> new Combatant("Green" + names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList()));
 
-        Tournament tournament = new Tournament(combatants);
-        tournament.eternalTournament(100, 50);
+        TournamentTrainingAI tournamentTrainingAI = new TournamentTrainingAI(combatants);
+        tournamentTrainingAI.eternalTournament(100, 50);
     }
 
     private static void swordTournament() {
@@ -68,8 +68,8 @@ public class Main {
 
         List<Combatant> swordsmen_blue = ObjectsLists.getData().oldCombatantsList;
 
-        Tournament tournament = new Versus(swordsmen_blue, swordsmen_red);
-        tournament.runTournament(100, 100);
+        TournamentTrainingAI tournamentTrainingAI = new Versus(swordsmen_blue, swordsmen_red);
+        tournamentTrainingAI.runTournament(100, 100);
     }
 
     public static void change() {
