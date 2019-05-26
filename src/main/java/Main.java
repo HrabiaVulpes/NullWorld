@@ -2,7 +2,6 @@ import agent.Combatant;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.ObjectsLists;
 import combat_data.States;
-import scenes.FairTournament;
 import scenes.Tournament;
 import scenes.Versus;
 
@@ -76,8 +75,8 @@ public class Main {
     public static void change() {
         ObjectsLists.getData().weaponList.forEach(
                 weapon -> weapon.getOptions().stream()
-                        .filter(move -> Arrays.asList(KICK).contains(move.getType()))
-                        .forEach(move -> move.getAddedStates().add(States.WEAPON_EXTENDED))
+                        .filter(move -> Arrays.asList(OVERHEAD, SLASH, KICK, THRUST, UNDERSTRIKE, BACK_AWAY).contains(move.getType()))
+                        .forEach(move -> move.getUnavailableOn().add(States.KNOCKED))
         );
 
         ObjectMapper objectMapper = new ObjectMapper();

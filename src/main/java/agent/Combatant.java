@@ -88,24 +88,32 @@ public class Combatant {
     private MoveTypes getIdeaWithWeights() {
         combatantMind.calculateFullPass();
         Map<Double, MoveTypes> ideas = new HashMap<>();
-        final Double[] total = {0.0};
 
         MoveTypes.getAll()
                 .forEach(
-                        type -> {
-                            ideas.put(
-                                    combatantMind.getNodeById(outputStart + type.getId()).value + total[0],
-                                    type
-                            );
-                            total[0] += combatantMind.getNodeById(outputStart + type.getId()).value;
-                        }
+                        type -> ideas.put(
+                                combatantMind.getNodeById(outputStart + type.getId()).value,
+                                type
+                        )
                 );
 
-        Double random = Math.random() * total[0];
+        List<Double> weights = new ArrayList<>(ideas.keySet());
+        Double lowestWeight = Collections.min(weights);
+        weights = weights.stream()
+                .map(w -> w - lowestWeight)
+                .collect(Collectors.toList());
+
+        weights.sort(Comparator.naturalOrder());
+        Double total = weights.stream().mapToDouble(i -> i).sum();
+        Double rando = Math.random() * total;
         MoveTypes best = MoveTypes.WAIT;
-        for (Double value : ideas.keySet().stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList())) {
-            if (random <= value) best = ideas.get(value);
-            else break;
+
+        for (int i = 0; i < weights.size(); i++) {
+            if (rando < weights.get(i)) {
+                best = ideas.get(weights.get(i) + lowestWeight);
+                break;
+            }
+            rando -= weights.get(i);
         }
         return best;
     }

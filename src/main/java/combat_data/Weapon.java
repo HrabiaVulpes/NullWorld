@@ -54,10 +54,12 @@ public class Weapon {
     }
 
     public Move getOptionByType(MoveTypes type) {
-        return options.stream()
+        List<Move> wanted = options.stream()
                 .filter(move -> move.getType() == type)
-                .findFirst()
-                .orElse(getOptionByType(MoveTypes.WAIT));
+                .collect(Collectors.toList());
+
+        if (!wanted.isEmpty()) return wanted.get(0);
+        return getOptionByType(MoveTypes.WAIT);
     }
 
     public Map<DamageTypes, Double> getEfficiencies() {
