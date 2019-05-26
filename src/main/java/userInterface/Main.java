@@ -7,19 +7,17 @@ import static userInterface.PrintedFunction.*;
 
 public class Main {
 
-    void fightForRounds(int rounds) {
-        HumanVsAi fight = new HumanVsAi(new Player(), new Combatant());
-        for (int i = 0; i < rounds; i++) {
 
-            fight.processTurn("move");
-        }
-    }
 
 
     public static void main(String[] args) {
         hello();
-        setName();
-        chooseWeapon("your");
+        //setName();
+        //Player player = new Player(setName(), chooseWeapon("your"));
+        HumanVsAi fight = new HumanVsAi(new Player(), new Combatant());
+        System.out.println(setName() + chooseWeapon("your"));
+        //chooseWeapon("your");
+        fight.fightForRounds(5);
 
 
     }

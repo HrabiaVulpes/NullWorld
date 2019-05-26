@@ -1,8 +1,12 @@
 package agent;
 
 import combat_data.*;
+import scenes.HumanVsAi;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class Player {
 
@@ -48,11 +52,23 @@ public class Player {
         return 0.0;
     }
 
-    public void pickMove( String chosenMove) {
-        if (Arrays.asList(MoveTypes.values()).contains(MoveTypes.valueOf(chosenMove)))
+    public void pickMove() {
+        Scanner scan = new Scanner(System.in);
+        String chosenMove = scan.nextLine();
+        do {
             move = weapon.getOptionByType(MoveTypes.valueOf(chosenMove));
+            if(!Arrays.asList(MoveTypes.values()).contains(MoveTypes.valueOf(chosenMove)))
+                System.out.println("This move is not possible try again");
+        } while(!Arrays.asList(MoveTypes.values()).contains(MoveTypes.valueOf(chosenMove)));
     }
 
+    public void fightForRounds(int rounds) {
+        HumanVsAi fight = new HumanVsAi(new Player(), new Combatant());
+        for (int i = 0; i < rounds; i++) {
+
+            fight.processTurn();
+        }
+    }
     public String getName() {
         return name;
     }

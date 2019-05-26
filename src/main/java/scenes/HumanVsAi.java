@@ -34,12 +34,12 @@ public class HumanVsAi {
         return null;
     }
 
-    protected void pickMovesStage(String chosenMove) {
+    protected void pickMovesStage() {
 
         //set value for node in neural network
         player2.setStates(player1.statesList, distance, player2.weapon);
 
-        player1.pickMove(chosenMove);
+        player1.pickMove();
         player2.pickMove();
     }
 
@@ -109,10 +109,10 @@ public class HumanVsAi {
         if (p2Effect == Effect.CRIT) player1.statesList.add(States.KNOCKED);
     }
 
-    public void processTurn(String chosenMove) {
+    public void processTurn() {
         if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return;
 
-        pickMovesStage(chosenMove);
+        pickMovesStage();
         resolveMovesStage();
 
        // player1.learn(p1Effect, player2.damageDealt(p2Effect), distance);
@@ -122,7 +122,13 @@ public class HumanVsAi {
         resolveStatesStage();
     }
 
+    public void fightForRounds(int rounds) {
+        HumanVsAi fight = new HumanVsAi(new Player(), new Combatant());
+        for (int i = 0; i < rounds; i++) {
 
+            fight.processTurn();
+        }
+    }
 
     @Override
     public String toString() {
