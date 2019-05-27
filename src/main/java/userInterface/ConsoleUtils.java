@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import static combat_data.ObjectsLists.getData;
 
-public class PrintedFunction {
+public class ConsoleUtils {
     public static void hello() {
         System.out.println("Hello!! ");
     }
@@ -44,5 +44,12 @@ public class PrintedFunction {
                 .map(Weapon::getName)
                 .collect(Collectors.toList())
                 .contains(weaponName);
+    }
+
+    public static String chosenMove(){
+        String move;
+        Scanner scan = new Scanner(System.in);
+        move = scan.nextLine().toUpperCase();
+        return move;
     }
 }

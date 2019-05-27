@@ -125,7 +125,6 @@ public class HumanVsAi {
     public void fightForRounds(int rounds) {
         HumanVsAi fight = new HumanVsAi(new Player(), new Combatant());
         for (int i = 0; i < rounds; i++) {
-
             fight.processTurn();
         }
     }

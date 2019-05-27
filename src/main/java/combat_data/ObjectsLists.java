@@ -60,4 +60,13 @@ public class ObjectsLists {
 
         assert weaponList != null;
     }
+
+    public Weapon findWeaponByName(String name){
+        Weapon chosenWeapon = null;
+        for(Weapon weapon : getData().weaponList) {
+            if(weapon.getName().equals(name))
+                chosenWeapon = weapon;
+        }
+        return chosenWeapon;
+    }
 }
