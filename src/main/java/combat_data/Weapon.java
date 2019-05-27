@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 
 public class Weapon {
     private String name = "";
-    private Integer length = 0;
+    public Integer length = 0;
     private List<Move> options = Collections.emptyList();
-    private Map<DamageTypes, Double> efficiencies = new HashMap<>();
+    public Map<DamageTypes, Double> efficiencies = new HashMap<>();
 
     public Weapon() {
     }

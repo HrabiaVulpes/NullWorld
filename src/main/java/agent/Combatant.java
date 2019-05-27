@@ -7,6 +7,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Combatant extends Player {
+
+
     private final Long outputStart = 27L + 30;
     public NeuralNetwork combatantMind;
     public Move wantedMove;
@@ -21,6 +23,7 @@ public class Combatant extends Player {
     public Combatant(String name, Weapon weapon) {
         super(name, weapon);
         this.combatantMind = new NeuralNetwork(27, 30, 16);
+        whoControl = "AI";
     }
 
     /**

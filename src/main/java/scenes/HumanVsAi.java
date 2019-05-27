@@ -8,13 +8,15 @@ import combat_data.States;
 
 import java.util.stream.Collectors;
 
+import static userInterface.ConsoleUtils.*;
+
 public class HumanVsAi {
 
     protected Player player1;
     protected Combatant player2;
     private Effect p1Effect;
     private Effect p2Effect;
-    private Integer distance = 2;
+    public Integer distance = 2;
     private Integer maxDistance = 5;
 
     public HumanVsAi(Player player1, Combatant player2) {
@@ -22,7 +24,7 @@ public class HumanVsAi {
         this.player2 = player2;
     }
 
-    Player winner() {
+    public Player winner() {
         if (player1.hitPoints > player2.hitPoints) return player1;
         if (player2.hitPoints > player1.hitPoints) return player2;
         return null;
@@ -109,8 +111,12 @@ public class HumanVsAi {
         if (p2Effect == Effect.CRIT) player1.statesList.add(States.KNOCKED);
     }
 
-    public void processTurn() {
-        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return;
+    public boolean processTurn() {
+        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return false;
+        showStatus(player2);
+        showDistance(distance);
+        showStatus(player1);
+        availableMoves(player1);
 
         pickMovesStage();
         resolveMovesStage();
@@ -120,12 +126,13 @@ public class HumanVsAi {
 
         resolveDistanceStage();
         resolveStatesStage();
+        return true;
     }
 
     public void fightForRounds(int rounds) {
-        HumanVsAi fight = new HumanVsAi(new Player(), new Combatant());
         for (int i = 0; i < rounds; i++) {
-            fight.processTurn();
+            processTurn();
+            if(!processTurn()) break;
         }
     }
 
