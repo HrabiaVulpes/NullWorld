@@ -3,17 +3,14 @@ package agent;
 import combat_data.*;
 import scenes.HumanVsAi;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Player {
 
     public String name;
     public Integer hitPoints;
     public Weapon weapon;
-    public List<States> statesList;
+    public Set<States> statesList;
     public Move move;
     public Integer victoriesCount = 0;
     public Integer lossesCount = 0;
@@ -29,12 +26,12 @@ public class Player {
         this.name = name;
         this.hitPoints = 100;
         this.weapon = weapon;
-        this.statesList = new ArrayList<>();
+        this.statesList = new HashSet<>();
     }
 
     public Player healUp() {
         this.hitPoints = 100;
-        this.statesList = new ArrayList<>();
+        this.statesList = new HashSet<>();
         return this;
     }
 
@@ -93,12 +90,12 @@ public class Player {
         this.weapon = weapon;
     }
 
-    public List<States> getStatesList() {
+    public Collection<States> getStatesList() {
         return statesList;
     }
 
-    public void setStatesList(List<States> statesList) {
-        this.statesList = statesList;
+    public void setStatesList(Collection<States> statesList) {
+        this.statesList = new HashSet<>(statesList);
     }
 
     public Move getMove() {

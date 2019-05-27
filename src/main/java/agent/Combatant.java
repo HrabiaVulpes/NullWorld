@@ -32,7 +32,7 @@ public class Combatant extends Player {
         this.name = name;
         this.hitPoints = 100;
         this.weapon = weapon;
-        this.statesList = new ArrayList<>();
+        this.statesList = new HashSet<>();
         this.combatantMind = new NeuralNetwork(27, 30, 16);
         this.combatantMind.getNodes().forEach(node -> node.setLearningRate(learningRate));
     }
@@ -42,7 +42,7 @@ public class Combatant extends Player {
      * @param enemyDistance - distance to enemy
      * @param enemyWeapon   - weapon of the enemy
      */
-    public void setStates(List<States> enemyStates, Integer enemyDistance, Weapon enemyWeapon) {
+    public void setStates(Collection<States> enemyStates, Integer enemyDistance, Weapon enemyWeapon) {
         Map<Long, Double> input = new HashMap<>();
         input.put(0L, statesList.contains(States.ABOVE) ? 1.0 : 0.0);
         input.put(1L, statesList.contains(States.TURNED) ? 1.0 : 0.0);
@@ -189,12 +189,12 @@ public class Combatant extends Player {
         this.weapon = weapon;
     }
 
-    public List<States> getStatesList() {
+    public Collection<States> getStatesList() {
         return statesList;
     }
 
     public void setStatesList(List<States> statesList) {
-        this.statesList = statesList;
+        this.statesList = new HashSet<>(statesList);
     }
 
     public Move getWantedMove() {
