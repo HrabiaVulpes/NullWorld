@@ -1,9 +1,11 @@
 package agent;
 
 import combat_data.*;
-import scenes.HumanVsAi;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static userInterface.ConsoleUtils.chosenMove;
@@ -19,7 +21,7 @@ public class Player {
     public Integer victoriesCount = 0;
     public Integer lossesCount = 0;
     public Integer maxHP = 100;
-    ArrayList<MoveTypes> availableMoves = new ArrayList();
+    Set<MoveTypes> availableMoves = new HashSet<>();
 
     public Player() {
     }
@@ -58,27 +60,29 @@ public class Player {
 
     public void pickMove() {
         String chosenMove;
+        boolean isItMove;
         do {
             chosenMove = chosenMove();
-            if (!Arrays.stream(MoveTypes.values())
-                    .map(Enum::toString)
-                    .collect(Collectors.toList()).contains(chosenMove))
+            isItMove = Arrays.stream(MoveTypes.values())
+                    .map(Enum::toString).collect(Collectors.toList()).contains(chosenMove);
+            if(!isItMove || !availableMoves.contains(MoveTypes.valueOf(chosenMove))) {
                 System.out.println("This move is not possible try again");
-        } while (!Arrays.stream(MoveTypes.values())
-                .map(Enum::toString)
-                .collect(Collectors.toList()).contains(chosenMove));
+            }
+        } while (!isItMove || !availableMoves.contains(MoveTypes.valueOf(chosenMove)));
         move = weapon.getOptionByType(MoveTypes.valueOf(chosenMove));
     }
 
-    public ArrayList getAvailableMoves(){
+    public Set getAvailableMoves() {
         availableMoves.clear();
-        availableMoves.addAll(weapon.getOptions().stream().map(Move::getType).collect(Collectors.toList()));
-        for(MoveTypes moveType : availableMoves){
-            Move testedMove = new Move(moveType);
-            for(States states: statesList) {
-                if (testedMove.getUnavailableOn().contains(states))
-                    availableMoves.remove(testedMove);
+        for (Move move : weapon.getOptions()) {
+            boolean availableMove = true;
+            for (States state : move.getUnavailableOn()) {
+                if (statesList.contains(state)) {
+                    availableMove = false;
+                    break;
+                }
             }
+            if (availableMove) availableMoves.add(move.getType());
         }
         return availableMoves;
     }
@@ -140,7 +144,7 @@ public class Player {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.name + " my weapon: " + this.weapon.getName();
     }
 }

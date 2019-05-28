@@ -2,6 +2,8 @@ package userInterface;
 
 import agent.Combatant;
 import agent.Player;
+import combat_data.Move;
+import combat_data.MoveTypes;
 import scenes.HumanVsAi;
 
 import static combat_data.ObjectsLists.getData;
@@ -21,6 +23,15 @@ public class Main {
         HumanVsAi duel = new HumanVsAi(player, combatant);
         duel.fightForRounds(50);
         showWinner(duel.winner());
+
+
+//        System.out.println(getData().weaponList.get(5).getName());
+//        getData().weaponList.get(5).getOptions().forEach(w-> {
+//                    System.out.println("\n"+w.getType() +"\n");
+//                    w.getUnavailableOn().forEach(m->System.out.println(m.name()));
+//                }
+//        );
+
 
 
     }
