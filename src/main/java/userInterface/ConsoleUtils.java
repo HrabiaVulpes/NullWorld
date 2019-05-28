@@ -20,7 +20,6 @@ public class ConsoleUtils {
         name = scan.nextLine();
         System.out.println("Name: " + name);
         return name;
-
     }
 
     public static String chooseWeapon(String player) {
@@ -43,10 +42,9 @@ public class ConsoleUtils {
         System.out.println(player + " weapon is:\n" + weapon.getName() + " length: " + weapon.length);
         weapon.efficiencies.keySet().forEach(efficiency ->
                 System.out.println(efficiency + ": " + weapon.efficiencies.get(efficiency)));
-
     }
 
-    static boolean containsWeaponOnList(String weaponName) {
+    private static boolean containsWeaponOnList(String weaponName) {
         return getData().weaponList.stream()
                 .map(Weapon::getName)
                 .collect(Collectors.toList())

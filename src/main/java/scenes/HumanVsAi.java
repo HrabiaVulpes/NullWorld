@@ -111,7 +111,7 @@ public class HumanVsAi {
         if (p2Effect == Effect.CRIT) player1.statesList.add(States.KNOCKED);
     }
 
-    public boolean processTurn() {
+    private boolean processTurn() {
         if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return false;
         showStatus(player2);
         showDistance(distance);
