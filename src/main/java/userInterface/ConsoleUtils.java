@@ -64,8 +64,7 @@ public class ConsoleUtils {
                 "\t HP: " + player.hitPoints + "/" + player.maxHP +
                 " \t Weapon: " + player.weapon.getName());
         System.out.println("Status: ");
-        player.statesList.forEach(states -> System.out.println(states));
-        //TODO divine for body and weapon status
+        player.statesList.forEach(System.out::println);
 
     }
 

@@ -64,7 +64,9 @@ public class Player {
         do {
             chosenMove = chosenMove();
             isItMove = Arrays.stream(MoveTypes.values())
-                    .map(Enum::toString).collect(Collectors.toList()).contains(chosenMove);
+                    .map(Enum::toString)
+                    .collect(Collectors.toList())
+                    .contains(chosenMove);
             if(!isItMove || !availableMoves.contains(MoveTypes.valueOf(chosenMove))) {
                 System.out.println("This move is not possible try again");
             }

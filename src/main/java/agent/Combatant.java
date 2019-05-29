@@ -1,5 +1,6 @@
 package agent;
 
+import ai.Mind;
 import ai.NeuralNetwork;
 import combat_data.*;
 
@@ -7,10 +8,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Combatant extends Player {
-
-
     private final Long outputStart = 27L + 30;
-    public NeuralNetwork combatantMind;
+    public NeuralNetwork combatantBrain;
+    public Mind combatantMind;
     public Move wantedMove;
 
     public Combatant() {
@@ -22,7 +22,7 @@ public class Combatant extends Player {
      */
     public Combatant(String name, Weapon weapon) {
         super(name, weapon);
-        this.combatantMind = new NeuralNetwork(27, 30, 16);
+        this.combatantBrain = new NeuralNetwork(27, 30, 16);
         whoControl = "AI";
     }
 
@@ -36,8 +36,9 @@ public class Combatant extends Player {
         this.hitPoints = 100;
         this.weapon = weapon;
         this.statesList = new HashSet<>();
-        this.combatantMind = new NeuralNetwork(27, 30, 16);
-        this.combatantMind.getNodes().forEach(node -> node.setLearningRate(learningRate));
+        this.combatantBrain = new NeuralNetwork(27, 30, 16);
+        this.combatantBrain.getNodes().forEach(node -> node.setLearningRate(learningRate));
+        this.combatantMind = new Mind();
     }
 
     /**
@@ -75,17 +76,37 @@ public class Combatant extends Player {
         input.put(25L, enemyWeapon.getEfficiencies().get(DamageTypes.BLUNT) * 1.0);
         input.put(26L, enemyWeapon.getEfficiencies().get(DamageTypes.SLASH) * 1.0);
 
-        combatantMind.setValues(input);
+        combatantBrain.setValues(input);
+    }
+
+    private void generateKnowledgeArray(){
+        Arrays.asList(States.values()).forEach(
+                state -> {
+                    combatantMind.registerKnowledge("MY_" + state);
+                    combatantMind.registerKnowledge("ENEMY_" + state);
+                }
+        );
+
+        Arrays.asList(DamageTypes.values()).forEach(
+                damage -> {
+                    combatantMind.registerKnowledge("MY_" + damage);
+                    combatantMind.registerKnowledge("ENEMY_" + damage);
+                }
+        );
+
+        combatantMind.registerKnowledge("MY_WEAPON_LENGTH");
+        combatantMind.registerKnowledge("ENEMY_WEAPON_LENGTH");
+        combatantMind.registerKnowledge("DISTANCE");
     }
 
     private MoveTypes getIdeaWithWeights() {
-        combatantMind.calculateFullPass();
+        combatantBrain.calculateFullPass();
         Map<Double, MoveTypes> ideas = new HashMap<>();
 
         MoveTypes.getAll()
                 .forEach(
                         type -> ideas.put(
-                                combatantMind.getNodeById(outputStart + type.getId()).value,
+                                combatantBrain.getNodeById(outputStart + type.getId()).value,
                                 type
                         )
                 );
@@ -119,18 +140,17 @@ public class Combatant extends Player {
         List<States> currentStates = new ArrayList<>(this.statesList);
         currentStates.retainAll(move.getUnavailableOn());
 
-        if (!currentStates.isEmpty())
-            move = weapon.getOptionByType(MoveTypes.WAIT);
+        if (!currentStates.isEmpty()) move = weapon.getOptionByType(MoveTypes.WAIT);
     }
 
     public void learn(Effect myEffect, Double enemyDamage, Integer distance) {
         if (!wantedMove.getType().name().equals(move.getType().name())) {
-            combatantMind.expectValues(Map.of(wantedMove.getType().getId() + outputStart, 0.0));
+            combatantBrain.expectValues(Map.of(wantedMove.getType().getId() + outputStart, 0.0));
         }
 
-        combatantMind.expectValues(Map.of(move.getType().getId() + outputStart, gradeMove(myEffect, enemyDamage, distance)));
-        combatantMind.recalculateFullPass();
-        combatantMind.updateWeights();
+        combatantBrain.expectValues(Map.of(move.getType().getId() + outputStart, gradeMove(myEffect, enemyDamage, distance)));
+        combatantBrain.recalculateFullPass();
+        combatantBrain.updateWeights();
     }
 
     private Double gradeMove(Effect myEffect, Double enemyDamage, Integer distance) {
@@ -160,12 +180,12 @@ public class Combatant extends Player {
         return outputStart;
     }
 
-    public NeuralNetwork getCombatantMind() {
-        return combatantMind;
+    public NeuralNetwork getCombatantBrain() {
+        return combatantBrain;
     }
 
-    public void setCombatantMind(NeuralNetwork combatantMind) {
-        this.combatantMind = combatantMind;
+    public void setCombatantBrain(NeuralNetwork combatantBrain) {
+        this.combatantBrain = combatantBrain;
     }
 
     public String getName() {

@@ -11,7 +11,7 @@ public class Mind {
     private Map<String, Long> knowledge;
     private Map<String, Long> decisions;
 
-    Mind() {
+    public Mind() {
         knowledge = new HashMap<>();
         decisions = new HashMap<>();
     }
