@@ -77,6 +77,7 @@ public class Mind {
                 }
         );
 
+        total[0] = total[0] * Math.random();
         for (String key : ideas.keySet()){
             total[0] -= ideas.get(key);
             if (total[0] <= 0.0) return key;

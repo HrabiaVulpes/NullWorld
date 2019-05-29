@@ -88,14 +88,14 @@ public class HumanVsAi {
         player2.statesList.addAll(player2.move.getAddedStates());
 
         //if one of players used CLOSE_IN and parried, add weapon states of the other
-        if (player1.move.getType() == MoveTypes.CLOSE_IN && p1Effect == Effect.PARRY)
+        if (player1.move.getType() == MoveTypes.CLOSE_IN && p2Effect == Effect.PARRY)
             player1.statesList.addAll(player2.move.getAddedStates()
                     .stream()
                     .filter(state -> state.name().contains("WEAPON"))
                     .collect(Collectors.toList())
             );
 
-        if (player2.move.getType() == MoveTypes.CLOSE_IN && p2Effect == Effect.PARRY)
+        if (player2.move.getType() == MoveTypes.CLOSE_IN && p1Effect == Effect.PARRY)
             player2.statesList.addAll(player1.move.getAddedStates()
                     .stream()
                     .filter(state -> state.name().contains("WEAPON"))

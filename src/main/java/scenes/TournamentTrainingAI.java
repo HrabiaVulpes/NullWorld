@@ -68,7 +68,7 @@ public class TournamentTrainingAI {
     protected void jsonWriting() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(new File("target/learningCombatants.json"), learningCombatants);
+            objectMapper.writeValue(new File("target/combatants.json"), learningCombatants);
         } catch (IOException e) {
             e.printStackTrace();
         }

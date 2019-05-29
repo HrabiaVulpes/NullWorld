@@ -8,10 +8,6 @@ import static combat_data.ObjectsLists.getData;
 import static userInterface.ConsoleUtils.*;
 
 public class Main {
-
-
-
-
     public static void main(String[] args) {
         hello();
         Player player = new Player(setName("your"), getData().findWeaponByName(chooseWeapon("your")));
