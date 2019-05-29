@@ -121,7 +121,7 @@ public class HumanVsAi {
         pickMovesStage();
         resolveMovesStage();
 
-       // player1.learn(p1Effect, player2.damageDealt(p2Effect), distance);
+        // player1.learn(p1Effect, player2.damageDealt(p2Effect), distance);
         player2.learn(p2Effect, player1.damageDealt(p1Effect), distance);
 
         resolveDistanceStage();
@@ -132,7 +132,7 @@ public class HumanVsAi {
     public void fightForRounds(int rounds) {
         for (int i = 0; i < rounds; i++) {
             processTurn();
-            if(!processTurn()) break;
+            if (!processTurn()) break;
         }
     }
 

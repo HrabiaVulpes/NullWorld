@@ -1,6 +1,5 @@
 package scenes;
 
-import agent.LearningCombatant;
 import agent.Player;
 import combat_data.Effect;
 import combat_data.MoveTypes;

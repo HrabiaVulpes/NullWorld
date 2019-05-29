@@ -1,10 +1,8 @@
 import agent.LearningCombatant;
-import agent.NonLearningCombatant;
 import agent.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.ObjectsLists;
 import combat_data.States;
-import scenes.FairTournamentTrainingAI;
 import scenes.TournamentTrainingAI;
 import scenes.Versus;
 

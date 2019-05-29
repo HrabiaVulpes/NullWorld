@@ -9,7 +9,7 @@ public enum DamageTypes {
     BLUNT,
     NONE;
 
-    public static Collection<DamageTypes> effectiveTypes(){
+    public static Collection<DamageTypes> effectiveTypes() {
         return Arrays.asList(PIERCE, SLASH, BLUNT);
     }
 }

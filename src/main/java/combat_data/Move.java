@@ -28,7 +28,7 @@ public class Move {
 
     public Effect resolveAgainst(Move other, Integer weaponLength, Integer distanceToEnemy) {
         if (damageType == DamageTypes.NONE) return Effect.MISS;
-        if(type != MoveTypes.SHOT) {
+        if (type != MoveTypes.SHOT) {
             if (type != MoveTypes.KICK && weaponLength < distanceToEnemy) return Effect.MISS;
             if (type == MoveTypes.KICK && distanceToEnemy > 1) return Effect.MISS;
         }
@@ -69,7 +69,7 @@ public class Move {
         weaponVsBodyNoStandard.remove(PositionTags.STANDARD);
 
         if (!weaponVsBodyNoStandard.isEmpty()) return Effect.CRIT;
-        if (!weaponVsBody.isEmpty()){
+        if (!weaponVsBody.isEmpty()) {
             if (type == MoveTypes.OVERHEAD && myStates.contains(States.ABOVE)) return Effect.CRIT;
             if (type == MoveTypes.UNDERSTRIKE && myStates.contains(States.CROUCHED)) return Effect.CRIT;
             return Effect.HIT;

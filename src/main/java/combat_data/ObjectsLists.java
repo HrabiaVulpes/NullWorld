@@ -15,23 +15,24 @@ public class ObjectsLists {
     public List<LearningCombatant> combatantsList;
     public List<LearningCombatant> oldCombatantsList;
 
-    public static ObjectsLists getData(){
-        if (data == null){
+    public static ObjectsLists getData() {
+        if (data == null) {
             data = new ObjectsLists();
         }
         return data;
     }
 
-    private ObjectsLists(){
+    private ObjectsLists() {
         loadWeapons();
         loadCombatants();
 //        loadOldCombatants();
     }
 
-    private void loadWeapons(){
+    private void loadWeapons() {
         String filePath = ObjectsLists.class.getClassLoader().getResource("weapons.json").getFile();
         try {
-            weaponList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<Weapon>>(){});
+            weaponList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<Weapon>>() {
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,10 +40,11 @@ public class ObjectsLists {
         assert weaponList != null;
     }
 
-    private void loadCombatants(){
+    private void loadCombatants() {
         String filePath = ObjectsLists.class.getClassLoader().getResource("combatants.json").getFile();
         try {
-            combatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<LearningCombatant>>(){});
+            combatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<LearningCombatant>>() {
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,10 +52,11 @@ public class ObjectsLists {
         assert weaponList != null;
     }
 
-    private void loadOldCombatants(){
+    private void loadOldCombatants() {
         String filePath = ObjectsLists.class.getClassLoader().getResource("combatants_old.json").getFile();
         try {
-            oldCombatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<LearningCombatant>>(){});
+            oldCombatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<LearningCombatant>>() {
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,10 +64,10 @@ public class ObjectsLists {
         assert weaponList != null;
     }
 
-    public Weapon findWeaponByName(String name){
+    public Weapon findWeaponByName(String name) {
         Weapon chosenWeapon = null;
-        for(Weapon weapon : getData().weaponList) {
-            if(weapon.getName().equals(name))
+        for (Weapon weapon : getData().weaponList) {
+            if (weapon.getName().equals(name))
                 chosenWeapon = weapon;
         }
         return chosenWeapon;

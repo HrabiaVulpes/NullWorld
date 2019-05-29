@@ -8,7 +8,8 @@ public class NeuralNetwork {
     private List<Node> nodes;
     private Integer amountOfLayers = 0;
 
-    public NeuralNetwork(){}
+    public NeuralNetwork() {
+    }
 
     public NeuralNetwork(Integer... layers) {
         lastNodeId = 0L;

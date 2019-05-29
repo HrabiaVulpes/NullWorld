@@ -89,9 +89,11 @@ public class Player {
         return availableMoves;
     }
 
-    public void learn(Effect myEffect, Double enemyDamage, Integer distance) { }
+    public void learn(Effect myEffect, Double enemyDamage, Integer distance) {
+    }
 
-    public void setStates(Collection<States> enemyStates, Integer enemyDistance, Weapon enemyWeapon) { }
+    public void setStates(Collection<States> enemyStates, Integer enemyDistance, Weapon enemyWeapon) {
+    }
 
     public String getName() {
         return name;

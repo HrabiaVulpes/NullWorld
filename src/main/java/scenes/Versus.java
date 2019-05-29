@@ -1,6 +1,5 @@
 package scenes;
 
-import agent.LearningCombatant;
 import agent.Player;
 
 import java.util.Comparator;

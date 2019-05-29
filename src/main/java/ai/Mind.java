@@ -75,9 +75,9 @@ public class Mind {
                 }
         );
 
-        final Double[] total = {ideas.values().stream().mapToDouble(v->v).sum()};
+        final Double[] total = {ideas.values().stream().mapToDouble(v -> v).sum()};
         total[0] = total[0] * Math.random();
-        for (String key : ideas.keySet()){
+        for (String key : ideas.keySet()) {
             total[0] -= ideas.get(key);
             if (total[0] <= 0.0) return key;
         }
