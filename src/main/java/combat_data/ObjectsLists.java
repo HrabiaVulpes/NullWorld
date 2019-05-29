@@ -1,6 +1,6 @@
 package combat_data;
 
-import agent.Combatant;
+import agent.LearningCombatant;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -12,8 +12,8 @@ public class ObjectsLists {
     static ObjectsLists data = null;
 
     public List<Weapon> weaponList;
-    public List<Combatant> combatantsList;
-    public List<Combatant> oldCombatantsList;
+    public List<LearningCombatant> combatantsList;
+    public List<LearningCombatant> oldCombatantsList;
 
     public static ObjectsLists getData(){
         if (data == null){
@@ -24,8 +24,8 @@ public class ObjectsLists {
 
     private ObjectsLists(){
         loadWeapons();
-        loadCombatants();
-        loadOldCombatants();
+//        loadCombatants();
+//        loadOldCombatants();
     }
 
     private void loadWeapons(){
@@ -40,9 +40,9 @@ public class ObjectsLists {
     }
 
     private void loadCombatants(){
-        String filePath = ObjectsLists.class.getClassLoader().getResource("combatants.json").getFile();
+        String filePath = ObjectsLists.class.getClassLoader().getResource("learningCombatants.json").getFile();
         try {
-            combatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<Combatant>>(){});
+            combatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<LearningCombatant>>(){});
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class ObjectsLists {
     private void loadOldCombatants(){
         String filePath = ObjectsLists.class.getClassLoader().getResource("combatants_old.json").getFile();
         try {
-            oldCombatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<Combatant>>(){});
+            oldCombatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<LearningCombatant>>(){});
         } catch (IOException e) {
             e.printStackTrace();
         }

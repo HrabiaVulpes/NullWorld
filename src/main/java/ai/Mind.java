@@ -1,10 +1,8 @@
 package ai;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Mind {
     private NeuralNetwork brain;
@@ -35,11 +33,10 @@ public class Mind {
         return this;
     }
 
-    public Mind askItIf(String factName, Double value) throws MindFuck {
+    public Double askWhether(String factName) throws MindFuck {
         if (decisions.containsKey(factName)) {
-            brain.setValues(Map.of(decisions.get(factName), value));
+            return brain.getNodeById(decisions.get(factName)).value;
         } else throw new MindFuck("This brain does not know what " + factName + " is");
-        return this;
     }
 
     public Mind buildBrain(Double learningRate) {
@@ -67,26 +64,24 @@ public class Mind {
     }
 
     public String getWeightedDecision(String defaultDecision) {
-        Map<Double, String> ideas = new HashMap<>();
+        Map<String, Double> ideas = new HashMap<>();
         final Double[] total = {0.0};
-
         decisions.keySet().forEach(
                 decision -> {
-                    ideas.put(
-                            brain.getNodeById(decisions.get(decision)).value + total[0],
-                            decision
-                    );
-                    total[0] += brain.getNodeById(decisions.get(decision)).value;
+                    try {
+                        ideas.put(decision, askWhether(decision));
+                        total[0] += askWhether(decision);
+                    } catch (MindFuck mindFuck) {
+                        mindFuck.printStackTrace();
+                    }
                 }
         );
 
-        Double random = Math.random() * total[0];
-        String best = defaultDecision;
-        for (Double value : ideas.keySet().stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList())) {
-            if (random <= value) best = ideas.get(value);
-            else break;
+        for (String key : ideas.keySet()){
+            total[0] -= ideas.get(key);
+            if (total[0] <= 0.0) return key;
         }
-        return best;
+        return defaultDecision;
     }
 
     public Mind resultIs(String decision, Double result) throws MindFuck {
@@ -96,7 +91,7 @@ public class Mind {
         return this;
     }
 
-    public Mind rethinkIt(){
+    public Mind rethinkIt() {
         brain.recalculateFullPass();
         brain.updateWeights();
         return this;

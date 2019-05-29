@@ -1,6 +1,6 @@
 package scenes;
 
-import agent.Combatant;
+import agent.LearningCombatant;
 import agent.Player;
 import combat_data.Effect;
 import combat_data.MoveTypes;
@@ -13,13 +13,13 @@ import static userInterface.ConsoleUtils.*;
 public class HumanVsAi {
 
     protected Player player1;
-    protected Combatant player2;
+    protected LearningCombatant player2;
     private Effect p1Effect;
     private Effect p2Effect;
     public Integer distance = 2;
     private Integer maxDistance = 5;
 
-    public HumanVsAi(Player player1, Combatant player2) {
+    public HumanVsAi(Player player1, LearningCombatant player2) {
         this.player1 = player1;
         this.player2 = player2;
     }

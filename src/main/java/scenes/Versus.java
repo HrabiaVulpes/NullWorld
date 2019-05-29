@@ -1,26 +1,26 @@
 package scenes;
 
-import agent.Combatant;
+import agent.LearningCombatant;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class Versus extends TournamentTrainingAI {
-    private List<Combatant> enemy_combatants;
+    private List<LearningCombatant> enemy_Learning_combatants;
 
-    public Versus(List<Combatant> combatants, List<Combatant> enemies){
-        super(combatants);
-        this.enemy_combatants = enemies;
+    public Versus(List<LearningCombatant> learningCombatants, List<LearningCombatant> enemies){
+        super(learningCombatants);
+        this.enemy_Learning_combatants = enemies;
     }
 
-    private Combatant randomEnemyCombatant() {
-        long choosen = (Math.round(Math.random() * enemy_combatants.size())) % enemy_combatants.size();
-        return enemy_combatants.get((int) choosen);
+    private LearningCombatant randomEnemyCombatant() {
+        long choosen = (Math.round(Math.random() * enemy_Learning_combatants.size())) % enemy_Learning_combatants.size();
+        return enemy_Learning_combatants.get((int) choosen);
     }
 
     public void runRound(int roundLenght) {
-        Combatant player1 = randomCombatant();
-        Combatant player2 = randomEnemyCombatant();
+        LearningCombatant player1 = randomCombatant();
+        LearningCombatant player2 = randomEnemyCombatant();
 
         FightAI training = new FightAI(player1, player2);
         System.out.println(training);
@@ -40,8 +40,8 @@ public class Versus extends TournamentTrainingAI {
         }
 
         System.out.println("Time for a scoreboard!");
-        combatants.sort(Comparator.comparing(player -> player.victoriesCount));
-        combatants.forEach(
+        learningCombatants.sort(Comparator.comparing(player -> player.victoriesCount));
+        learningCombatants.forEach(
                 player -> System.out.println(player.name + "\t"
                         + player.victoriesCount + "-" + player.lossesCount + "\t" +
                         "(" + player.weapon.getName() + ")")
@@ -49,9 +49,9 @@ public class Versus extends TournamentTrainingAI {
 
         System.out.println("And a summary:");
         System.out.println("House: "
-                + combatants.stream().mapToInt(Combatant::getVictoriesCount).sum()
+                + learningCombatants.stream().mapToInt(LearningCombatant::getVictoriesCount).sum()
                 + " Guests: "
-                + enemy_combatants.stream().mapToInt(Combatant::getVictoriesCount).sum()
+                + enemy_Learning_combatants.stream().mapToInt(LearningCombatant::getVictoriesCount).sum()
         );
     }
 }

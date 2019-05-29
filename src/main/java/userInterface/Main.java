@@ -1,6 +1,6 @@
 package userInterface;
 
-import agent.Combatant;
+import agent.LearningCombatant;
 import agent.Player;
 import scenes.HumanVsAi;
 
@@ -16,8 +16,8 @@ public class Main {
         hello();
         Player player = new Player(setName("your"), getData().findWeaponByName(chooseWeapon("your")));
         weaponStats("your", player.weapon);
-        Combatant combatant = new Combatant(setName("computer"), getData().findWeaponByName(chooseWeapon("opponent")));
-        HumanVsAi duel = new HumanVsAi(player, combatant);
+        LearningCombatant learningCombatant = new LearningCombatant(setName("computer"), getData().findWeaponByName(chooseWeapon("opponent")));
+        HumanVsAi duel = new HumanVsAi(player, learningCombatant);
         duel.fightForRounds(50);
         showWinner(duel.winner());
     }

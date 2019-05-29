@@ -80,7 +80,6 @@ public class NeuralNetwork {
             getNodesByLayer(layerNumber - 1).forEach(node -> previousLayer.put(node.ID, node.value));
             getNodesByLayer(layerNumber).forEach(node -> node.recalculateWeights(previousLayer));
         }
-
     }
 
     public void recalculateFullPass() {

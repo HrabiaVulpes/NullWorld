@@ -1,6 +1,6 @@
 package scenes;
 
-import agent.Combatant;
+import agent.LearningCombatant;
 import agent.Player;
 import combat_data.Effect;
 import combat_data.MoveTypes;
@@ -16,7 +16,7 @@ public class DuelBase {
     protected Integer distance = 2;
     private Integer maxDistance = 5;
 
-    public DuelBase(Combatant player1, Combatant player2) {
+    public DuelBase(LearningCombatant player1, LearningCombatant player2) {
         this.player1 = player1;
         this.player2 = player2;
     }

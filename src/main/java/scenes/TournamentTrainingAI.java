@@ -1,6 +1,6 @@
 package scenes;
 
-import agent.Combatant;
+import agent.LearningCombatant;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -10,18 +10,18 @@ import java.util.Comparator;
 import java.util.List;
 
 public class TournamentTrainingAI {
-    protected List<Combatant> combatants = new ArrayList<>();
+    protected List<LearningCombatant> learningCombatants = new ArrayList<>();
 
     public TournamentTrainingAI() {
     }
 
-    public TournamentTrainingAI(List<Combatant> combatants){
-        this.combatants = combatants;
+    public TournamentTrainingAI(List<LearningCombatant> learningCombatants){
+        this.learningCombatants = learningCombatants;
     }
 
     public void runRound(int roundLenght) {
-        Combatant player1 = randomCombatant();
-        Combatant player2;
+        LearningCombatant player1 = randomCombatant();
+        LearningCombatant player2;
         do {
             player2 = randomCombatant();
         } while (player1.name.equals(player2.name));
@@ -44,8 +44,8 @@ public class TournamentTrainingAI {
         }
 
         System.out.println("Time for a scoreboard!");
-        combatants.sort(Comparator.comparing(player -> player.victoriesCount));
-        combatants.forEach(
+        learningCombatants.sort(Comparator.comparing(player -> player.victoriesCount));
+        learningCombatants.forEach(
                 player -> System.out.println(player.name + "\t"
                         + player.victoriesCount + "-" + player.lossesCount + "\t" +
                         "(" + player.weapon.getName() + ")")
@@ -60,22 +60,22 @@ public class TournamentTrainingAI {
         }
     }
 
-    protected Combatant randomCombatant() {
-        long choosen = (Math.round(Math.random() * combatants.size())) % combatants.size();
-        return combatants.get((int) choosen);
+    protected LearningCombatant randomCombatant() {
+        long choosen = (Math.round(Math.random() * learningCombatants.size())) % learningCombatants.size();
+        return learningCombatants.get((int) choosen);
     }
 
     protected void jsonWriting() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(new File("target/combatants.json"), combatants);
+            objectMapper.writeValue(new File("target/learningCombatants.json"), learningCombatants);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     protected void resetWins(){
-        combatants.forEach(combatant -> combatant.victoriesCount = 0);
-        combatants.forEach(combatant -> combatant.lossesCount = 0);
+        learningCombatants.forEach(combatant -> combatant.victoriesCount = 0);
+        learningCombatants.forEach(combatant -> combatant.lossesCount = 0);
     }
 }
