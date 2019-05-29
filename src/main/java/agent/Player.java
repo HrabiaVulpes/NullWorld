@@ -67,7 +67,7 @@ public class Player {
                     .map(Enum::toString)
                     .collect(Collectors.toList())
                     .contains(chosenMove);
-            if(!isItMove || !availableMoves.contains(MoveTypes.valueOf(chosenMove))) {
+            if (!isItMove || !availableMoves.contains(MoveTypes.valueOf(chosenMove))) {
                 System.out.println("This move is not possible try again");
             }
         } while (!isItMove || !availableMoves.contains(MoveTypes.valueOf(chosenMove)));
@@ -88,6 +88,10 @@ public class Player {
         }
         return availableMoves;
     }
+
+    public void learn(Effect myEffect, Double enemyDamage, Integer distance) { }
+
+    public void setStates(Collection<States> enemyStates, Integer enemyDistance, Weapon enemyWeapon) { }
 
     public String getName() {
         return name;

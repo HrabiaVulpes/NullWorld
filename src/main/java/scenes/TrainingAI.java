@@ -9,8 +9,8 @@ public class TrainingAI extends DuelBase {
 
     @Override
     protected void pickMovesStage() {
-        ((LearningCombatant) player1).setStates(player2.statesList, distance, player1.weapon);
-        ((LearningCombatant) player2).setStates(player1.statesList, distance, player2.weapon);
+        player1.setStates(player2.statesList, distance, player1.weapon);
+        player2.setStates(player1.statesList, distance, player2.weapon);
 
         player1.pickMove();
         player2.pickMove();
@@ -23,8 +23,8 @@ public class TrainingAI extends DuelBase {
         pickMovesStage();
         resolveMovesStage();
 
-        ((LearningCombatant) player1).learn(p1Effect, player2.damageDealt(p2Effect), distance);
-        ((LearningCombatant) player2).learn(p2Effect, player1.damageDealt(p1Effect), distance);
+        player1.learn(p1Effect, player2.damageDealt(p2Effect), distance);
+        player2.learn(p2Effect, player1.damageDealt(p1Effect), distance);
 
         resolveDistanceStage();
         resolveStatesStage();
