@@ -16,7 +16,7 @@ public class DuelBase {
     protected Integer distance = 2;
     private Integer maxDistance = 5;
 
-    public DuelBase(LearningCombatant player1, LearningCombatant player2) {
+    public DuelBase(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
     }

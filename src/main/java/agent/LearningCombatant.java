@@ -47,6 +47,7 @@ public class LearningCombatant extends Player {
      * @param enemyDistance - distance to enemy
      * @param enemyWeapon   - weapon of the enemy
      */
+    @Override
     public void setStates(Collection<States> enemyStates, Integer enemyDistance, Weapon enemyWeapon) {
         Arrays.asList(States.values()).forEach(
                 state -> {
@@ -108,6 +109,7 @@ public class LearningCombatant extends Player {
         return MoveTypes.valueOf(combatantMind.nowThink().getWeightedDecision("WAIT"));
     }
 
+    @Override
     public void pickMove() {
         MoveTypes chosen = getIdeaWithWeights();
         move = weapon.getOptionByType(chosen);
@@ -119,6 +121,7 @@ public class LearningCombatant extends Player {
         if (!currentStates.isEmpty()) move = weapon.getOptionByType(MoveTypes.WAIT);
     }
 
+    @Override
     public void learn(Effect myEffect, Double enemyDamage, Integer distance) {
         try {
             if (!wantedMove.getType().name().equals(move.getType().name()))

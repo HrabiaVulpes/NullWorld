@@ -1,6 +1,5 @@
 package scenes;
 
-import agent.LearningCombatant;
 import agent.Player;
 
 import java.io.File;
@@ -14,7 +13,7 @@ import java.util.stream.Collectors;
 public class FairTournamentTrainingAI extends TournamentTrainingAI {
     Map<String, List<Integer>> finalScores = new HashMap<>();
 
-    public FairTournamentTrainingAI(List<LearningCombatant> learningCombatants) {
+    public FairTournamentTrainingAI(List<Player> learningCombatants) {
         this.learningCombatants = learningCombatants;
 
         learningCombatants.forEach(
@@ -22,7 +21,7 @@ public class FairTournamentTrainingAI extends TournamentTrainingAI {
         );
     }
 
-    public Player runRound(LearningCombatant player1, LearningCombatant player2, int roundLength) {
+    public Player runRound(Player player1, Player player2, int roundLength) {
         TrainingAI fight = new TrainingAI(player1, player2);
         System.out.println(fight);
         fight.fightForRounds(roundLength);
@@ -40,10 +39,14 @@ public class FairTournamentTrainingAI extends TournamentTrainingAI {
 
     @Override
     public void eternalTournament(int rounds, int roundLenght) {
-        while(true) {
+        while (true) {
             for (int i = 0; i < rounds; i++) {
                 runSingleRoundFights(i, roundLenght);
             }
+
+            learningCombatants.forEach(
+                    combatant -> finalScores.get(combatant.name).add(combatant.getVictoriesCount())
+            );
             printToFile();
             resetWins();
             jsonWriting();
@@ -65,8 +68,8 @@ public class FairTournamentTrainingAI extends TournamentTrainingAI {
     }
 
     public void runSingleRoundFights(int currentRound, int roundLenght) {
-        for (LearningCombatant p1 : learningCombatants) {
-            for (LearningCombatant p2 : learningCombatants) {
+        for (Player p1 : learningCombatants) {
+            for (Player p2 : learningCombatants) {
                 if (!p1.name.equals(p2.name)) {
                     Map<String, Integer> victories = new HashMap<>(Map.of(p1.name, 0, p2.name, 0));
                     Player victor = runRound(p1, p2, roundLenght);
@@ -89,9 +92,5 @@ public class FairTournamentTrainingAI extends TournamentTrainingAI {
                 }
             }
         }
-
-        learningCombatants.forEach(
-                combatant -> finalScores.get(combatant.name).add(combatant.getVictoriesCount())
-        );
     }
 }

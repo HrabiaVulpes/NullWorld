@@ -1,6 +1,6 @@
 package scenes;
 
-import agent.LearningCombatant;
+import agent.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -10,18 +10,18 @@ import java.util.Comparator;
 import java.util.List;
 
 public class TournamentTrainingAI {
-    protected List<LearningCombatant> learningCombatants = new ArrayList<>();
+    protected List<Player> learningCombatants = new ArrayList<>();
 
     public TournamentTrainingAI() {
     }
 
-    public TournamentTrainingAI(List<LearningCombatant> learningCombatants){
+    public TournamentTrainingAI(List<Player> learningCombatants) {
         this.learningCombatants = learningCombatants;
     }
 
     public void runRound(int roundLenght) {
-        LearningCombatant player1 = randomCombatant();
-        LearningCombatant player2;
+        Player player1 = randomCombatant();
+        Player player2;
         do {
             player2 = randomCombatant();
         } while (player1.name.equals(player2.name));
@@ -60,7 +60,7 @@ public class TournamentTrainingAI {
         }
     }
 
-    protected LearningCombatant randomCombatant() {
+    protected Player randomCombatant() {
         long choosen = (Math.round(Math.random() * learningCombatants.size())) % learningCombatants.size();
         return learningCombatants.get((int) choosen);
     }
@@ -74,7 +74,7 @@ public class TournamentTrainingAI {
         }
     }
 
-    protected void resetWins(){
+    protected void resetWins() {
         learningCombatants.forEach(combatant -> combatant.victoriesCount = 0);
         learningCombatants.forEach(combatant -> combatant.lossesCount = 0);
     }

@@ -1,10 +1,12 @@
 import agent.LearningCombatant;
 import agent.NonLearningCombatant;
+import agent.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.ObjectsLists;
 import combat_data.States;
 import scenes.FairTournamentTrainingAI;
 import scenes.TournamentTrainingAI;
+import scenes.Versus;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +39,7 @@ public class Main {
         names.put("HALBERD", "Hou Yi");
         names.put("SCYTHE", "Ruby Rose");
 
-        List<LearningCombatant> learningCombatants = ObjectsLists.getData()
+        List<Player> learningCombatants = ObjectsLists.getData()
                 .weaponList.stream()
                 .map(weapon -> new LearningCombatant("Red" + names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList());
@@ -59,14 +61,11 @@ public class Main {
         names.put("FIST", "Yang");
         names.put("SCYTHE", "Ruby Rose");
 
-        List<LearningCombatant> swordsmen_red = names.values().stream()
-                .map(name -> new NonLearningCombatant("Black " + name, ObjectsLists.getData().weaponList.get(1)))
+        List<Player> swordsmen_red = names.values().stream()
+                .map(name -> new LearningCombatant("Black " + name, ObjectsLists.getData().weaponList.get(1)))
                 .collect(Collectors.toList());
 
-        swordsmen_red.add(new LearningCombatant("White Vulpes", ObjectsLists.getData().weaponList.get(1)));
-        swordsmen_red.add(new LearningCombatant("Red Vulpes", ObjectsLists.getData().weaponList.get(1)));
-
-        FairTournamentTrainingAI tournamentTrainingAI = new FairTournamentTrainingAI(swordsmen_red);
+        TournamentTrainingAI tournamentTrainingAI = new TournamentTrainingAI(swordsmen_red);
         tournamentTrainingAI.eternalTournament(100, 30);
     }
 

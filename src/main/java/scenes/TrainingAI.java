@@ -1,9 +1,9 @@
 package scenes;
 
-import agent.LearningCombatant;
+import agent.Player;
 
 public class TrainingAI extends DuelBase {
-    public TrainingAI(LearningCombatant player1, LearningCombatant player2) {
+    public TrainingAI(Player player1, Player player2) {
         super(player1, player2);
     }
 

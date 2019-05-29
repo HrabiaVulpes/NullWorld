@@ -1,26 +1,27 @@
 package scenes;
 
 import agent.LearningCombatant;
+import agent.Player;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class Versus extends TournamentTrainingAI {
-    private List<LearningCombatant> enemy_Learning_combatants;
+    private List<Player> enemy_Learning_combatants;
 
-    public Versus(List<LearningCombatant> learningCombatants, List<LearningCombatant> enemies){
+    public Versus(List<Player> learningCombatants, List<Player> enemies) {
         super(learningCombatants);
         this.enemy_Learning_combatants = enemies;
     }
 
-    private LearningCombatant randomEnemyCombatant() {
+    private Player randomEnemyCombatant() {
         long choosen = (Math.round(Math.random() * enemy_Learning_combatants.size())) % enemy_Learning_combatants.size();
         return enemy_Learning_combatants.get((int) choosen);
     }
 
     public void runRound(int roundLenght) {
-        LearningCombatant player1 = randomCombatant();
-        LearningCombatant player2 = randomEnemyCombatant();
+        Player player1 = randomCombatant();
+        Player player2 = randomEnemyCombatant();
 
         FightAI training = new FightAI(player1, player2);
         System.out.println(training);
@@ -49,9 +50,9 @@ public class Versus extends TournamentTrainingAI {
 
         System.out.println("And a summary:");
         System.out.println("House: "
-                + learningCombatants.stream().mapToInt(LearningCombatant::getVictoriesCount).sum()
+                + learningCombatants.stream().mapToInt(Player::getVictoriesCount).sum()
                 + " Guests: "
-                + enemy_Learning_combatants.stream().mapToInt(LearningCombatant::getVictoriesCount).sum()
+                + enemy_Learning_combatants.stream().mapToInt(Player::getVictoriesCount).sum()
         );
     }
 }
