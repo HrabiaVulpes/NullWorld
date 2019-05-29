@@ -65,18 +65,17 @@ public class Mind {
 
     public String getWeightedDecision(String defaultDecision) {
         Map<String, Double> ideas = new HashMap<>();
-        final Double[] total = {0.0};
         decisions.keySet().forEach(
                 decision -> {
                     try {
                         ideas.put(decision, askWhether(decision));
-                        total[0] += askWhether(decision);
                     } catch (MindFuck mindFuck) {
                         mindFuck.printStackTrace();
                     }
                 }
         );
 
+        final Double[] total = {ideas.values().stream().mapToDouble(v->v).sum()};
         total[0] = total[0] * Math.random();
         for (String key : ideas.keySet()){
             total[0] -= ideas.get(key);

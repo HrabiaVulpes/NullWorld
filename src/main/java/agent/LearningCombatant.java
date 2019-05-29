@@ -118,7 +118,8 @@ public class LearningCombatant extends Player {
         List<States> currentStates = new ArrayList<>(this.statesList);
         currentStates.retainAll(move.getUnavailableOn());
 
-        if (!currentStates.isEmpty()) move = weapon.getOptionByType(MoveTypes.WAIT);
+        if (!currentStates.isEmpty())
+            move = weapon.getOptionByType(MoveTypes.WAIT);
     }
 
     @Override

@@ -51,6 +51,7 @@ public class Move {
     }
 
     public Effect resolveAgainst(Move other, Collection<States> myStates, Integer weaponLength, Integer distanceToEnemy) {
+        if (type == MoveTypes.CLOSE_IN && other.damageType != DamageTypes.NONE) return Effect.PARRY;
         if (damageType == DamageTypes.NONE) return Effect.MISS;
 
         if (type == MoveTypes.KICK && distanceToEnemy > 1) return Effect.MISS;

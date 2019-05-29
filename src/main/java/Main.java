@@ -10,10 +10,7 @@ import scenes.Versus;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static combat_data.MoveTypes.*;
@@ -62,11 +59,13 @@ public class Main {
         names.put("SCYTHE", "Ruby Rose");
 
         List<Player> swordsmen_red = names.values().stream()
-                .map(name -> new LearningCombatant("Black " + name, ObjectsLists.getData().weaponList.get(1)))
+                .map(name -> new LearningCombatant("Red " + name, ObjectsLists.getData().weaponList.get(1)))
                 .collect(Collectors.toList());
 
-        TournamentTrainingAI tournamentTrainingAI = new TournamentTrainingAI(swordsmen_red);
-        tournamentTrainingAI.eternalTournament(100, 30);
+        List<Player> swordsmen_blue = new ArrayList<>(ObjectsLists.getData().combatantsList);
+
+        TournamentTrainingAI tournamentTrainingAI = new Versus(swordsmen_blue, swordsmen_red);
+        tournamentTrainingAI.runTournament(1000, 30);
     }
 
     public static void change() {
