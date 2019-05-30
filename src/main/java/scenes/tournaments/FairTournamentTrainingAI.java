@@ -1,6 +1,7 @@
-package scenes;
+package scenes.tournaments;
 
 import agent.Player;
+import scenes.duels.TrainingAI;
 
 import java.io.File;
 import java.io.FileWriter;

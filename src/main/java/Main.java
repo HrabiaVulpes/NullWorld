@@ -3,8 +3,8 @@ import agent.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.ObjectsLists;
 import combat_data.States;
-import scenes.TournamentTrainingAI;
-import scenes.Versus;
+import scenes.tournaments.TournamentTrainingAI;
+import scenes.tournaments.Versus;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,7 +48,7 @@ public class Main {
                 .collect(Collectors.toList()));
 
         TournamentTrainingAI tournamentTrainingAI = new TournamentTrainingAI(learningCombatants);
-        tournamentTrainingAI.eternalTournament(100, 50);
+        tournamentTrainingAI.eternalTournament(1000, 30);
     }
 
     private static void swordTournament() {
@@ -82,7 +82,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        swordTournament();
+        runTournament();
     }
 
 }

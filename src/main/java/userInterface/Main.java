@@ -2,7 +2,7 @@ package userInterface;
 
 import agent.LearningCombatant;
 import agent.Player;
-import scenes.HumanVsAi;
+import scenes.duels.HumanVsAi;
 
 import static combat_data.ObjectsLists.getData;
 import static userInterface.ConsoleUtils.*;

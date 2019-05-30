@@ -1,7 +1,8 @@
-package scenes;
+package scenes.tournaments;
 
 import agent.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import scenes.duels.TrainingAI;
 
 import java.io.File;
 import java.io.IOException;

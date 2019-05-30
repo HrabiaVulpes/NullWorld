@@ -1,4 +1,4 @@
-package scenes.baseScenes;
+package scenes.tournaments;
 
 public class TournamentBase {
 

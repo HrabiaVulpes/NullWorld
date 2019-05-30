@@ -1,6 +1,7 @@
-package scenes;
+package scenes.tournaments;
 
 import agent.Player;
+import scenes.duels.FightAI;
 
 import java.util.Comparator;
 import java.util.List;
