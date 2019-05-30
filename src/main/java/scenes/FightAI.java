@@ -1,6 +1,7 @@
 package scenes;
 
 import agent.Player;
+import scenes.baseScenes.DuelBase;
 
 public class FightAI extends DuelBase {
     public FightAI(Player player1, Player player2) {

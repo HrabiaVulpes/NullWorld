@@ -1,4 +1,4 @@
-package scenes;
+package scenes.baseScenes;
 
 import agent.Player;
 import combat_data.Effect;
@@ -20,13 +20,13 @@ public class DuelBase {
         this.player2 = player2;
     }
 
-    Player winner() {
+    public Player winner() {
         if (player1.hitPoints > player2.hitPoints) return player1;
         if (player2.hitPoints > player1.hitPoints) return player2;
         return null;
     }
 
-    Player loser() {
+    public Player loser() {
         if (player1.hitPoints > player2.hitPoints) return player2;
         if (player2.hitPoints > player1.hitPoints) return player1;
         return null;
@@ -115,7 +115,7 @@ public class DuelBase {
         resolveStatesStage();
     }
 
-    Player fightForRounds(int rounds) {
+    public Player fightForRounds(int rounds) {
         for (int i = 0; i < rounds; i++) {
             processTurn();
         }

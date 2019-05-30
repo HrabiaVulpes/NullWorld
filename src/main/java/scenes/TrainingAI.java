@@ -1,6 +1,7 @@
 package scenes;
 
 import agent.Player;
+import scenes.baseScenes.DuelBase;
 
 public class TrainingAI extends DuelBase {
     public TrainingAI(Player player1, Player player2) {
