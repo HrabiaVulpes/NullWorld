@@ -1,6 +1,7 @@
 package combat_data;
 
 import agent.LearningCombatant;
+import agent.Player;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -12,8 +13,8 @@ public class ObjectsLists {
     static ObjectsLists data = null;
 
     public List<Weapon> weaponList;
-    public List<LearningCombatant> combatantsList;
-    public List<LearningCombatant> oldCombatantsList;
+    public List<Player> combatantsList;
+    public List<Player> oldCombatantsList;
 
     public static ObjectsLists getData() {
         if (data == null) {

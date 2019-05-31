@@ -5,10 +5,7 @@ import scenes.duels.TrainingAI;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FairTournamentTrainingAI extends TournamentBase {
@@ -36,6 +33,14 @@ public class FairTournamentTrainingAI extends TournamentBase {
             printToFile();
             resetWins();
         }
+
+        System.out.println("Time for a scoreboard!");
+        players.sort(Comparator.comparing(player -> player.victoriesCount));
+        players.forEach(
+                player -> System.out.println(player.name + "\t"
+                        + player.victoriesCount + "-" + player.lossesCount + "\t" +
+                        "(" + player.weapon.getName() + ")")
+        );
     }
 
     @Override

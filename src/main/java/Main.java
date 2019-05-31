@@ -3,12 +3,16 @@ import agent.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.ObjectsLists;
 import combat_data.States;
+import scenes.tournaments.TournamentBase;
 import scenes.tournaments.TournamentTrainingAI;
 import scenes.tournaments.Versus;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static combat_data.MoveTypes.*;
@@ -47,11 +51,15 @@ public class Main {
                 .map(weapon -> new LearningCombatant("Green" + names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList()));
 
-        TournamentTrainingAI tournamentTrainingAI = new TournamentTrainingAI(learningCombatants);
-        tournamentTrainingAI.eternalTournament(1000, 30);
+        List<Player> oldCombatants = ObjectsLists.getData().combatantsList.stream()
+                .filter(player -> player.name.contains("Blue"))
+                .collect(Collectors.toList());
+
+        TournamentBase tournamentTrainingAI = new TournamentTrainingAI(oldCombatants);
+        tournamentTrainingAI.runTournament(100, 30);
     }
 
-    private static void swordTournament() {
+    private static void vrsusTournament() {
         names.put("KATANA", "Samurai");
         names.put("FIST", "Yang");
         names.put("SCYTHE", "Ruby Rose");
@@ -60,10 +68,11 @@ public class Main {
                 .map(name -> new LearningCombatant("Red " + name, ObjectsLists.getData().weaponList.get(1)))
                 .collect(Collectors.toList());
 
-        List<Player> swordsmen_blue = new ArrayList<>(ObjectsLists.getData().combatantsList);
+        List<Player> swordsmen_blue = ObjectsLists.getData().combatantsList.stream()
+                .filter(player -> player.name.contains("Blue")).collect(Collectors.toList());
 
-        TournamentTrainingAI tournamentTrainingAI = new Versus(swordsmen_blue, swordsmen_red);
-        tournamentTrainingAI.runTournament(1000, 30);
+        TournamentBase tournamentTrainingAI = new Versus(swordsmen_blue, swordsmen_red);
+        tournamentTrainingAI.runTournament(100, 30);
     }
 
     public static void change() {
@@ -82,7 +91,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        runTournament();
+        vrsusTournament();
     }
 
 }
