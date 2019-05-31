@@ -17,12 +17,13 @@ public class FightAI extends DuelBase {
     }
 
     @Override
-    protected void processTurn() {
-        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return;
+    protected boolean processTurn() {
+        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return false;
 
         pickMovesStage();
         resolveMovesStage();
         resolveDistanceStage();
         resolveStatesStage();
+        return true;
     }
 }

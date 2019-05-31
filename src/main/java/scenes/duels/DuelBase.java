@@ -13,7 +13,7 @@ public class DuelBase {
     protected Effect p1Effect;
     protected Effect p2Effect;
     protected Integer distance = 2;
-    private Integer maxDistance = 5;
+    protected Integer maxDistance = 5;
 
     public DuelBase(Player player1, Player player2) {
         this.player1 = player1;
@@ -106,18 +106,20 @@ public class DuelBase {
         if (p2Effect == Effect.CRIT) player1.statesList.add(States.KNOCKED);
     }
 
-    protected void processTurn() {
-        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return;
+    protected boolean processTurn() {
+        if (player1.hitPoints <= 0 || player2.hitPoints <= 0) return false;
 
         pickMovesStage();
         resolveMovesStage();
         resolveDistanceStage();
         resolveStatesStage();
+        return true;
     }
 
     public Player fightForRounds(int rounds) {
         for (int i = 0; i < rounds; i++) {
             processTurn();
+            if (!processTurn()) break;
         }
         return winner();
     }
