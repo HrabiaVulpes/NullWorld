@@ -10,10 +10,21 @@ import static userInterface.ConsoleUtils.*;
 public class Main {
     public static void main(String[] args) {
         hello();
-        Player player = new Player(setName("your"), getData().findWeaponByName(chooseWeapon("your")));
+        Player player = new Player(
+                setName("your"),
+                getData().findWeaponByName(chooseWeapon("your"))
+        );
         weaponStats("your", player.weapon);
-        LearningCombatant learningCombatant = new LearningCombatant(setName("computer"), getData().findWeaponByName(chooseWeapon("opponent")));
-        HumanVsAi duel = new HumanVsAi(player, learningCombatant);
+
+        String opponentWeapon = chooseWeapon("opponent");
+        Player enemy = getData().combatantsList.stream()
+                .filter(fighter -> fighter.weapon.getName().equals(opponentWeapon))
+                .findFirst()
+                .orElse(new LearningCombatant(
+                        setName("computer"),
+                        getData().findWeaponByName(opponentWeapon)
+                ));
+        HumanVsAi duel = new HumanVsAi(player, enemy);
         duel.fightForRounds(50);
         showWinner(duel.winner());
     }
