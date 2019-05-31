@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class FairTournamentTrainingAI extends TournamentTrainingAI {
-    Map<String, List<Integer>> finalScores = new HashMap<>();
+public class FairTournamentTrainingAI extends TournamentBase {
+    private Map<String, List<Integer>> finalScores = new HashMap<>();
 
-    public FairTournamentTrainingAI(List<Player> learningCombatants) {
-        this.learningCombatants = learningCombatants;
+    public FairTournamentTrainingAI(List<Player> players) {
+        super(players);
 
-        learningCombatants.forEach(
+        players.forEach(
                 combatant -> finalScores.put(combatant.name, new ArrayList<>())
         );
     }
@@ -30,22 +30,22 @@ public class FairTournamentTrainingAI extends TournamentTrainingAI {
     }
 
     @Override
-    public void runTournament(int rounds, int roundLenght) {
+    public void runTournament(int rounds, int roundLength) {
         for (int i = 0; i < rounds; i++) {
-            runSingleRoundFights(i, roundLenght);
+            runRound(roundLength);
             printToFile();
             resetWins();
         }
     }
 
     @Override
-    public void eternalTournament(int rounds, int roundLenght) {
+    public void eternalTournament(int rounds, int roundLength) {
         while (true) {
             for (int i = 0; i < rounds; i++) {
-                runSingleRoundFights(i, roundLenght);
+                runRound(roundLength);
             }
 
-            learningCombatants.forEach(
+            players.forEach(
                     combatant -> finalScores.get(combatant.name).add(combatant.getVictoriesCount())
             );
             printToFile();
@@ -68,22 +68,22 @@ public class FairTournamentTrainingAI extends TournamentTrainingAI {
         }
     }
 
-    public void runSingleRoundFights(int currentRound, int roundLenght) {
-        for (Player p1 : learningCombatants) {
-            for (Player p2 : learningCombatants) {
+    public void runRound(int roundLength) {
+        for (Player p1 : players) {
+            for (Player p2 : players) {
                 if (!p1.name.equals(p2.name)) {
                     Map<String, Integer> victories = new HashMap<>(Map.of(p1.name, 0, p2.name, 0));
-                    Player victor = runRound(p1, p2, roundLenght);
+                    Player victor = runRound(p1, p2, roundLength);
                     if (victor != null) victories.put(victor.name, victories.get(victor.name) + 1);
                     p1.healUp();
                     p2.healUp();
 
-                    victor = runRound(p1, p2, roundLenght);
+                    victor = runRound(p1, p2, roundLength);
                     if (victor != null) victories.put(victor.name, victories.get(victor.name) + 1);
                     p1.healUp();
                     p2.healUp();
 
-                    victor = runRound(p1, p2, roundLenght);
+                    victor = runRound(p1, p2, roundLength);
                     if (victor != null) victories.put(victor.name, victories.get(victor.name) + 1);
                     p1.healUp();
                     p2.healUp();

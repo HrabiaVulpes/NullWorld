@@ -6,17 +6,17 @@ import scenes.duels.FightAI;
 import java.util.Comparator;
 import java.util.List;
 
-public class Versus extends TournamentTrainingAI {
-    private List<Player> enemy_Learning_combatants;
+public class Versus extends TournamentBase {
+    private List<Player> guests;
 
-    public Versus(List<Player> learningCombatants, List<Player> enemies) {
-        super(learningCombatants);
-        this.enemy_Learning_combatants = enemies;
+    public Versus(List<Player> house, List<Player> guests) {
+        super(house);
+        this.guests = guests;
     }
 
     private Player randomEnemyCombatant() {
-        long choosen = (Math.round(Math.random() * enemy_Learning_combatants.size())) % enemy_Learning_combatants.size();
-        return enemy_Learning_combatants.get((int) choosen);
+        long choosen = (Math.round(Math.random() * guests.size())) % guests.size();
+        return guests.get((int) choosen);
     }
 
     public void runRound(int roundLenght) {
@@ -41,8 +41,8 @@ public class Versus extends TournamentTrainingAI {
         }
 
         System.out.println("Time for a scoreboard!");
-        learningCombatants.sort(Comparator.comparing(player -> player.victoriesCount));
-        learningCombatants.forEach(
+        players.sort(Comparator.comparing(player -> player.victoriesCount));
+        players.forEach(
                 player -> System.out.println(player.name + "\t"
                         + player.victoriesCount + "-" + player.lossesCount + "\t" +
                         "(" + player.weapon.getName() + ")")
@@ -50,9 +50,9 @@ public class Versus extends TournamentTrainingAI {
 
         System.out.println("And a summary:");
         System.out.println("House: "
-                + learningCombatants.stream().mapToInt(Player::getVictoriesCount).sum()
+                + players.stream().mapToInt(Player::getVictoriesCount).sum()
                 + " Guests: "
-                + enemy_Learning_combatants.stream().mapToInt(Player::getVictoriesCount).sum()
+                + guests.stream().mapToInt(Player::getVictoriesCount).sum()
         );
     }
 }
