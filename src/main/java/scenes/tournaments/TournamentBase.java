@@ -51,7 +51,7 @@ public abstract class TournamentBase {
     protected void jsonWriting() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(new File("target/combatants.json"), players);
+            objectMapper.writeValue(new File("target/combatants_old.json"), players);
         } catch (IOException e) {
             e.printStackTrace();
         }

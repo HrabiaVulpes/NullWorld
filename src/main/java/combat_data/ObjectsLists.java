@@ -26,7 +26,7 @@ public class ObjectsLists {
     private ObjectsLists() {
         loadWeapons();
         loadCombatants();
-//        loadOldCombatants();
+        loadOldCombatants();
     }
 
     private void loadWeapons() {
@@ -42,7 +42,7 @@ public class ObjectsLists {
     }
 
     private void loadCombatants() {
-        String filePath = ObjectsLists.class.getClassLoader().getResource("combatants.json").getFile();
+        String filePath = ObjectsLists.class.getClassLoader().getResource("combatants_old.json").getFile();
         try {
             combatantsList = new ObjectMapper().readValue(new File(filePath), new TypeReference<List<LearningCombatant>>() {
             });

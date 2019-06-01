@@ -1,11 +1,6 @@
 package scenes.duels;
 
 import agent.Player;
-import combat_data.Effect;
-import combat_data.MoveTypes;
-import combat_data.States;
-
-import java.util.stream.Collectors;
 
 import static userInterface.ConsoleUtils.*;
 
@@ -36,7 +31,6 @@ public class HumanVsAi extends DuelBase {
         pickMovesStage();
         resolveMovesStage();
 
-        // player1.learn(p1Effect, player2.damageDealt(p2Effect), distance);
         player2.learn(p2Effect, player1.damageDealt(p1Effect), distance);
 
         resolveDistanceStage();

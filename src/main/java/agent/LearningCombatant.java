@@ -129,7 +129,7 @@ public class LearningCombatant extends Player {
     public void learn(Effect myEffect, Double enemyDamage, Integer distance) {
         try {
             if (!wantedMove.getType().name().equals(move.getType().name()))
-                combatantMind.resultIs(wantedMove.getType().toString(), 0.0);
+                combatantMind.resultIs(wantedMove.getType().toString(), -1.0);
 
             combatantMind.resultIs(move.getType().toString(), gradeMove(myEffect, enemyDamage, distance));
         } catch (MindFuck mindFuck) {
@@ -148,7 +148,7 @@ public class LearningCombatant extends Player {
 
         if (myEffect == Effect.HIT || myEffect == Effect.CRIT) {
             if (damageDealt(myEffect) >= enemyDamage) return 1.0;
-            else return 0.5;
+            else return 0.4;
         }
 
         if (myEffect == Effect.PARRY) {
@@ -156,7 +156,8 @@ public class LearningCombatant extends Player {
             else return 1.0;
         }
 
-        if (myEffect == Effect.MISS) return 0.0;
+        if (myEffect == Effect.MISS && enemyDamage > 0.0) return -1.0;
+        if (myEffect == Effect.MISS) return 0.1;
 
         return 0.0;
     }

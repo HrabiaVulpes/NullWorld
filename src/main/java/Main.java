@@ -40,39 +40,28 @@ public class Main {
 
         List<Player> learningCombatants = ObjectsLists.getData()
                 .weaponList.stream()
-                .map(weapon -> new LearningCombatant("Red" + names.get(weapon.getName()), weapon))
+                .map(weapon -> new LearningCombatant("Red " + names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList());
-        learningCombatants.addAll(ObjectsLists.getData()
-                .weaponList.stream()
-                .map(weapon -> new LearningCombatant("Blue" + names.get(weapon.getName()), weapon))
-                .collect(Collectors.toList()));
-        learningCombatants.addAll(ObjectsLists.getData()
-                .weaponList.stream()
-                .map(weapon -> new LearningCombatant("Green" + names.get(weapon.getName()), weapon))
-                .collect(Collectors.toList()));
 
         List<Player> oldCombatants = ObjectsLists.getData().combatantsList.stream()
                 .filter(player -> player.name.contains("Blue"))
                 .collect(Collectors.toList());
 
-        TournamentBase tournamentTrainingAI = new TournamentTrainingAI(oldCombatants);
-        tournamentTrainingAI.runTournament(100, 30);
+        TournamentBase tournamentTrainingAI = new TournamentTrainingAI(learningCombatants);
+        tournamentTrainingAI.eternalTournament(1000, 30);
     }
 
-    private static void vrsusTournament() {
+    private static void versusTournament() {
         names.put("KATANA", "Samurai");
         names.put("FIST", "Yang");
         names.put("SCYTHE", "Ruby Rose");
 
-        List<Player> swordsmen_red = names.values().stream()
-                .map(name -> new LearningCombatant("Red " + name, ObjectsLists.getData().weaponList.get(1)))
-                .collect(Collectors.toList());
+        List<Player> swordsmen_red = ObjectsLists.getData().combatantsList;
 
-        List<Player> swordsmen_blue = ObjectsLists.getData().combatantsList.stream()
-                .filter(player -> player.name.contains("Blue")).collect(Collectors.toList());
+        List<Player> swordsmen_blue = ObjectsLists.getData().oldCombatantsList;
 
         TournamentBase tournamentTrainingAI = new Versus(swordsmen_blue, swordsmen_red);
-        tournamentTrainingAI.runTournament(100, 30);
+        tournamentTrainingAI.runTournament(10000, 30);
     }
 
     public static void change() {
@@ -91,7 +80,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        vrsusTournament();
+        versusTournament();
     }
 
 }
