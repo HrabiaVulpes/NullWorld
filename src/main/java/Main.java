@@ -2,21 +2,20 @@ import agent.LearningCombatant;
 import agent.Player;
 import agent.simpleAIAgent.ForeverBest;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import combat_data.ObjectsLists;
-import combat_data.States;
+import combat_data.*;
 import scenes.tournaments.TournamentBase;
 import scenes.tournaments.TournamentTrainingAI;
 import scenes.tournaments.Versus;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static combat_data.MoveTypes.*;
+import static combat_data.MoveTypes.BLOCK;
+import static combat_data.MoveTypes.CLOSE_IN;
 
 public class Main {
     private static Map<String, String> names = new HashMap<>();
@@ -46,9 +45,8 @@ public class Main {
 
         learningCombatants.addAll(ObjectsLists.getData()
                 .weaponList.stream()
-                .map(weapon -> new ForeverBest("Simple " + names.get(weapon.getName()), weapon))
+                .map(weapon -> new ForeverBest("ForeverBest " + names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList()));
-
 
 
         TournamentBase tournamentTrainingAI = new TournamentTrainingAI(learningCombatants);
@@ -70,9 +68,21 @@ public class Main {
 
     public static void change() {
         ObjectsLists.getData().weaponList.forEach(
-                weapon -> weapon.getOptions().stream()
-                        .filter(move -> Arrays.asList(OVERHEAD, SLASH, KICK, THRUST, UNDERSTRIKE, BACK_AWAY).contains(move.getType()))
-                        .forEach(move -> move.getUnavailableOn().add(States.KNOCKED))
+                weapon -> weapon.getOptions().add(new Move(BLOCK)
+                        .withDamage(DamageTypes.NONE)
+                        .withPositionDuringMove(PositionTags.STANDARD)
+                        .withRemovedStates()
+                        .withAddedStates()
+                        .withUnavailableOn(States.WEAPON_SIDE, States.WEAPON_EXTENDED, States.WEAPON_HIGH, States.WEAPON_LOW)
+                        .withWeaponMovement(PositionTags.STANDARD, PositionTags.LOW, PositionTags.HIGH, PositionTags.SIDE, PositionTags.BACK)
+                )
+        );
+
+        ObjectsLists.getData().weaponList.forEach(
+                weapon -> weapon.getOptions()
+                        .stream()
+                        .filter(move -> move.getType().equals(CLOSE_IN))
+                        .forEach(move -> move.withWeaponMovement())
         );
 
         ObjectMapper objectMapper = new ObjectMapper();

@@ -85,19 +85,23 @@ public class DuelBase {
         player2.statesList.addAll(player2.move.getAddedStates());
 
         //if one of players used CLOSE_IN and parried, add weapon states of the other
-        if (player1.move.getType() == MoveTypes.CLOSE_IN && p1Effect == Effect.PARRY)
+        if (player1.move.getType() == MoveTypes.BLOCK && p1Effect == Effect.PARRY) {
             player1.statesList.addAll(player2.move.getAddedStates()
                     .stream()
                     .filter(state -> state.name().contains("WEAPON"))
                     .collect(Collectors.toList())
             );
+            player2.statesList.add(States.STAGGERED);
+        }
 
-        if (player2.move.getType() == MoveTypes.CLOSE_IN && p2Effect == Effect.PARRY)
+        if (player2.move.getType() == MoveTypes.BLOCK && p2Effect == Effect.PARRY) {
             player2.statesList.addAll(player1.move.getAddedStates()
                     .stream()
                     .filter(state -> state.name().contains("WEAPON"))
                     .collect(Collectors.toList())
             );
+            player1.statesList.add(States.STAGGERED);
+        }
 
         //if one of players got hit, he is staggered
         if (p1Effect == Effect.HIT) player2.statesList.add(States.STAGGERED);
