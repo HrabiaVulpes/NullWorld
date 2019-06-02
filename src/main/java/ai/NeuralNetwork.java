@@ -89,6 +89,15 @@ public class NeuralNetwork {
         }
     }
 
+    public NeuralNetwork randomClone(Double randomness) {
+        NeuralNetwork result = new NeuralNetwork();
+        result.setLastNodeId(this.getLastNodeId());
+        result.setAmountOfLayers(this.getAmountOfLayers());
+        result.setNodes(new ArrayList<>(this.getNodes()));
+        result.getNodes().forEach(node -> node.randomizeWeights(randomness));
+        return result;
+    }
+
     public void updateWeights() {
         nodes.forEach(Node::updateWeights);
     }
@@ -97,8 +106,8 @@ public class NeuralNetwork {
         return lastNodeId;
     }
 
-    public static void setLastNodeId(Long lastNodeId) {
-        lastNodeId = lastNodeId;
+    public void setLastNodeId(Long lastNodeId) {
+        this.lastNodeId = lastNodeId;
     }
 
     public List<Node> getNodes() {

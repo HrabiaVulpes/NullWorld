@@ -72,6 +72,10 @@ public class Node {
         weights.keySet().forEach(key -> weights.put(key, weights.get(key) - (weightChange.get(key) * learningRate)));
     }
 
+    public void randomizeWeights(Double randomness){
+        weights.keySet().forEach(key -> weights.put(key, weights.get(key) + Math.random()*2.0*randomness - randomness));
+    }
+
     public Double getLearningRate() {
         return learningRate;
     }

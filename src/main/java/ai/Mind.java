@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import static combat_data.ObjectsLists.RANDOMNESS_LEVEL;
+
 public class Mind {
     private NeuralNetwork brain;
     private Map<String, Long> knowledge;
@@ -95,6 +97,14 @@ public class Mind {
         brain.recalculateFullPass();
         brain.updateWeights();
         return this;
+    }
+
+    public Mind clone(Double randomness) {
+        Mind result = new Mind();
+        result.setDecisions(this.getDecisions());
+        result.setKnowledge(this.getKnowledge());
+        result.setBrain(this.getBrain().randomClone(randomness));
+        return result;
     }
 
     public NeuralNetwork getBrain() {

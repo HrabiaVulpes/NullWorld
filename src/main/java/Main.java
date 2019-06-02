@@ -1,8 +1,10 @@
+import agent.GeneticallyLearningCombatant;
 import agent.LearningCombatant;
 import agent.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.ObjectsLists;
 import combat_data.States;
+import scenes.tournaments.GeneticallyLearningTournament;
 import scenes.tournaments.TournamentBase;
 import scenes.tournaments.TournamentTrainingAI;
 import scenes.tournaments.Versus;
@@ -79,8 +81,40 @@ public class Main {
         }
     }
 
+    private static void geneticTournament() {
+        final Long[] ID = {0L};
+        names.put("DAGGER", "Thief");
+        names.put("SWORD", "Ashen");
+        names.put("GREAT_SWORD", "Knight");
+        names.put("ULTRA_GREAT_SWORD", "Heavy");
+        names.put("CURVED_SWORD", "Ali Baba");
+        names.put("KATANA", "Samurai");
+        names.put("CURVED_GREAT_SWORD", "Daimyo");
+        names.put("PIERCING_SWORD", "Fencer");
+        names.put("AXE", "Woodcutter");
+        names.put("GREAT_AXE", "Barbarian");
+        names.put("HAMMER", "Drang");
+        names.put("GREAT_HAMMER", "Smoug");
+        names.put("FIST", "Yang");
+        names.put("SPEAR", "Lancer");
+        names.put("HALBERD", "Hou Yi");
+        names.put("SCYTHE", "Ruby Rose");
+
+        List<Player> learningCombatants = ObjectsLists.getData()
+                .weaponList.stream()
+                .map(weapon -> new GeneticallyLearningCombatant(
+                        "Red " + names.get(weapon.getName()),
+                        ObjectsLists.getData().weaponList.get(1),
+                        ID[0]++)
+                )
+                .collect(Collectors.toList());
+
+        TournamentBase tournamentTrainingAI = new GeneticallyLearningTournament(learningCombatants);
+        tournamentTrainingAI.eternalTournament(100, 30);
+    }
+
     public static void main(String[] args) {
-        versusTournament();
+        geneticTournament();
     }
 
 }

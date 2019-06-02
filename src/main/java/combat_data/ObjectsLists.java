@@ -10,23 +10,24 @@ import java.io.IOException;
 import java.util.List;
 
 public class ObjectsLists {
+    public static final Double RANDOMNESS_LEVEL = 0.3;
     static ObjectsLists data = null;
 
     public List<Weapon> weaponList;
     public List<Player> combatantsList;
     public List<Player> oldCombatantsList;
 
+    private ObjectsLists() {
+        loadWeapons();
+        loadCombatants();
+        loadOldCombatants();
+    }
+
     public static ObjectsLists getData() {
         if (data == null) {
             data = new ObjectsLists();
         }
         return data;
-    }
-
-    private ObjectsLists() {
-        loadWeapons();
-        loadCombatants();
-        loadOldCombatants();
     }
 
     private void loadWeapons() {
