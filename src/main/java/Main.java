@@ -1,5 +1,6 @@
 import agent.LearningCombatant;
 import agent.Player;
+import agent.simpleAIAgent.ForeverBest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.ObjectsLists;
 import combat_data.States;
@@ -43,9 +44,12 @@ public class Main {
                 .map(weapon -> new LearningCombatant("Red " + names.get(weapon.getName()), weapon))
                 .collect(Collectors.toList());
 
-        List<Player> oldCombatants = ObjectsLists.getData().combatantsList.stream()
-                .filter(player -> player.name.contains("Blue"))
-                .collect(Collectors.toList());
+        learningCombatants.addAll(ObjectsLists.getData()
+                .weaponList.stream()
+                .map(weapon -> new ForeverBest("Simple " + names.get(weapon.getName()), weapon))
+                .collect(Collectors.toList()));
+
+
 
         TournamentBase tournamentTrainingAI = new TournamentTrainingAI(learningCombatants);
         tournamentTrainingAI.eternalTournament(1000, 30);
@@ -80,7 +84,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        versusTournament();
+        runTournament();
     }
 
 }
