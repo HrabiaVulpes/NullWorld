@@ -46,6 +46,7 @@ public class Move {
 
         if (!weaponVsBodyNoStandard.isEmpty()) return Effect.CRIT;
         if (!weaponVsBody.isEmpty()) {
+            if (other.getType() == MoveTypes.WAIT) return Effect.CRIT;
             if (type == MoveTypes.OVERHEAD && myStates.contains(States.ABOVE)) return Effect.CRIT;
             if (type == MoveTypes.UNDERSTRIKE && myStates.contains(States.CROUCHED)) return Effect.CRIT;
             return Effect.HIT;
