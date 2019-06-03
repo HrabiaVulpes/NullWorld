@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static java.util.Optional.ofNullable;
 import static userInterface.ConsoleUtils.chosenMove;
 
 public class Player {
@@ -74,7 +75,7 @@ public class Player {
         move = weapon.getOptionByType(MoveTypes.valueOf(chosenMove));
     }
 
-    public Set getAvailableMoves() {
+    public Set<MoveTypes> getAvailableMoves() {
         availableMoves.clear();
         for (Move move : weapon.getOptions()) {
             boolean availableMove = true;
@@ -87,6 +88,10 @@ public class Player {
             if (availableMove) availableMoves.add(move.getType());
         }
         return availableMoves;
+    }
+
+    protected Double getDamageByType(DamageTypes damageTypes) {
+        return ofNullable(weapon.getEfficiencies().get(damageTypes)).orElse(0.0);
     }
 
     public void learn(Effect myEffect, Double enemyDamage, Integer distance) {

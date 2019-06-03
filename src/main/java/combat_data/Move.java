@@ -8,11 +8,11 @@ public class Move {
 
     private List<States> unavailableOn = Collections.emptyList();
 
-    private List<PositionTags> positionDuringMove = Collections.emptyList();
-    private List<PositionTags> weaponMovement = Collections.emptyList();
+    private Set<PositionTags> positionDuringMove = Collections.emptySet();
+    private Set<PositionTags> weaponMovement = Collections.emptySet();
 
-    private List<States> removedStates = Collections.emptyList();
-    private List<States> addedStates = Collections.emptyList();
+    private Set<States> removedStates = Collections.emptySet();
+    private Set<States> addedStates = Collections.emptySet();
 
     public Move() {
     }
@@ -26,32 +26,8 @@ public class Move {
         return this;
     }
 
-    public Effect resolveAgainst(Move other, Integer weaponLength, Integer distanceToEnemy) {
-        if (damageType == DamageTypes.NONE) return Effect.MISS;
-        if (type != MoveTypes.SHOT) {
-            if (type != MoveTypes.KICK && weaponLength < distanceToEnemy) return Effect.MISS;
-            if (type == MoveTypes.KICK && distanceToEnemy > 1) return Effect.MISS;
-        }
-
-        ArrayList<PositionTags> commonWeaponMovements = new ArrayList<>(this.getWeaponMovement());
-        commonWeaponMovements.retainAll(other.getWeaponMovement());
-        commonWeaponMovements.remove(PositionTags.STANDARD);
-
-        if (!commonWeaponMovements.isEmpty()) return Effect.PARRY;
-
-        ArrayList<PositionTags> weaponVsBody = new ArrayList<>(this.getWeaponMovement());
-        weaponVsBody.retainAll(other.getPositionDuringMove());
-        ArrayList<PositionTags> weaponVsBodyNoStandard = new ArrayList<>(weaponVsBody);
-        weaponVsBodyNoStandard.remove(PositionTags.STANDARD);
-
-        if (!weaponVsBodyNoStandard.isEmpty()) return Effect.CRIT;
-        if (!weaponVsBody.isEmpty()) return Effect.HIT;
-
-        return Effect.MISS;
-    }
-
     public Effect resolveAgainst(Move other, Collection<States> myStates, Integer weaponLength, Integer distanceToEnemy) {
-        if (type == MoveTypes.CLOSE_IN && other.damageType != DamageTypes.NONE) return Effect.PARRY;
+        if (type == MoveTypes.BLOCK && other.damageType != DamageTypes.NONE) return Effect.PARRY;
         if (damageType == DamageTypes.NONE) return Effect.MISS;
 
         if (type == MoveTypes.KICK && distanceToEnemy > 1) return Effect.MISS;
@@ -70,6 +46,7 @@ public class Move {
 
         if (!weaponVsBodyNoStandard.isEmpty()) return Effect.CRIT;
         if (!weaponVsBody.isEmpty()) {
+            if (other.getType() == MoveTypes.WAIT) return Effect.CRIT;
             if (type == MoveTypes.OVERHEAD && myStates.contains(States.ABOVE)) return Effect.CRIT;
             if (type == MoveTypes.UNDERSTRIKE && myStates.contains(States.CROUCHED)) return Effect.CRIT;
             return Effect.HIT;
@@ -84,27 +61,27 @@ public class Move {
     }
 
     public Move withPositionDuringMove(PositionTags... positionDuringMove) {
-        this.positionDuringMove = Arrays.asList(positionDuringMove);
+        this.positionDuringMove = new HashSet<>(Arrays.asList(positionDuringMove));
         return this;
     }
 
     public Move withWeaponMovement(PositionTags... weaponMovement) {
-        this.weaponMovement = Arrays.asList(weaponMovement);
+        this.weaponMovement = new HashSet<>(Arrays.asList(weaponMovement));
         return this;
     }
 
     public Move withRemovedStates(States... removedStates) {
-        this.removedStates = Arrays.asList(removedStates);
+        this.removedStates = new HashSet<>(Arrays.asList(removedStates));
         return this;
     }
 
     public Move withRemovedStates(List<States> removedStates) {
-        this.removedStates = removedStates;
+        this.removedStates = new HashSet<>(removedStates);
         return this;
     }
 
     public Move withAddedStates(States... addedStates) {
-        this.addedStates = Arrays.asList(addedStates);
+        this.addedStates = new HashSet<>(Arrays.asList(addedStates));
         return this;
     }
 
@@ -132,35 +109,35 @@ public class Move {
         this.unavailableOn = unavailableOn;
     }
 
-    public List<PositionTags> getPositionDuringMove() {
+    public Set<PositionTags> getPositionDuringMove() {
         return positionDuringMove;
     }
 
     public void setPositionDuringMove(List<PositionTags> positionDuringMove) {
-        this.positionDuringMove = positionDuringMove;
+        this.positionDuringMove = new HashSet<>(positionDuringMove);
     }
 
-    public List<PositionTags> getWeaponMovement() {
+    public Set<PositionTags> getWeaponMovement() {
         return weaponMovement;
     }
 
     public void setWeaponMovement(List<PositionTags> weaponMovement) {
-        this.weaponMovement = weaponMovement;
+        this.weaponMovement = new HashSet<>(weaponMovement);
     }
 
-    public List<States> getRemovedStates() {
+    public Set<States> getRemovedStates() {
         return removedStates;
     }
 
     public void setRemovedStates(List<States> removedStates) {
-        this.removedStates = removedStates;
+        this.removedStates = new HashSet<>(removedStates);
     }
 
-    public List<States> getAddedStates() {
+    public Set<States> getAddedStates() {
         return addedStates;
     }
 
     public void setAddedStates(List<States> addedStates) {
-        this.addedStates = addedStates;
+        this.addedStates = new HashSet<>(addedStates);
     }
 }

@@ -12,6 +12,7 @@ public enum MoveTypes {
     JUMP,
     DODGE,
     DUCK,
+    BLOCK,
 
     CLOSE_IN,
     BACK_AWAY,
