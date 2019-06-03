@@ -19,8 +19,8 @@ public class ObjectsLists {
 
     private ObjectsLists() {
         loadWeapons();
-        loadCombatants();
-        loadOldCombatants();
+//        loadCombatants();
+//        loadOldCombatants();
     }
 
     public static ObjectsLists getData() {

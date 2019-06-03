@@ -12,8 +12,8 @@ public class DuelBase {
     protected Player player2;
     protected Effect p1Effect;
     protected Effect p2Effect;
-    protected Integer distance = 2;
-    protected Integer maxDistance = 5;
+    protected Integer distance = 3;
+    protected Integer maxDistance = 7;
 
     public DuelBase(Player player1, Player player2) {
         this.player1 = player1;
