@@ -9,10 +9,10 @@ import scenes.tournaments.Versus;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static combat_data.MoveTypes.BLOCK;
 import static combat_data.MoveTypes.CLOSE_IN;
@@ -21,33 +21,31 @@ public class Main {
     private static Map<String, String> names = new HashMap<>();
 
     private static void runTournament() {
-        names.put("DAGGER", "Thief");
-        names.put("SWORD", "Ashen");
-        names.put("GREAT_SWORD", "Knight");
-        names.put("ULTRA_GREAT_SWORD", "Heavy");
-        names.put("CURVED_SWORD", "Ali Baba");
-        names.put("KATANA", "Samurai");
-        names.put("CURVED_GREAT_SWORD", "Daimyo");
-        names.put("PIERCING_SWORD", "Fencer");
-        names.put("AXE", "Woodcutter");
-        names.put("GREAT_AXE", "Barbarian");
-        names.put("HAMMER", "Drang");
-        names.put("GREAT_HAMMER", "Smoug");
+//        names.put("DAGGER", "Thief");
+//        names.put("SWORD", "Ashen");
+//        names.put("GREAT_SWORD", "Knight");
+//        names.put("ULTRA_GREAT_SWORD", "Heavy");
+//        names.put("CURVED_SWORD", "Ali Baba");
+//        names.put("KATANA", "Samurai");
+//        names.put("CURVED_GREAT_SWORD", "Daimyo");
+//        names.put("PIERCING_SWORD", "Fencer");
+//        names.put("AXE", "Woodcutter");
+//        names.put("GREAT_AXE", "Barbarian");
+//        names.put("HAMMER", "Drang");
+//        names.put("GREAT_HAMMER", "Smoug");
         names.put("FIST", "Yang");
-        names.put("SPEAR", "Lancer");
+//        names.put("SPEAR", "Lancer");
         names.put("HALBERD", "Hou Yi");
         names.put("SCYTHE", "Ruby Rose");
 
-        List<Player> learningCombatants = ObjectsLists.getData()
-                .weaponList.stream()
-                .map(weapon -> new LearningCombatant("Red " + names.get(weapon.getName()), weapon))
-                .collect(Collectors.toList());
+        List<Player> learningCombatants = new ArrayList<>();
 
-        learningCombatants.addAll(ObjectsLists.getData()
-                .weaponList.stream()
-                .map(weapon -> new ForeverBest("ForeverBest " + names.get(weapon.getName()), weapon))
-                .collect(Collectors.toList()));
-
+        for (String name : names.values()){
+            learningCombatants.add(new LearningCombatant("Zero " + name, ObjectsLists.getData().findWeaponByName("SWORD"), 0));
+            learningCombatants.add(new LearningCombatant("One " + name, ObjectsLists.getData().findWeaponByName("SWORD"), 1));
+            learningCombatants.add(new LearningCombatant("Two " + name, ObjectsLists.getData().findWeaponByName("SWORD"), 2));
+            learningCombatants.add(new ForeverBest("Simple  " + name, ObjectsLists.getData().findWeaponByName("SWORD")));
+        }
 
         TournamentBase tournamentTrainingAI = new TournamentTrainingAI(learningCombatants);
         tournamentTrainingAI.eternalTournament(1000, 30);
