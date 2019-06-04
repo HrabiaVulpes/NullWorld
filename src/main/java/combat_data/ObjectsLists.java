@@ -25,7 +25,7 @@ public class ObjectsLists {
 
     private ObjectsLists() {
         loadWeapons();
-        loadCombatants();
+//        loadCombatants();
 //        loadOldCombatants();
     }
 

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class TournamentBase {
     protected List<Player> players = new ArrayList<>();
@@ -51,7 +52,10 @@ public abstract class TournamentBase {
     protected void jsonWriting() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(new File("target/combatants_old.json"), players);
+            objectMapper.writeValue(new File(
+                    "target/combatants.json"),
+                    players.stream().filter(player -> player.whoControl.contains("AI")).collect(Collectors.toList())
+            );
         } catch (IOException e) {
             e.printStackTrace();
         }
