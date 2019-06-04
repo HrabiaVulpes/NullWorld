@@ -21,7 +21,7 @@ public class Player {
     public Move move;
     public Integer victoriesCount = 0;
     public Integer lossesCount = 0;
-    public Integer maxHP = 100;
+    public Integer maxHP = 50;
     Set<MoveTypes> availableMoves = new HashSet<>();
 
     public Player() {
