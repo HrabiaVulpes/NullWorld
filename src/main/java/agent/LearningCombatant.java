@@ -30,6 +30,16 @@ public class LearningCombatant extends Player {
         this.combatantMind.buildBrain(0.3);
     }
 
+    public LearningCombatant(String name, Weapon weapon, Integer amountOfHiddenLayers) {
+        super(name, weapon);
+        whoControl = "AI";
+
+        this.combatantMind = new Mind();
+        generateKnowledgeArray();
+        generateDecisionsArray();
+        this.combatantMind.buildBrain(amountOfHiddenLayers);
+    }
+
     /**
      * @param name         - name of combatant
      * @param weapon       - weapon he uses

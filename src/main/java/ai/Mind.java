@@ -1,5 +1,6 @@
 package ai;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,21 @@ public class Mind {
         Integer middleLayer = (int) (Math.max(knowledge.size(), decisions.size()) * 1.1);
         brain = new NeuralNetwork(knowledge.size(), middleLayer, decisions.size());
         decisions.keySet().forEach(key -> decisions.put(key, decisions.get(key) + middleLayer + knowledge.size()));
+        return this;
+    }
+
+    public Mind buildBrain(Integer hiddenLayerCount) {
+        Integer middleLayer = (int) (Math.max(knowledge.size(), decisions.size()) * 1.1);
+        Integer[] data = new Integer[hiddenLayerCount+2];
+
+        data[0] = knowledge.size();
+        for (int i = 1; i < hiddenLayerCount+1; i++) data[i] = middleLayer;
+        data[hiddenLayerCount+1] = decisions.size();
+
+        brain = new NeuralNetwork(data);
+
+        Integer decisionStartNode = Arrays.stream(data).mapToInt(a->a).sum() - decisions.size();
+        decisions.keySet().forEach(key -> decisions.put(key, decisions.get(key) + decisionStartNode));
         return this;
     }
 
