@@ -4,7 +4,6 @@ import ai.Mind;
 import ai.MindFuck;
 import combat_data.*;
 
-import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -163,26 +162,28 @@ public class LearningCombatant extends Player {
             if (myEffect == Effect.CRIT && enemyEffect == Effect.CRIT) return 0.5;
             if (myEffect == Effect.HIT && enemyEffect == Effect.CRIT) return 0.4;
 
-            if (myEffect == Effect.PARRY && enemyMove.getType() != MoveTypes.BLOCK) return 0.5;                         // Aga thinks this is wrong
+            if (myEffect == Effect.PARRY && enemyMove.getType() != MoveTypes.BLOCK)
+                return 0.5;                         // Aga thinks this is wrong
             if (myEffect == Effect.PARRY && enemyMove.getType() == MoveTypes.BLOCK) return 0.1;
 
             if (myEffect == Effect.MISS && enemyEffect == Effect.MISS) return 0.4;
             if (myEffect == Effect.MISS) return 0.1;
         } else {
-            if (myMove.getType() == MoveTypes.CLOSE_IN){
+            if (myMove.getType() == MoveTypes.CLOSE_IN) {
                 if (distance > weapon.getLength() && enemyEffect == Effect.MISS) return 1.0;
                 if (distance > weapon.getLength() && enemyEffect != Effect.MISS) return 0.2;
                 if (distance <= weapon.getLength() && enemyEffect == Effect.MISS) return 0.5;
                 if (distance <= weapon.getLength() && enemyEffect != Effect.MISS) return 0.1;
             }
-            if (myMove.getType() == MoveTypes.BLOCK){
+            if (myMove.getType() == MoveTypes.BLOCK) {
                 if (enemyEffect == Effect.PARRY) return 0.9;
                 else return 0.3;
             }
             if (enemyEffect == Effect.CRIT) return 0.1;
             if (enemyEffect == Effect.HIT) return 0.2;
             if (enemyEffect == Effect.MISS && enemyMove.getDamageType() != DamageTypes.NONE) return 0.9;
-            if (enemyEffect == Effect.MISS && enemyMove.getDamageType() == DamageTypes.NONE) return 0.3;                // Aga thinks may need increasing
+            if (enemyEffect == Effect.MISS && enemyMove.getDamageType() == DamageTypes.NONE)
+                return 0.3;                // Aga thinks may need increasing
         }
 
         return 0.5;

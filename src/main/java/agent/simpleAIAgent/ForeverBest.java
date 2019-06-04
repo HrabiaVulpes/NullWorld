@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 public class ForeverBest extends Player {
     private Integer distanceToEnemy;
+
     public ForeverBest(String name, Weapon weapon) {
         super(name, weapon);
     }

@@ -49,15 +49,15 @@ public class Mind {
 
     public Mind buildBrain(Integer hiddenLayerCount) {
         Integer middleLayer = (int) (Math.max(knowledge.size(), decisions.size()) * 1.1);
-        Integer[] data = new Integer[hiddenLayerCount+2];
+        Integer[] data = new Integer[hiddenLayerCount + 2];
 
         data[0] = knowledge.size();
-        for (int i = 1; i < hiddenLayerCount+1; i++) data[i] = middleLayer;
-        data[hiddenLayerCount+1] = decisions.size();
+        for (int i = 1; i < hiddenLayerCount + 1; i++) data[i] = middleLayer;
+        data[hiddenLayerCount + 1] = decisions.size();
 
         brain = new NeuralNetwork(data);
 
-        Integer decisionStartNode = Arrays.stream(data).mapToInt(a->a).sum() - decisions.size();
+        Integer decisionStartNode = Arrays.stream(data).mapToInt(a -> a).sum() - decisions.size();
         decisions.keySet().forEach(key -> decisions.put(key, decisions.get(key) + decisionStartNode));
         return this;
     }

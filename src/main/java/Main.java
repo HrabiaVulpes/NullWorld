@@ -6,7 +6,6 @@ import combat_data.*;
 import scenes.tournaments.FairTournamentTrainingAI;
 import scenes.tournaments.TournamentBase;
 import scenes.tournaments.TournamentTrainingAI;
-import scenes.tournaments.Versus;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,7 +40,7 @@ public class Main {
 
         List<Player> learningCombatants = new ArrayList<>();
 
-        for (String weapon : names.keySet()){
+        for (String weapon : names.keySet()) {
             learningCombatants.add(
                     new LearningCombatant("Zero " + names.get(weapon),
                             ObjectsLists.getData().findWeaponByName(weapon),
@@ -49,7 +48,7 @@ public class Main {
             );
         }
 
-        for (String weapon : names.keySet()){
+        for (String weapon : names.keySet()) {
             learningCombatants.add(
                     new LearningCombatant("One " + names.get(weapon),
                             ObjectsLists.getData().findWeaponByName(weapon),
@@ -57,7 +56,7 @@ public class Main {
             );
         }
 
-        for (String weapon : names.keySet()){
+        for (String weapon : names.keySet()) {
             learningCombatants.add(
                     new LearningCombatant("Two " + names.get(weapon),
                             ObjectsLists.getData().findWeaponByName(weapon),
@@ -65,7 +64,7 @@ public class Main {
             );
         }
 
-        for (String weapon : names.keySet()){
+        for (String weapon : names.keySet()) {
             learningCombatants.add(
                     new ForeverBest("Simple " + names.get(weapon),
                             ObjectsLists.getData().findWeaponByName(weapon))
@@ -82,7 +81,7 @@ public class Main {
         names.put("SCYTHE", "Ruby Rose");
 
         List<Player> swordsmen_red = ObjectsLists.getData().combatantsList;
-        for (String name : names.values()){
+        for (String name : names.values()) {
             swordsmen_red.add(new ForeverBest("Simple  " + name, ObjectsLists.getData().findWeaponByName("SWORD")));
         }
 

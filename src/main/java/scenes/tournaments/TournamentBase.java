@@ -53,7 +53,7 @@ public abstract class TournamentBase {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.writeValue(new File(
-                    "target/combatants.json"),
+                            "target/combatants.json"),
                     players.stream()
                             .filter(player -> player.whoControl.contains("AI"))
                             .collect(Collectors.toList())

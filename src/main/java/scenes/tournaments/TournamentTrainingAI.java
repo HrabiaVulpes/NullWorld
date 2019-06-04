@@ -12,7 +12,7 @@ public class TournamentTrainingAI extends TournamentBase {
     public TournamentTrainingAI() {
     }
 
-    public TournamentTrainingAI(List<Player> players){
+    public TournamentTrainingAI(List<Player> players) {
         super(players);
     }
 
