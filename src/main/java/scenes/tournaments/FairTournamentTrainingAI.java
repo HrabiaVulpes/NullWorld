@@ -31,7 +31,6 @@ public class FairTournamentTrainingAI extends TournamentBase {
         for (int i = 0; i < rounds; i++) {
             runRound(roundLength);
             printToFile();
-            resetWins();
         }
 
         System.out.println("Time for a scoreboard!");

@@ -31,7 +31,7 @@ public class HumanVsAi extends DuelBase {
         pickMovesStage();
         resolveMovesStage();
 
-        player2.learn(p2Effect, player1.damageDealt(p1Effect), distance);
+        player2.learn(player2.move, p2Effect, player1.move, p1Effect, distance);
 
         resolveDistanceStage();
         resolveStatesStage();

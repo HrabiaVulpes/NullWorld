@@ -19,6 +19,7 @@ public class Main {
         String opponentWeapon = chooseWeapon("opponent");
         Player enemy = getData().combatantsList.stream()
                 .filter(fighter -> fighter.whoControl.contains("AI"))
+                .filter(fighter -> fighter.whoControl.contains("Zero"))
                 .filter(fighter -> fighter.weapon.getName().equals(opponentWeapon))
                 .findFirst()
                 .orElse(new LearningCombatant(

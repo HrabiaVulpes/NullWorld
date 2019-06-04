@@ -4,6 +4,7 @@ import ai.Mind;
 import ai.MindFuck;
 import combat_data.*;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -136,40 +137,55 @@ public class LearningCombatant extends Player {
     }
 
     @Override
-    public void learn(Effect myEffect, Double enemyDamage, Integer distance) {
+    public void learn(Move myMove, Effect myEffect, Move enemyMove, Effect enemyEffect, Integer distance) {
         try {
             if (!wantedMove.getType().name().equals(move.getType().name()))
                 combatantMind.resultIs(wantedMove.getType().toString(), -1.0);
 
-            combatantMind.resultIs(move.getType().toString(), gradeMove(myEffect, enemyDamage, distance));
+            combatantMind.resultIs(
+                    move.getType().toString(),
+                    gradeMove(myMove, myEffect, enemyMove, enemyEffect, distance)
+            );
         } catch (MindFuck mindFuck) {
             mindFuck.printStackTrace();
         }
         combatantMind.rethinkIt();
     }
 
-    private Double gradeMove(Effect myEffect, Double enemyDamage, Integer distance) {
-        if (move.getType() == MoveTypes.CLOSE_IN) {
-            if (distance > weapon.getLength())
-                return 1.0;
-            if (distance < weapon.getLength())
-                return 0.0;
+    private Double gradeMove(Move myMove, Effect myEffect, Move enemyMove, Effect enemyEffect, Integer distance) {
+        if (myMove.getDamageType() != DamageTypes.NONE) {
+            if (myEffect == Effect.CRIT && enemyEffect == Effect.MISS) return 1.0;
+            if (myEffect == Effect.HIT && enemyEffect == Effect.MISS) return 0.9;
+
+            if (myEffect == Effect.CRIT && enemyEffect == Effect.HIT) return 0.6;
+            if (myEffect == Effect.HIT && enemyEffect == Effect.HIT) return 0.5;
+
+            if (myEffect == Effect.CRIT && enemyEffect == Effect.CRIT) return 0.5;
+            if (myEffect == Effect.HIT && enemyEffect == Effect.CRIT) return 0.4;
+
+            if (myEffect == Effect.PARRY && enemyMove.getType() != MoveTypes.BLOCK) return 0.5;                         // Aga thinks this is wrong
+            if (myEffect == Effect.PARRY && enemyMove.getType() == MoveTypes.BLOCK) return 0.1;
+
+            if (myEffect == Effect.MISS && enemyEffect == Effect.MISS) return 0.4;
+            if (myEffect == Effect.MISS) return 0.1;
+        } else {
+            if (myMove.getType() == MoveTypes.CLOSE_IN){
+                if (distance > weapon.getLength() && enemyEffect == Effect.MISS) return 1.0;
+                if (distance > weapon.getLength() && enemyEffect != Effect.MISS) return 0.2;
+                if (distance <= weapon.getLength() && enemyEffect == Effect.MISS) return 0.5;
+                if (distance <= weapon.getLength() && enemyEffect != Effect.MISS) return 0.1;
+            }
+            if (myMove.getType() == MoveTypes.BLOCK){
+                if (enemyEffect == Effect.PARRY) return 0.9;
+                else return 0.3;
+            }
+            if (enemyEffect == Effect.CRIT) return 0.1;
+            if (enemyEffect == Effect.HIT) return 0.2;
+            if (enemyEffect == Effect.MISS && enemyMove.getDamageType() != DamageTypes.NONE) return 0.9;
+            if (enemyEffect == Effect.MISS && enemyMove.getDamageType() == DamageTypes.NONE) return 0.3;                // Aga thinks may need increasing
         }
 
-        if (myEffect == Effect.HIT || myEffect == Effect.CRIT) {
-            if (damageDealt(myEffect) >= enemyDamage) return 1.0;
-            else return 0.4;
-        }
-
-        if (myEffect == Effect.PARRY) {
-            if (enemyDamage > 0.0) return 0.0;
-            else return 1.0;
-        }
-
-        if (myEffect == Effect.MISS && enemyDamage > 0.0) return -1.0;
-        if (myEffect == Effect.MISS) return 0.1;
-
-        return 0.0;
+        return 0.5;
     }
 
     public Mind getCombatantMind() {

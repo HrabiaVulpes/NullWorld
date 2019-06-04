@@ -3,6 +3,7 @@ import agent.Player;
 import agent.simpleAIAgent.ForeverBest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import combat_data.*;
+import scenes.tournaments.FairTournamentTrainingAI;
 import scenes.tournaments.TournamentBase;
 import scenes.tournaments.TournamentTrainingAI;
 import scenes.tournaments.Versus;
@@ -21,47 +22,72 @@ public class Main {
     private static Map<String, String> names = new HashMap<>();
 
     private static void runTournament() {
-//        names.put("DAGGER", "Thief");
-//        names.put("SWORD", "Ashen");
-//        names.put("GREAT_SWORD", "Knight");
-//        names.put("ULTRA_GREAT_SWORD", "Heavy");
-//        names.put("CURVED_SWORD", "Ali Baba");
-//        names.put("KATANA", "Samurai");
-//        names.put("CURVED_GREAT_SWORD", "Daimyo");
-//        names.put("PIERCING_SWORD", "Fencer");
-//        names.put("AXE", "Woodcutter");
-//        names.put("GREAT_AXE", "Barbarian");
-//        names.put("HAMMER", "Drang");
-//        names.put("GREAT_HAMMER", "Smoug");
+        names.put("DAGGER", "Thief");
+        names.put("SWORD", "Ashen");
+        names.put("GREAT_SWORD", "Knight");
+        names.put("ULTRA_GREAT_SWORD", "Heavy");
+        names.put("CURVED_SWORD", "Ali Baba");
+        names.put("KATANA", "Samurai");
+        names.put("CURVED_GREAT_SWORD", "Daimyo");
+        names.put("PIERCING_SWORD", "Fencer");
+        names.put("AXE", "Woodcutter");
+        names.put("GREAT_AXE", "Barbarian");
+        names.put("HAMMER", "Drang");
+        names.put("GREAT_HAMMER", "Smoug");
         names.put("FIST", "Yang");
-//        names.put("SPEAR", "Lancer");
+        names.put("SPEAR", "Lancer");
         names.put("HALBERD", "Hou Yi");
         names.put("SCYTHE", "Ruby Rose");
 
         List<Player> learningCombatants = new ArrayList<>();
 
-        for (String name : names.values()){
-            learningCombatants.add(new LearningCombatant("Zero " + name, ObjectsLists.getData().findWeaponByName("SWORD"), 0));
-            learningCombatants.add(new LearningCombatant("One " + name, ObjectsLists.getData().findWeaponByName("SWORD"), 1));
-            learningCombatants.add(new LearningCombatant("Two " + name, ObjectsLists.getData().findWeaponByName("SWORD"), 2));
-            learningCombatants.add(new ForeverBest("Simple  " + name, ObjectsLists.getData().findWeaponByName("SWORD")));
+        for (String weapon : names.keySet()){
+            learningCombatants.add(
+                    new LearningCombatant("Zero " + names.get(weapon),
+                            ObjectsLists.getData().findWeaponByName(weapon),
+                            0)
+            );
+        }
+
+        for (String weapon : names.keySet()){
+            learningCombatants.add(
+                    new LearningCombatant("One " + names.get(weapon),
+                            ObjectsLists.getData().findWeaponByName(weapon),
+                            1)
+            );
+        }
+
+        for (String weapon : names.keySet()){
+            learningCombatants.add(
+                    new LearningCombatant("Two " + names.get(weapon),
+                            ObjectsLists.getData().findWeaponByName(weapon),
+                            1)
+            );
+        }
+
+        for (String weapon : names.keySet()){
+            learningCombatants.add(
+                    new ForeverBest("Simple " + names.get(weapon),
+                            ObjectsLists.getData().findWeaponByName(weapon))
+            );
         }
 
         TournamentBase tournamentTrainingAI = new TournamentTrainingAI(learningCombatants);
         tournamentTrainingAI.eternalTournament(1000, 30);
     }
 
-    private static void versusTournament() {
-        names.put("KATANA", "Samurai");
+    private static void fairTournament() {
         names.put("FIST", "Yang");
+        names.put("HALBERD", "Hou Yi");
         names.put("SCYTHE", "Ruby Rose");
 
         List<Player> swordsmen_red = ObjectsLists.getData().combatantsList;
+        for (String name : names.values()){
+            swordsmen_red.add(new ForeverBest("Simple  " + name, ObjectsLists.getData().findWeaponByName("SWORD")));
+        }
 
-        List<Player> swordsmen_blue = ObjectsLists.getData().oldCombatantsList;
-
-        TournamentBase tournamentTrainingAI = new Versus(swordsmen_blue, swordsmen_red);
-        tournamentTrainingAI.runTournament(10000, 30);
+        TournamentBase tournamentTrainingAI = new FairTournamentTrainingAI(swordsmen_red);
+        tournamentTrainingAI.runTournament(100, 30);
     }
 
     public static void change() {
@@ -92,7 +118,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        runTournament();
+        fairTournament();
     }
 
 }

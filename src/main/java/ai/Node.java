@@ -9,7 +9,7 @@ public class Node {
     public Double value;
     Integer layer;
     Double target;
-    private Double learningRate = 0.3;
+    private Double learningRate = 0.1;
     private Map<Long, Double> weights;
     private Map<Long, Double> weightChange;
     private Double personalWeight;

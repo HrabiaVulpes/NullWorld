@@ -94,7 +94,7 @@ public class Player {
         return ofNullable(weapon.getEfficiencies().get(damageTypes)).orElse(0.0);
     }
 
-    public void learn(Effect myEffect, Double enemyDamage, Integer distance) {
+    public void learn(Move myMove, Effect myEffect, Move enemyMove, Effect enemyEffect, Integer distance) {
     }
 
     public void setStates(Collection<States> enemyStates, Integer enemyDistance, Weapon enemyWeapon) {
