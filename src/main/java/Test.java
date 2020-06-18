@@ -39,7 +39,7 @@ public class Test {
         }
     }
 
-    static void test(Double[][] data) throws MindFuck {
+    static void print(Double[][] data) throws MindFuck {
         for (int i = 0; i < 4; i++) {
             Double result = mind.letItKnow("input1", data[i][0])
                     .letItKnow("input2", data[i][1])
@@ -49,10 +49,28 @@ public class Test {
         }
     }
 
+    static boolean test(Double[][] data) throws MindFuck {
+        for (int i = 0; i < 4; i++) {
+            Double result = mind.letItKnow("input1", data[i][0])
+                    .letItKnow("input2", data[i][1])
+                    .nowThink()
+                    .askWhether("output");
+            if (!result.equals(data[i][2])) return false;
+        }
+        return true;
+    }
+
+    static int howLongTillPass(int max) throws MindFuck {
+        for (int i = 0; i< max; i++){
+            teach(xor);
+            if (test(xor)) return i;
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         try {
-            for (int i = 0; i < 10000; i++) teach(xor);
-            test(xor);
+            System.out.println(howLongTillPass(10000));
         } catch (MindFuck mindFuck) {
             mindFuck.printStackTrace();
         }
