@@ -127,4 +127,12 @@ public class Node {
     public void setPersonalWeight(Double personalWeight) {
         this.personalWeight = personalWeight;
     }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + getValue() +
+                ", target=" + getTarget() +
+                '}';
+    }
 }

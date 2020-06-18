@@ -21,6 +21,12 @@ public class Mind {
         return this;
     }
 
+    public Mind registerDecision(String factName) {
+        if (decisions.size() == 0) decisions.put(factName, 0L);
+        decisions.put(factName, Collections.max(decisions.values()) + 1);
+        return this;
+    }
+
     public Mind letItKnow(String factName, Double value) throws MindFuck {
         if (knowledge.containsKey(factName)) {
             brain.setValues(Map.of(knowledge.get(factName), value));
@@ -28,15 +34,9 @@ public class Mind {
         return this;
     }
 
-    public Mind registerDecision(String factName) {
-        if (decisions.size() == 0) decisions.put(factName, 0L);
-        decisions.put(factName, Collections.max(decisions.values()) + 1);
-        return this;
-    }
-
     public Double askWhether(String factName) throws MindFuck {
         if (decisions.containsKey(factName)) {
-            return brain.getNodeById(decisions.get(factName)).value;
+            return brain.getNodeById(decisions.get(factName)).getValue();
         } else throw new MindFuck("This brain does not know what " + factName + " is");
     }
 
@@ -44,6 +44,7 @@ public class Mind {
         Integer middleLayer = (int) (Math.max(knowledge.size(), decisions.size()) * 1.1);
         brain = new NeuralNetwork(knowledge.size(), middleLayer, decisions.size());
         decisions.keySet().forEach(key -> decisions.put(key, decisions.get(key) + middleLayer + knowledge.size()));
+        brain.setlearningRate(learningRate);
         return this;
     }
 
@@ -57,7 +58,7 @@ public class Mind {
 
         brain = new NeuralNetwork(data);
 
-        Integer decisionStartNode = Arrays.stream(data).mapToInt(a -> a).sum() - decisions.size();
+        Integer decisionStartNode = Arrays.stream(data).mapToInt(a -> a).sum() - decisions.size()-1;
         decisions.keySet().forEach(key -> decisions.put(key, decisions.get(key) + decisionStartNode));
         return this;
     }
@@ -65,39 +66,6 @@ public class Mind {
     public Mind nowThink() {
         brain.calculateFullPass();
         return this;
-    }
-
-    public String getBestDecision(String defaultDecision) {
-        String best = defaultDecision;
-        Double bestValue = -1.0;
-        for (String decision : decisions.keySet()) {
-            if (brain.getNodeById(decisions.get(decision)).value > bestValue) {
-                best = decision;
-                bestValue = brain.getNodeById(decisions.get(decision)).value;
-            }
-        }
-        return best;
-    }
-
-    public String getWeightedDecision(String defaultDecision) {
-        Map<String, Double> ideas = new HashMap<>();
-        decisions.keySet().forEach(
-                decision -> {
-                    try {
-                        ideas.put(decision, askWhether(decision));
-                    } catch (MindFuck mindFuck) {
-                        mindFuck.printStackTrace();
-                    }
-                }
-        );
-
-        final Double[] total = {ideas.values().stream().mapToDouble(v -> v).sum()};
-        total[0] = total[0] * Math.random();
-        for (String key : ideas.keySet()) {
-            total[0] -= ideas.get(key);
-            if (total[0] <= 0.0) return key;
-        }
-        return defaultDecision;
     }
 
     public Mind resultIs(String decision, Double result) throws MindFuck {
@@ -111,29 +79,5 @@ public class Mind {
         brain.recalculateFullPass();
         brain.updateWeights();
         return this;
-    }
-
-    public NeuralNetwork getBrain() {
-        return brain;
-    }
-
-    public void setBrain(NeuralNetwork brain) {
-        this.brain = brain;
-    }
-
-    public Map<String, Long> getKnowledge() {
-        return knowledge;
-    }
-
-    public void setKnowledge(Map<String, Long> knowledge) {
-        this.knowledge = knowledge;
-    }
-
-    public Map<String, Long> getDecisions() {
-        return decisions;
-    }
-
-    public void setDecisions(Map<String, Long> decisions) {
-        this.decisions = decisions;
     }
 }

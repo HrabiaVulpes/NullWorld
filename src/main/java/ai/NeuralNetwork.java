@@ -8,9 +8,6 @@ public class NeuralNetwork {
     private List<Node> nodes;
     private Integer amountOfLayers = 0;
 
-    public NeuralNetwork() {
-    }
-
     public NeuralNetwork(Integer... layers) {
         lastNodeId = 0L;
         nodes = new ArrayList<>();
@@ -50,7 +47,7 @@ public class NeuralNetwork {
 
     private void calculateLayer(Integer layerNumber) {
         Map<Long, Double> previousLayer = new HashMap<>();
-        getNodesByLayer(layerNumber - 1).forEach(node -> previousLayer.put(node.ID, node.value));
+        getNodesByLayer(layerNumber - 1).forEach(node -> previousLayer.put(node.ID, node.getValue()));
         getNodesByLayer(layerNumber).forEach(node -> node.calculateValue(previousLayer));
     }
 
@@ -115,5 +112,9 @@ public class NeuralNetwork {
 
     public void setAmountOfLayers(Integer amountOfLayers) {
         this.amountOfLayers = amountOfLayers;
+    }
+
+    public void setlearningRate(Double learningRate) {
+        nodes.forEach(node -> node.setLearningRate(learningRate));
     }
 }
